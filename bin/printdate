@@ -1,0 +1,4 @@
+#
+# print date in format to set date
+#
+ date +%m%d%H%M%Y.%S 

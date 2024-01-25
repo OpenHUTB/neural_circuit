@@ -1,0 +1,257 @@
+#! /usr/bin/perl
+#
+#
+#  run variable contrast with/without inhibition
+#
+# @inhvals = (0, 1);
+@inhvals = (0);
+$inhnum = $#inhvals + 1;
+
+@barvals = (70,300);  # bar length
+$barnum = $#barvals + 1;
+
+@cavals = (1e-3);  # cadist
+$canum = $#cavals + 1;
+
+# @navals = (3.0e-3, 3.5e-3);
+@navals = (3.0e-3);
+$nanum = $#navals + 1;
+
+@contvals = (0.0040, 0.0045, 0.0050, 0.0055, 0.0060, 0.0065, 0.0070, 0.0075, 0.0080, 0.0085);
+$contnum = $#contvals + 1;
+
+@morphfilevals = (
+	"R3RB140523_01b",
+	"R3RB140701_01B",
+	"R3RB140708_04",
+	"R3RB140709_01",
+	"R3RB140715_01"
+	);
+$morphfilenum = $#morphfilevals + 1;
+$morph_file = $morphfilevals[0];
+
+$print = 0;		# =1 -> cat command line but don't run it
+
+$run = "3f";
+
+$cellnum = 2;
+
+$soma_z = -50;
+
+$dri = 100;
+$drm = 40e3;
+$dcm = 0.9e-6;
+$elec_rs = 20e6;
+$tipcap = 5e-13;
+$dsomadia = 14;
+
+$minten = -0.058;
+$econtrast = 0.017;
+$icontrast = 0.017;
+$eincr = 0;
+$iincr = 0;
+
+# $vcl    = -0.06;
+$vcl    = -0.07;
+$vhold  = $vcl;
+$vstart = $vhold;
+$vstop  = $vhold;
+$dvst   = $vhold;
+$dvrev  = $vcl;
+
+$reczmax = 0;
+$reczmin = 0;
+$stimscale = 0.3;
+
+$theta = 0;
+
+$ampa_cond = 0;
+$nmda_cond = 0;
+$gaba_cond = 0;
+
+$n_dbp1 = -1;
+$n_hbp1 = -1;
+$n_ams  = -1;
+$n_amhs = -1;
+
+$skipv = 9;
+
+use Getopt::Long;
+
+&GetOptions ( 
+	     "cellnum=f"     => \$cellnum,
+	     "run=s"         => \$run,
+	     "morph_file=s"  => \$morph_file,
+	     "soma_z=f"      => \$soma_z,
+	     "minten=f"      => \$minten,
+	     "econtrast=f"   => \$econtrast,
+	     "icontrast=f"   => \$icontrast,
+	     "eincr=f"       => \$eincr,
+	     "iincr=f"       => \$iincr,
+	     "vcl=f"         => \$vcl,
+	     "vhold=f"       => \$vhold,
+	     "vstart=f"      => \$vstart,
+	     "vstop=f"       => \$vstop,
+	     "dri=f"         => \$dri,
+	     "drm=f"         => \$drm,
+	     "dcm=f"         => \$dcm,
+	     "elec_rs=f"     => \$elec_rs,
+	     "dsomadia=f"    => \$dsomadia,
+	     "dend_dia=f"    => \$dend_dia,
+	     "tipcap=f"      => \$tipcap,
+	     "ampa_cond=f"   => \$ampa_cond,
+	     "gaba_cond=f"   => \$gaba_cond,
+	     "shunt_res=f"   => \$shunt_res,
+	     "n_dbp1=f"      => \$n_dbp1,
+	     "n_hbp1=f"      => \$n_hbp1,
+	     "n_ams=f"       => \$n_ams,
+	     "n_amhs=f"      => \$n_amhs,
+	     "reczmax=f"     => \$reczmax,
+	     "reczmin=f"     => \$reczmin,
+	     "theta=f"       => \$theta,
+             "gc_thetaz=f"   => \$gc_thetaz
+	    );
+
+    $c = $cellnum - 2; 
+    $morph_file = "morph_" . $morphfilevals[$c];
+
+    # take biophys params from "fits_params_4-12ns.txt", or modelfitx_params.txt
+    #
+    
+    if ($cellnum == 2) { 		# run "modelfit2b_run1fn.new"
+	 
+	 $soma_z     =  -50;
+	 $dsomadia   =  15;
+         $dri        =  82.3678;
+	 $drm        =  55372.6;
+	 $elec_rs    =  "14.95e6";
+       	 $filt_cfreq =  5924;
+         $dend_dia   =  0.6;
+         $dcm        =  "8.50e-7";
+	 $tipcap     =  -4.259e-12;
+         $shunt_res  =  "1.9698e9";
+         $gc_thetaz  =  0; 
+         $stimscale  =  0.3; 
+
+    } elsif ($cellnum == 3) {		# modelfit3_run1n.new
+
+	 $soma_z     =  -50;
+	 $dsomadia   =  21;
+         $dri        =  75.85;
+	 $drm        =  51807; 
+	 $elec_rs    =  "23.17e6";
+       	 $filt_cfreq =  5735;
+         $dend_dia   =  1.0;
+         $dcm        =  "7.803e-7";
+	 $tipcap     =  -1.221e-11;
+         $shunt_res  =  "2.221e13";
+         $gc_thetaz  =  140; 
+         $stimscale  =  0.3; 
+
+    } elsif ($cellnum == 4) {		# modelfit4_run1x.new
+
+	 $soma_z     =  -51;
+	 $dsomadia   =  20.5;
+         $dri        =  94.28;
+	 $drm        =  77865.9;
+	 $elec_rs    =  "10.797e6";
+       	 $filt_cfreq =  6503;
+         $dend_dia   =  1.0;
+         $dcm        =  "5.903e-7";
+	 $tipcap     =  "1.5796e-12"; 
+         $shunt_res  =  "8.5495e12"; 
+         $gc_thetaz  =  -135; 
+         $stimscale  =  0.3; 
+
+    } elsif ($cellnum == 5) {		# modelfit5_run1p.new
+
+	 $soma_z     =  -54;
+	 $dsomadia   =  16.4;
+         $dri        =  66.7957; 
+	 $drm        =  46331; 
+	 $elec_rs    =  "9.311e6"; 
+       	 $filt_cfreq =  6380; 
+         $dend_dia   =  1.0;
+         $dcm        =  "7.773e-7"; 
+	 $tipcap     =  "-3.073e-12"; 
+         $shunt_res  =  "1.4438e13"; 
+         $gc_thetaz  =  150; 
+         $stimscale  =  0.5; 
+
+    } elsif ($cellnum == 6) { 		# modelfit6_run1f.new
+
+	 $soma_z     =  -44;
+	 $dsomadia   =  15.8;
+         $dri        =  117.785; 
+	 $drm        =  26816.5; 
+	 $elec_rs    =  "13.2709e6"; 
+       	 $filt_cfreq =  6242.98; 
+         $dend_dia   =  1.0;
+         $dcm        =  "6.5089e-7"; 
+	 $tipcap     =  "3.3238e-12"; 
+         $shunt_res  =  "7.99021e11"; 
+         $gc_thetaz  =  0; 
+         $stimscale  =  0.3; 
+   }
+
+   	if (($run eq "3f") || ($run eq "3g")) {
+		$n_dbp1 = 0;
+		$n_ams  = 0;
+         	$reczmax    =  0; 
+         	$reczmin    =  -25; 
+   	        if ($run eq "3g") {
+		    $iincr = 0;
+		}
+		$vhold = $vcl;
+   	} elsif (($run eq "4f") || ($run eq "4g")) {
+		$n_hbp1 = 0;
+		$n_amhs = 0;
+         	$reczmax    =  -25; 
+         	$reczmin    =  -50; 
+   	        if ($run eq "4g") {
+		    $iincr = 0;
+		}
+		$vhold = $vcl;
+   	} elsif (($run eq "5f") || ($run eq "5g")) {
+		$n_dbp1 = 0;
+		$n_ams  = 0;
+         	$reczmax    =  0; 
+         	$reczmin    =  -25; 
+   	        if ($run eq "3g") {
+		    $iincr = 0;
+		}
+		$vhold = 0;
+
+   	} elsif (($run eq "6f") || ($run eq "6g")) {
+		$n_hbp1 = 0;
+		$n_amhs = 0;
+         	$reczmax    =  -25; 
+         	$reczmin    =  -50; 
+   	        if ($run eq "4g") {
+		    $iincr = 0;
+		}
+		$vhold = 0;
+	}
+
+        $vstart = $vhold;
+        $vstop  = $vhold;
+        $dvst   = $vhold;
+
+	if ($cellnum==2) { $cellnum = "2b"; }
+	$output_file = "modelfit" . $cellnum . "_run" . $run;
+	system ("echo $output_file");
+
+   $expt_string =  "mosrun -l retsim --expt dsgc_chans --n_dsgc 1 --n_sbac 0 --sbarr -1 --dsgc_file $morph_file --soma_z $soma_z --dsgc_densfile dens_dsgc_chans.n --nvalfile nval_dsgc_sbac_chans.n --minten $minten --econtrast $econtrast --eincr $eincr --icontrast $icontrast --iincr $iincr --velocity 2000 --prestimdur 0.05 --poststimdur 0.05 --vhold $vhold --vstart $vstart --vstop $vstop --dvst $dvst  --dvrev $dvrev --vcl $vcl --drm $drm --dri $dri --elec_rs $elec_rs --elnode 5000 --dsomadia $dsomadia --dend_dia_factor $dend_dia --dcm $dcm --tipcap $tipcap --light_inhib 1 --ampa_cond $ampa_cond --nmda_cond $nmda_cond --gaba_cond $gaba_cond --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.9819 --kdr_voff 0.0283405 --kexp 6.29676 --shunt_res $shunt_res --fourap 1 --ioffset 0 --use_ghki 1 --ninfo 2 -s 18 --stimscale $stimscale --n_dbp1 $n_dbp1 --n_ams $n_ams --n_hbp1 $n_hbp1 --n_amhs $n_amhs --reczmax $reczmax --reczmin $reczmin --theta $theta --gc_thetaz $gc_thetaz --skipv $skipv >& $output_file &";
+
+# $print = 1;		# cat command line but don't run it
+
+   if ($print == 1) { 
+	   print $expt_string, "\n";
+   } else { 
+	   system ("$expt_string"); 
+   }
+
+   sleep(1);
+
+
+

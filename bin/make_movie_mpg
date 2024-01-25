@@ -1,0 +1,11 @@
+#! /bin/csh -f
+#
+#   make_movie_mpg
+#
+foreach i ($argv) 
+  echo $i
+  make_movie3c $i
+  make_movie3d $i
+  rm $i*_????.ps $i*_????.ppm
+end
+

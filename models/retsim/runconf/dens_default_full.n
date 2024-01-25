@@ -1,0 +1,97 @@
+# Densities of currents for default neuron (S/cm2).
+#
+#      dend  dend_prox dend_dist soma   hillock  ax_thin axon  axon_dist ax_node varicos
+#
+# Name  R1      R2      R3        R4      R5       R6      R7      R8     R9     R10 
+#
+0      DENDD   DENDP   SOMA    HILLOCK  AXONT    AXON    AXOND   VARIC  R9     R10
+#
+_NA0   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Na0
+_NA1   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Na1
+_NA2   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Na2, markov
+_NA3   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Na3
+_NA4   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Na4
+_NA5   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Na5
+_NA6   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Na6
+_NA8   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Na8
+_K0    0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Kdr n4
+_K1    0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Kdr markov
+_K2    0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # KA, m3h
+_K3    0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # KA, markov
+_K4    0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # KH
+_K5    0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # KHz
+_K6    0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Kv3
+_KCA0  0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # sKCa
+_KCA1  0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # sKCa, markov
+_KCA2  0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # bKCa, HH
+_KCA3  0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # bKCa, markov
+_KCA4  0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # sKCa1
+_KCA5  0e-3    0e-6    0e-3     0e-3    0e-6     0e-6    0e-6    0e-6   0e-3   0e-3   # sKCa2
+_KCA6  0e-3    0e-6    0e-3     0e-3    0e-6     0e-6    0e-6    0e-6   0e-3   0e-3   # bKCa, markov
+_CLCA1 0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # ClCa
+_CLCA2 0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # ClCaC, core
+_CA0   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Ca-L, c3
+_CA1   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Ca-L, markov
+_CA2   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Ca-T, c2h
+_CA3   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Ca-T, markov
+_CA4   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Ca-T, c3h
+_CA5   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Ca-T, markov
+_CA6   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Ca-T, markov
+_CA7   0e-3    0e-3    0e-3     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Ca-T, markov
+_CAP   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Capump
+_CAPK  0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Capump km
+_CABV  0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Cabuf vmax
+_CABK  0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Cabuf kd
+_CABT  0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Cabuf btot
+_CABI  0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Cabuf btoti
+_CASH  0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Ca shells
+_CADIA 0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Ca comp dia (mult factor)
+_CAE   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Caexch
+_CAS   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # CICR init [Ca] 
+_VM2   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # CICR Vmax uptake
+_VM3   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # CICR Vmax release
+_KAC   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # CICR thresh release
+_KFC   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # CICR passive leak rate
+_KRC   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # CICR thresh release
+_K1C   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # CICR thresh ryan uptake
+_K2C   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # CICR thresh ryan uptake
+_NHC   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # CICR remove n coefficient
+_MHC   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # CICR remove m coefficient
+_PHC   0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # CICR remove p coefficient
+_C1CICR 0e-2   0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Calcium store vol fraction
+_CAS2  0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 init [Ca]
+_IP3I  0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 init intracellular
+_BIP3  0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 static frac release
+_VIP3  0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 store flux const
+_V3IP3 0e-2    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 Vmax uptake
+_V2IP3 0e-3    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 Vmax1 release
+_V4IP3 0e-3    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 Vmax2 release
+_D1IP3 0e-3    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 Q value for h gate 
+_D2IP3 0e-3    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 Q value for h gate
+_D3IP3 0e-3    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 Q value for h gate
+_D4IP3 0e-3    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 Q value for m gate
+_A2IP3 0e-3    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 forward const for Tau M value
+_A3IP3 0e-3    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 forward const for Tau M value
+_B2IP3 0e-3    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 backward const for Tau M value,
+_K3IP3 0e-3    0e-3    0e-7     0e-3    0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # IP3 store kd for Ca uptake
+_VST  -0.06   -0.06   -0.06    -0.06   -0.06    -0.06   -0.06   -0.06  -0.06  -0.06   # Vstart
+_VRV  -0.06   -0.06   -0.06    -0.06   -0.06    -0.06   -0.06   -0.06  -0.06  -0.06   # Vrev
+_RM    drm     drm     drm      drm     drm      drm     drm     drm   drm     drm    # Rm
+_RI    dri     dri     dri      dri     dri      dri     dri     dri   dri     dri    # Ri
+_CM    dcm     dcm     dcm      dcm     dcm      dcm     dcm     dcm   dcm     dcm    # Cm
+_DIA   ddia    ddia    ddia     ddia    ddia     ddia    ddia    ddia  ddia    ddia   # Dia (mult factor)
+_CPL   cbplam  cbplam  cbplam   cbplam  cbplam   cbplam  cbplam  cbplam cbplam cbplam # cplam
+_CMUL  0       0       0        0       0        0       0       0      0      0      # cmul
+_COL   green   blue    blue     red     blue     cyan    magenta brown yellow  white  # color
+_COL2  0       0       0        0       0        0       0       0      0      0      # color
+_COL3  0       0       0        0       0        0       0       0      0      0      # color
+_COL4  0       0       0        0       0        0       0       0      0      0      # color
+_COL5  0       0       0        0       0        0       0       0      0      0      # color
+_SREG1 0       0       0        0       0        0       0       0      0      0      # sreg1: collection of regions
+_SREG2 0       0       0        0       0        0       0       0      0      0      # sreg2
+_SREG3 0       0       0        0       0        0       0       0      0      0      # sreg3
+_SREG4 0       0       0        0       0        0       0       0      0      0      # sreg4
+_SREG5 0       0       0        0       0        0       0       0      0      0      # sreg5
+_SREG6 0       0       0        0       0        0       0       0      0      0      # sreg6
+_SREG7 0       0       0        0       0        0       0       0      0      0      # sreg7
+_SREG8 0       0       0        0       0        0       0       0      0      0      # sreg8

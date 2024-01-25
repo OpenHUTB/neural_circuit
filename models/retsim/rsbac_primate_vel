@@ -1,0 +1,342 @@
+#! /home/rob/bin/nci -c
+#
+# rsbac_primate_vel
+#   run velocity series with transient bipolar cell
+#
+
+cont_vals = {{0.005, 0.006, 0.007, 0.008}};
+cont_num = sizeof(cont_vals);
+
+vel_vals = {{100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000}};
+vel_num = sizeof (vel_vals);
+
+           d = 0;		// display 1=neurons, 6=comps, 9=nodenums
+           v = 0;		// display with vid
+           p = 0;		// print out compartments
+           B = -1;		// background color
+           w = 1;		// size of vid window
+           D = 1;               // display command line
+
+   rnd_n_max = 100;              // max number of models to run
+    stimtype = 1;               // moving bar
+     filenum = 1;
+//       sbarr = 107;
+       sbarr = 0;
+      mglur2 = 0;
+        rndv = 350;
+      sbac_r = 180;
+    sbac_rnd = 1;		// set random rotation
+      sbaclm = 0.02;
+       mxrot = 0;
+
+//       spdia = 0.3;
+//        sdia = 0.2;
+//       sddia = 0.8;
+//       spdia = 0.6;		// for dens_sbac_bar.n, like sbac_stim command lines
+//        sdia = 0.5;
+//       sddia = 0.5;
+
+         dri = 150;
+       sb_rm = 50e3;
+
+// scontrast = 0.005;
+//  velocity = 400;
+      minten = -0.05;
+      revdir = 0;
+    barwidth = 50;
+
+ sbac_vpulse = -0.07;
+
+     catprox = 0.2e-3;
+      catmid = 3.5e-3;
+     catdist = 7.5e-3;
+      nosbca = 0;
+
+      db1_r5 = 0.1;
+      db2_r5 = 0.5;
+      db1_r6 = 0.3;
+      db2_r6 = 1.0;
+
+   dbp1_dens = 1900;
+   db1_morph = 4;
+ db1_biophys = 1;
+ g_dbp1_sbac = 15e-10;
+ n_dbp1_sbac = 0;
+ v_dbp1_sbac = 3;
+  dbp1_mrate = 200;
+  dbp1_mpool = 50;
+      dbpthr = -0.05;
+db1_ca1_offm = 0.005;
+db1_ca6_offm = 0.02;
+   db1_ca1ax = 0e-3;
+   db1_ca6ax = 5e-3;
+    db1_cap  = 1e-6;
+     db1_sca = 1;
+     db1_lam = 0.05;
+
+   dbp2_dens = 900;
+   db2_morph = 4;
+ db2_biophys = 1;
+ g_dbp2_sbac = 15e-10;
+ n_dbp2_sbac = 0; 
+ v_dbp2_sbac = 1.7;
+  dbp2_mrate = 50;
+  dbp2_mpool = 8;
+     dbp2thr = -0.05;
+db2_ca1_offm = 0.005;
+db2_ca6_offm = 0.02;
+db2_ca6_tauc = 50;
+db2_ca6_taud = 50;
+   db2_ca1ax = 0e-3;
+   db2_ca6ax = 5e-3;
+    db2_cap  = 4e-6;
+     db2_sca = 1;
+     db2_lam = 0.05;
+ 
+sbac_species = 3;
+
+make_sbac_sbac = 1;
+   g_sbac_sbac = 2e-10;
+
+make_sbac_dsgc = 0;
+   g_sbac_dsgc = 10e-10;
+        n_dsgc = 0;
+
+    stimtime = 0.02;
+      predur = 0.5;
+ poststimdur = 0.2;
+
+disp_stim_min = -0.05;
+disp_stim_max = -0.04;
+   file_chars = "v";
+
+comnd_line_only = 0;
+
+nparm = setvar();
+
+if (n_dbp1_sbac > 0) {			// If noise from dbp1 
+    g_dbp1_sbac = 5e-10;
+    v_dbp1_sbac = 3;
+         dbpthr = -0.049;
+};
+if (n_dbp1_sbac > 0) {			// If noise from dbp2 
+    g_dbp2_sbac = 5e-10;
+    v_dbp2_sbac = 1.9;
+     dbp2_mrate = 50;
+     dbp2_mpool = 10;
+        dbp2thr = -0.049;
+};
+
+if (sbac_species==1) {
+   if (notinit(sbac_file)) sbac_file = "morph_sbac_cell5";
+   if (notinit(spdia)) spdia = 0.3;		// for dens_sbac_bar.n, like sbac_stim command lines
+   if (notinit(sdia))   sdia = 0.2;
+   if (notinit(sddia)) sddia = 0.8;
+}
+else if (sbac_species==2) {
+   if (notinit(sbac_file)) sbac_file = "morph_sbac_cell5";
+   if (notinit(spdia)) spdia = 0.3;
+   if (notinit(sdia))   sdia = 0.2;
+   if (notinit(sddia)) sddia = 0.8;
+}
+else if (sbac_species==3) {
+   if (notinit(sbac_file)) sbac_file = "morph_sbac_dd_cell2";
+   if (notinit(spdia)) spdia = 0.3;
+   if (notinit(sdia))   sdia = 0.2;
+   if (notinit(sddia)) sddia = 0.8;
+};
+
+if (!notinit(g_dbp_scal)) {		// scale g_dbp1_sbac and g_dbp2_sbac by the same factor
+     g_dbp1_sbac *= g_dbp_scal;		// postsyn cond for dbp1_sbac synapse 
+     g_dbp2_sbac *= g_dbp_scal;		// postsyn cond for dbp2_sbac synapse
+};
+
+if (nosbca>0) {
+     catprox = 0;
+      catmid = 0;
+     catdist = 0;
+};
+
+if (notinit(db_vs)) db_vs = minten;	// set bipolar starting Vm (for dens files)
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/* construct strings for the command line */
+
+  // make sure stim_fnum is string type 
+  if (!notinit(stim_fnum)) { t1 = stim_fnum; if (type(stim_fnum)==type(9)) t2=stim_fnum; };
+  if (!notinit(t1)) erase stim_fnum;
+  if (!notinit(t1)) if (notinit(t2)) stim_fnum = t1 else sprintf(stim_fnum,"%g",t2);
+
+  options = "";			// for occasional parameters
+  if (!notinit (sb_arbscale))   sprintf (options,"%s --sb_arbscale %g ",options,sb_arbscale);
+  if (sbarr == 107 && notinit (sb1mul)) sb1mul = 0.5;		// set sb1mul 0.5 when 7 sbacs
+  if (!notinit (sb1mul))        sprintf (options,"%s--sb1mul %g ",options,sb1mul); // in dens_sbac_bar2.n
+  if (!notinit(n_dbp1))         sprintf (options,"%s--n_dbp1 %g ",options, n_dbp1);	// 0 removes dbp1s
+  if (!notinit(n_dbp2))         sprintf (options,"%s--n_dbp2 %g ",options, n_dbp2);	// 0 removes dbp2s
+  if (!notinit(sbac_rnd))       sprintf (options,"%s--sbac_rnd %g ",options, sbac_rnd); // 1 uses sbrarr[] 
+  if (!notinit(sb_ca6_tauc))    sprintf (options,"%s--sb_ca6_tauc %g ",options,sb_ca6_tauc); 
+  if (!notinit(sb_ca6_taud))    sprintf (options,"%s--sb_ca6_taud %g ",options,sb_ca6_taud); 
+  if (!notinit(catsoma))        sprintf (options,"%s--catsoma %g ",options,catsoma); 
+  if (!notinit(cadiap))         sprintf (options,"%s--cadiap %g ",options,cadiap); 
+  if (!notinit(cadiam))         sprintf (options,"%s--cadiam %g ",options,cadiam); 
+  if (!notinit(cadiad))         sprintf (options,"%s--cadiad %g ",options,cadiad); 
+  if (!notinit(ksoma))          sprintf (options,"%s--ksoma %g ",options,ksoma); 
+  if (!notinit(kprox))          sprintf (options,"%s--kprox %g ",options,kprox); 
+  if (!notinit(db1_cap))        sprintf (options,"%s--db1_cap %g ",options,db1_cap); 
+  if (!notinit(db2_cap))        sprintf (options,"%s--db2_cap %g ",options,db2_cap); 
+  if (!notinit(pjobs))          sprintf (options,"%s--pjobs %g ",options,pjobs); 
+  if (!notinit(mosrun))         sprintf (options,"%s--mosrun \"%s\" ",options,mosrun); 
+  if (!notinit(sbxarrsiz))      sprintf (options,"%s--sbxarrsiz %g ",options,sbxarrsiz); 
+  if (!notinit(sbyarrsiz))      sprintf (options,"%s--sbyarrsiz %g ",options,sbyarrsiz); 
+  if (!notinit(use_stimfile))   sprintf (options,"%s--use_stimfile %g ",options, use_stimfile);
+  if (!notinit(makestim))       sprintf (options,"%s--makestim %g ",options, makestim);
+  if (!notinit(stim_fnum))      sprintf (options,"%s--stim_fnum %s ",options, stim_fnum);
+  if (!notinit(stim_tstep))      sprintf (options,"%s--stim_tstep %g ",options, stim_tstep);
+  if (!notinit(stim_theta))      sprintf (options,"%s--stim_theta %g ",options, stim_theta);
+  if (!notinit(stonic))         sprintf (options,"%s--stonic %g ",options, stonic);
+  if (!notinit(mxrot))          sprintf (options,"%s--mxrot %g ",options, mxrot);
+  if (!notinit(sbac_nscale))    sprintf (options,"%s--sbac_nscale %g ",options, sbac_nscale);
+  if (!notinit(t2bipolar))      sprintf (options,"%s--t2bipolar %g ",options, t2bipolar);
+  if (!notinit(soma_clamp_time)) sprintf (options,"%s--soma_clamp_time %g ",options, soma_clamp_time);
+  if (!notinit(ivplot))         sprintf (options,"%s--ivplot %g ",options, ivplot);
+  if (!notinit(iscal))          sprintf (options,"%s--iscal %g ",options, iscal);
+  if (!notinit(sbac_densfile))  sprintf (options,"%s--sbac_densfile %s ", options, sbac_densfile);
+  if (!notinit(sbac_densfile2)) sprintf (options,"%s--sbac_densfile2 %s ",options, sbac_densfile2);
+  if (!notinit(run_vclamp_sbac))sprintf (options,"%s--run_vclamp_sbac %g ",options, run_vclamp_sbac);
+  if (!notinit(vstart))         sprintf (options,"%s--vstart %g ",options, vstart);
+  if (!notinit(vstop))          sprintf (options,"%s--vstop %g ",options, vstop);
+  if (!notinit(vstep))          sprintf (options,"%s--vstep %g ",options, vstep);
+  if (comnd_line_only>0)        sprintf (options,"%s--comnd_line_only %g ",options,comnd_line_only);
+  if (!notinit(draw_synapse))   sprintf (options,"%s--draw_synapse %g ",options,draw_synapse);
+  if (!notinit(disp_calib_x))   sprintf (options,"%s--disp_calib_x %g ",options,disp_calib_x);
+  if (!notinit(disp_calib_y))   sprintf (options,"%s--disp_calib_y %g ",options,disp_calib_y);
+  if (!notinit(sbac_color))     sprintf (options,"%s--sbac_color %g ",options,sbac_color);
+
+  if (!notinit(surr_delay))     sprintf (options,"%s--surr_delay %g ",options, surr_delay);
+  if (!notinit(surr_weight))    sprintf (options,"%s--surr_weight %g ",options, surr_weight);
+  if (!notinit(surr_tau))       sprintf (options,"%s--surr_tau %g ",   options, surr_tau);
+  if (!notinit(blur_ssize))     sprintf (options,"%s--blur_ssize %g ",options, blur_ssize);
+  if (!notinit(blur_csize))     sprintf (options,"%s--blur_csize %g ",options, blur_csize);
+  if (!notinit(naab))           sprintf (options,"%s--naab %g ",options, naab);
+  if (!notinit(kax))            sprintf (options,"%s--kax %g ",options, kax);
+  if (!notinit(set_sr))         sprintf (options,"%s--set_sr %g ",options, set_sr);
+  if (!notinit(dbp1_maxsdist))  sprintf (options,"%s--dbp1_maxsdist %g ",options, dbp1_maxsdist);
+  if (!notinit(dbp2_maxsdist))  sprintf (options,"%s--dbp2_maxsdist %g ",options, dbp2_maxsdist);
+  if (!notinit(barlength))      sprintf (options,"%s--barlength %g ",options, barlength);
+  if (!notinit(db_vs))          sprintf (options,"%s--db_vs %g ",options, db_vs);
+  if (!notinit(na5offs))        sprintf (options,"%s--na5offs %g ",options, na5offs);
+  if (!notinit(sb_rmp))         sprintf (options,"%s--sb_rmp %g ",options, sb_rmp);
+
+  if (!notinit(db1_caax))       db1_ca6ax  = db1_caax;	// to make compatible with prev versions
+  if (!notinit(db2_caax))       db2_ca6ax  = db1_caax;
+
+	// str1 = main sbac parameters
+        sprintf (str1,"rdsgc_sbac_r --sbac_file %s --sbac_species %g --sbac_r %g --sbarr %g --stimtype %g --dri %g --sb_rm %g", sbac_file,sbac_species,sbac_r,sbarr,stimtype,dri,sb_rm);
+
+	// str2 = sbac biophysical parameters
+        sprintf (str2,"--spdia %g --sdia %g --sddia %g --camid 0 --cadist 0 --catprox %g --catmid %g --catdist %g --g_sbac_sbac %g --g_sbac_dsgc %g --mglur2 0 --dscavg 1e5 --make_sbac_sbac %g --make_sbac_dsgc %g --sbaclm %g --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 ",spdia,sdia,sddia,catprox,catmid,catdist,g_sbac_sbac,g_sbac_dsgc,make_sbac_sbac,make_sbac_dsgc,sbaclm);
+
+	// str3 = simulation parameters
+        sprintf (str3,"--predur %g --poststimdur %g --disp_stim_min %g --disp_stim_max %g --n_dsgc %g ",predur,poststimdur,disp_stim_min,disp_stim_max,n_dsgc);
+
+	// str4 varied below
+
+	// str5 = dbp1 parameters
+        sprintf (str5,"--dbp1_dens %g --db1_morph %g --g_dbp1_sbac %g --n_dbp1_sbac %g --v_dbp1_sbac %g --dbpthr %g --dbp1_mrate %g --dbp1_mpool %g --db1_r5 %g --db1_r6 %g --db1_ca1_offm %g --db1_ca6_offm %g --db1_ca1ax %g --db1_ca6ax %g --db1_sca %g --db1_lam %g ", dbp1_dens, db1_morph, g_dbp1_sbac, n_dbp1_sbac, v_dbp1_sbac, dbpthr, dbp1_mrate, dbp1_mpool, db1_r5, db1_r6, db1_ca1_offm, db1_ca6_offm, db1_ca1ax, db1_ca6ax, db1_sca, db1_lam);
+
+	// str6 = dbp2 parameters
+        sprintf (str6,"--dbp2_dens %g --make_dbp2_sbac 1 --db2_morph %g --g_dbp2_sbac %g --n_dbp2_sbac %g --v_dbp2_sbac %g --dbp2thr %g --dbp2_mrate %g --dbp2_mpool %g --db2_r5 %g --db2_r6 %g --db2_ca1_offm %g --db2_ca6_offm %g --db2_ca1ax %g --db2_ca6ax %g --db2_sca %g --db2_lam %g ", dbp2_dens, db2_morph, g_dbp2_sbac, n_dbp2_sbac, v_dbp2_sbac, dbp2thr, dbp2_mrate, dbp2_mpool, db2_r5, db2_r6, db2_ca1_offm, db2_ca6_offm, db2_ca1ax, db2_ca6ax, db2_sca, db2_lam);
+
+	// str6b = more dbp2 parameters
+	sprintf(str6,"%s--db2_ca6_tauc %g --db2_ca6_taud %g ", str6, db2_ca6_tauc, db2_ca6_taud);
+
+	// str7 varied below
+
+	// str9 = display parameters
+        str9 = "";
+        if (d>0)  sprintf (str9,"%s --d %g",str9,d);
+        if (v>0)  sprintf (str9,"%s --v %g",str9,v); 
+        if (p>0)  sprintf (str9,"%s --p %g",str9,p);
+        if (w>1)  sprintf (str9,"%s --w %g",str9,w); 
+        if (B>=0) sprintf (str9,"%s --B %g",str9,B);
+        if (D>0)  sprintf (str9,"%s --D %g",str9,D);
+ 
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* set values of scontrast, velocity and rnd_n to override loops */
+
+if ((comnd_line_only>0) || (d > 0)) {     // check comand line or display model
+
+   if (notinit(scontrast)) scontrast = cont_vals[0]; 
+   if (notinit(velocity))   velocity = vel_vals[0];
+   if (!notinit(rndv))           rnd = rndv;		// for display, rndv sets rnd 
+   if (notinit(rnd))             rnd = 350;
+
+   set_scontrast = 1; 
+   set_velocity = 1;
+   set_rnd = 1; 
+
+   if (notinit (cont_n)) cont_n = 1;
+   if (notinit (vel_n))   vel_n = 1;
+   if (!notinit(rnd_n)) set_rnd = 0
+   else                   rnd_n = 1;
+}
+else {				// normal run
+
+  if (!notinit(scontrast)) { cont_n = 1;        set_scontrast = 1; }
+  else                     { cont_n = cont_num; set_scontrast = 0; };
+
+  if (!notinit(velocity))  { vel_n = 1;         set_velocity = 1; } 
+  else                     { vel_n = vel_num;   set_velocity = 0; };
+
+  if (!notinit(rnd))       { rnd_n = 1;         set_rnd = 1; }
+  else { if (notinit(rnd_n)) rnd_n = rnd_n_max; set_rnd = 0; };
+};
+
+  if (cont_n > cont_num) cont_n = cont_num;
+  if (vel_n > vel_num)    vel_n = vel_num;
+  if (rnd_n > rnd_n_max)  rnd_n = rnd_n_max;
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/* vary the command line inside loops */
+
+// for (m=0; m<2; m++) {
+//   morph_frac = m;
+
+  for (c=0; c < cont_n; c++) {
+
+     if (set_scontrast==0) scontrast = cont_vals[c];
+
+     for (vel=0; vel < vel_n; vel++) {
+
+        if (set_velocity==0) velocity = vel_vals[vel];
+
+        for (r=0; r < rnd_n; r++) {
+
+           if (set_rnd==0) rnd = rndv + r;		// rndv default 350
+
+	// str4 = experiment parameters
+	sprintf (str4,"--scontrast %g --minten %g --velocity %g --barwidth %g --rnd %g ",
+				scontrast,minten,velocity,barwidth,rnd);
+	// str7 = filename parmeters
+        sprintf(str7,"--filename sbac_vel_db2_%g_%g_%g_%g_%g_%g_%g_", 
+				sbarr,sbac_r,rnd,stimtype,scontrast,velocity,barwidth);
+
+	// str8 = file_chars + filenum
+	sprintf(str8,"%s%g",file_chars,filenum);
+
+      run_string = str1 + str2 + str3 + str4 + str5 + str6 + options + str7 + str8 + str9;
+
+      if (comnd_line_only) print run_string, "\n", system(run_string)
+      else system (run_string);
+
+      filenum++;
+
+        }; /* for (r;;) */
+      }; /* for (v;;) */
+   }; /* for (c;;) */
+// };
+
+

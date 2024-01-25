@@ -1,0 +1,224 @@
+#! /home/rob/bin/nci -c
+#
+#  run modelfit to find ri, rm, for morphologies
+#  2020-07-23
+#
+dim datafilevals[] = {{
+	"Cell1_avgCropped_cut_scaled2.txt",
+	"Cell5_avgCropped_cut_scaled.txt"
+	}};
+datafilenum = sizeof(datafilevals);
+
+dim morphfilevals[] = {{
+	"morph_sbac_cell1",
+	"morph_sbac_cell5"
+	}};
+morphfilenum = sizeof(morphfilevals);
+
+stimtype = 5;
+
+data_file = datafilevals[0];
+dn = -1;
+morph_file = morphfilevals[0];
+mn = -1;
+
+   ploti = 1e-4;
+  sbaclm = 0.02;
+     dcm = 1.0e-6;
+  
+     dri = 200;
+     drm = 20e3;
+
+   rseed = 443321;
+
+ elec_rs = 35e6;
+  tipcap = 0e-13;
+
+dsomadia = 10;
+
+   istim = 0e-12;
+elec_min = 10e6;
+elec_max = 100e6;
+
+  predur = 0.01;
+fit_type = 1;
+    info = 0;
+      pr = 0;
+   sa_st = 1;
+     nfp = 5;
+     amp = 1;
+ filenum = 0;
+
+x = setvar();
+
+  if (notinit(dri_min)) dri_min = 50;
+  if (notinit(dri_max)) dri_max = 700;
+
+  if (notinit(sdia))   sdia = 0.3;
+  if (notinit(spdia)) spdia = sdia;
+  if (notinit(sndia)) sndia = spdia;
+  if (notinit(smdia)) smdia = spdia;
+  if (notinit(sddia)) sddia = sdia;
+  if (notinit(sp_min)) sp_min = 0.25;
+  if (notinit(sp_max)) sp_max = 0.8;
+  if (notinit(sn_max)) sn_max = 0.7;
+  if (notinit(sm_max)) sm_max = 0.7;
+  if (notinit(s_max))  s_max = 0.4;
+
+  if (notinit(sb_rip)) sb_rip = dri;
+  if (notinit(sb_rii)) sb_rii = dri;
+  if (notinit(sb_rid)) sb_rid = dri;
+
+   if (notinit(sb_rm))   sb_rm = drm;
+   if (notinit(sb_rmp)) sb_rmp = sb_rm;
+   if (notinit(sb_rmd)) sb_rmd = sb_rmp;
+
+  dbp1_cond = 2.3e-10;
+     minten = -0.038;
+sbac_thetaz = 0;
+ filt_cfreq = 8000;
+
+   if (dn > 0 && dn <= datafilenum) {
+       data_file = datafilevals[dn - 1];
+   }
+   else {
+       data_file = datafilevals[1];	// default, use cell5 data file
+       dn = 2;
+   };
+   if (mn > 0 && mn <= morphfilenum) {
+       morph_file = morphfilevals[mn - 1];
+   }
+   else {
+       morph_file = morphfilevals[1];	// default, use cell5 morphology file
+       mn = 2;
+   };
+
+   /* calculate soma capacitance, to set min tipcap */
+
+   d = dsomadia * 1e-6;
+   soma_cap = PI * d * d * dcm/1e-4;
+   
+   if (filenum==0) sprintf (output_file, "modelfit_%s_run_d%g_m%g_%g_%g_%g_%g.a",morph_file,dn,mn,dsomadia,nfp,sbaclm,fit_type)
+   else            sprintf (output_file, "modelfit_%s_run_d%g_m%g_%g_%g_%g_%g_%g.a",morph_file,dn,mn,dsomadia,nfp,sbaclm,fit_type,filenum);
+
+   system ("echo " + output_file);
+
+   sprintf (file_string,"mosrun -b -l retsim --expt sbac_chans --sbac_file %s --sbac_densfile dens_sbac_chans.n --nvalfile nval_dsgc_sbac_chans.n ", morph_file);
+
+   sprintf (param_string1,"--n_sbac 1 --soma_z -45 --set_ploti %g --sbaclm %g --predur %g --prestimdur 0.005 --stimdur 0.035 --tailcurdur 0 --poststimdur 0 --setendexp 0.035 --vhold -0.07 --vstart -0.065 --vstop -0.064 --sb_vs -0.07  --sb_vr -0.07 --light_inhib 1 --ampa_cond 4e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --ninfo 2 -s 18 --stimscale 0.3 --istim %g --capfilt 1 --n_hbp1 0 --n_dbp1 0 --n_dbp2 0 --n_amhs 0 --skipv 0 --sbac_thetaz %g --filt_cfreq %g ", ploti, sbaclm, predur, istim, sbac_thetaz, filt_cfreq);
+
+// param string 2
+
+   // sprintf (param_string2,"--sb_rm %g --sb_rmp %g --sb_rmd %g --dri %g --sb_rip %g --sb_rii %g --sb_rid %g --dsomadia %g --sdia %g --spdia %g --sddia %g  --dcm %g --elec_rs %g --elnode 5000 --tipcap %g ", sb_rm, sb_rmp, sb_rmd, dri, sb_rip, sb_rii, sb_rid, dsomadia, sdia, spdia, sddia, dcm, elec_rs, tipcap);
+
+   // sprintf (param_string2,"--sb_rm %g --dri %g --dsomadia %g --sdia %g --spdia %g --sddia %g  --dcm %g --elec_rs %g --elnode 5000 --tipcap %g ", sb_rm, dri, dsomadia, sdia, spdia, sddia, dcm, elec_rs, tipcap);
+
+
+   sprintf (param_string2,"--dri %g --drm %g --dcm %g --dsomadia %g --elec_rs %g --elnode 5000 --tipcap %g ", dri, drm, dcm, dsomadia, elec_rs, tipcap); 
+
+// param string 3
+
+   // sprintf (param_string3, "--p1 --sb_rip --c1 %g --c1_min 20 --c1_max 500 --p2 --sb_rii --c2 %g --c2_min 20 --c2_max 500 --p3 --sb_rid --c3 %g --c3_min 20 --c3_max 500 --p4 --sb_rm --c4 %g --c4_min 2000 --c4_max 100e3 --p5 --sb_rmd --c5 %g --c5_min 2000 --c5_max 100e3 --p6 --sdia --c6 %g --c6_min 0.2 --c6_max 1 --p7 --spdia --c7 %g --c7_min 0.1 --c7_max 1 --p8 --sddia --c8 %g --c8_min 0.1 --c8_max 1 --p9 --elec_rs --c9 %g --c9_min 1e6 --c9_max 40e6 --p10 --istim --c10 %g --c10_min -1e-13 --c10_max 1e-13 --p11 --tipcap --c11 %g --c11_min -2e-12 --c11_max 8e-12 ", sb_rip, sb_rii, sb_rid, sb_rm, sb_rmd, sdia, spdia, sddia, elec_rs, istim, tipcap);
+
+   // sprintf (param_string3, "--p1 --sb_rm --c1 %g --c1_min 1000 --c1_max 200e3 --p2 --sb_rmd --c2 %g --c2_min 1000 --c2_max 200e3 --p3 --sdia --c3 %g --c3_min 0.001 --c3_max 3 --p4 --spdia --c4 %g --c4_min 0.001 --c4_max 3 --p5 --sddia --c5 %g --c5_min 0.001 --c5_max 3 --p6 --elec_rs --c6 %g --c6_min 1e6 --c6_max 100e6 --p7 --dri --c7 %g --c7_min 20 --c7_max 800 --p8 --dsomadia --c8 %g --c8_min 7 --c8_max 14 --p9 --sb_rmp --c9 %g --c9_min 1000 --c9_max 200e3 ", sb_rm, sb_rmd, sdia, spdia, sddia, elec_rs, dri, dsomadia, sb_rmp);
+  
+   // sprintf (param_string3, "--p1 --sb_rm --c1 %g --c1_min 1000 --c1_max 200e3 --p2 --sdia --c2 %g --c2_min 0.001 --c2_max 3 --p3 --spdia --c3 %g --c3_min 0.001 --c3_max 3 --p4 --sddia --c4 %g --c4_min 0.001 --c4_max 3 --p5 --elec_rs --c5 %g --c5_min 1e6 --c5_max 100e6 --p6 --dri --c6 %g --c6_min 20 --c6_max 800 --p7 --dsomadia --c7 %g --c7_min 7 --c7_max 14 --p8 --sb_rmp --c8 %g --c8_min 1000 --c8_max 200e3 ", sb_rm, sdia, spdia, sddia, elec_rs, dri, dsomadia, sb_rmp);
+
+// main params, but no sb_rmd, fits well
+//
+//   sprintf (param_string3, "--p1 --sb_rm --c1 %g --c1_min 1000 --c1_max 200e3 --p2 --sdia --c2 %g --c2_min 0.001 --c2_max 3 --p3 --spdia --c3 %g --c3_min 0.001 --c3_max 3 --p4 --sddia --c4 %g --c4_min 0.001 --c4_max 3 --p5 --elec_rs --c5 %g --c5_min 1e6 --c5_max 100e6 --p6 --dri --c6 %g --c6_min 20 --c6_max 800 --p7 --dsomadia --c7 %g --c7_min 7 --c7_max 14 --p8 --sb_rmp --c8 %g --c8_min 1000 --c8_max 200e3 --p9 --sb_rip --c9 %g --c9_min 29 --c9_max 800 ", sb_rm, sdia, spdia, sddia, elec_rs, dri, dsomadia, sb_rmp, sb_rip);
+
+// add sb_rmd as free param
+//  redo param order
+//
+//   sprintf (param_string3, "--p1 --sdia --c1 %g --c1_min 0.001 --c1_max 3 --p2 --spdia --c2 %g --c2_min 0.001 --c2_max 3 --p3 --sddia --c3 %g --c3_min 0.001 --c3_max 3 --p4 --elec_rs --c4 %g --c4_min 1e6 --c4_max 100e6 --p5 --dsomadia --c5 %g --c5_min 7 --c5_max 14 --p6 --dri --c6 %g --c6_min 20 --c6_max 800 --p7 --sb_rip --c7 %g --c7_min 20 --c7_max 800 --p8 --sb_rm --c8 %g --c8_min 1000 --c8_max 200e3 --p9 --sb_rmp --c9 %g --c9_min 1000 --c9_max 200e3 --p10 --sb_rmd --c10 %g --c10_min 1000 --c10_max 200e3 ", sdia, spdia, sddia, elec_rs, dsomadia, dri, sb_rip, sb_rm, sb_rmp, sb_rmd);
+
+// remove dsomadia, (set to 10)
+//
+//   sprintf (param_string3, "--p1 --sdia --c1 %g --c1_min 0.001 --c1_max 3 --p2 --spdia --c2 %g --c2_min 0.001 --c2_max 3 --p3 --sddia --c3 %g --c3_min 0.001 --c3_max 3 --p4 --elec_rs --c4 %g --c4_min 1e6 --c4_max 100e6 --p5 --dri --c5 %g --c5_min 20 --c5_max 800 --p6 --sb_rip --c6 %g --c6_min 20 --c6_max 800 --p7 --sb_rm --c7 %g --c7_min 1000 --c7_max 200e3 --p8 --sb_rmp --c8 %g --c8_min 1000 --c8_max 200e3 --p9 --sb_rmd --c9 %g --c9_min 1000 --c9_max 200e3 ", sdia, spdia, sddia, elec_rs, dri, sb_rip, sb_rm, sb_rmp, sb_rmd);
+
+// remove sb_rip, just use dri
+//    sb_rm min 500 
+//   sprintf (param_string3, "--p1 --sdia --c1 %g --c1_min 0.001 --c1_max 3 --p2 --spdia --c2 %g --c2_min 0.001 --c2_max 3 --p3 --sddia --c3 %g --c3_min 0.001 --c3_max 3 --p4 --elec_rs --c4 %g --c4_min 1e6 --c4_max 100e6 --p5 --dri --c5 %g --c5_min 20 --c5_max 800 --p6 --sb_rm --c6 %g --c6_min 500 --c6_max 200e3 --p7 --sb_rmp --c7 %g --c7_min 500 --c7_max 200e3 --p8 --sb_rmd --c8 %g --c8_min 500 --c8_max 200e3 ", sdia, spdia, sddia, elec_rs, dri, sb_rm, sb_rmp, sb_rmd);
+
+// remove sb_rip, just use dri
+//    sb_rm min 500
+//    switch position of sdia, spdia
+// 
+// for fit_type 1 (lmfit), must set max, min params so it doesn't get stuck
+//     fit_type 2 (st_srch), best to set max, min params so their average is about right
+//
+if (fit_type==1) {
+
+if      (nfp==5) sprintf (param_string3, "--p1 --sdia --c1 %g --c1_min 0.05 --c1_max 3 --p2 --elec_rs --c2 %g --c2_min 1e6 --c2_max 100e6 --p3 --dri --c3 %g --c3_min 20 --c3_max 1000 --p4 --sb_rm --c4 %g --c4_min 500 --c4_max 200e3 --p5 --sb_rmp --c5 %g --c5_min 500 --c5_max 200e3 ", sdia, elec_rs, dri, sb_rm, sb_rmp)
+
+else if (nfp==8) sprintf (param_string3, "--p1 --spdia --c1 %g --c1_min 0.05 --c1_max 3 --p2 --sdia --c2 %g --c2_min 0.05 --c2_max 3 --p3 --sddia --c3 %g --c3_min 0.1 --c3_max 3 --p4 --elec_rs --c4 %g --c4_min 1e6 --c4_max 100e6 --p5 --dri --c5 %g --c5_min 20 --c5_max 1000 --p6 --sb_rm --c6 %g --c6_min 500 --c6_max 200e3 --p7 --sb_rmp --c7 %g --c7_min 500 --c7_max 200e3 --p8 --sb_rmd --c8 %g --c8_min 500 --c8_max 200e3 ", spdia, sdia, sddia, elec_rs, dri, sb_rm, sb_rmp, sb_rmd);
+
+} else if (fit_type==2) { // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// 5 free params
+// try 5 free params, sdia, elec_rs dri, sb_rm, sb_rmp   (spdia, sddia set by sdia, sb_rmp set by sb_rmp)
+
+if      (nfp==5) sprintf (param_string3, "--p1 --sdia --c1 %g --c1_min 0.15 --c1_max 0.9 --p2 --elec_rs --c2 %g --c2_min %g --c2_max %g --p3 --dri --c3 %g --c3_min %g --c3_max %g --p4 --sb_rm --c4 %g --c4_min 1000 --c4_max 50e3 --p5 --sb_rmp --c5 %g --c5_min 1000 --c5_max 50e3 ", sdia, elec_rs, elec_min, elec_max, dri, dri_min, dri_max, sb_rm, sb_rmp)
+
+// 7.5 free params  (without tipcap free param, without sb_rmd as free param)
+
+else if (nfp==7.5) sprintf (param_string3, "--p1 --spdia --c1 %g --c1_min %g --c1_max %g --p2 --sdia --c2 %g --c2_min 0.15 --c2_max 0.9 --p3 --sddia --c3 %g --c3_min 0.15 --c3_max 0.9 --p4 --elec_rs --c4 %g --c4_min %g --c4_max %g  --p5 --dri --c5 %g --c5_min %g --c5_max %g --p6 --sb_rm --c6 %g --c6_min 1000 --c6_max 50e3 --p7 --sb_rmp --c7 %g --c7_min 1000 --c7_max 50e3 ", spdia, sp_min, sp_max, sdia, sddia, elec_rs, elec_min, elec_max, dri, dri_min, dri_max, sb_rm, sb_rmp)
+
+// 8 free params
+
+else if (nfp==8) sprintf (param_string3, "--p1 --spdia --c1 %g --c1_min %g --c1_max %g --p2 --sdia --c2 %g --c2_min 0.15 --c2_max 0.9 --p3 --sddia --c3 %g --c3_min 0.15 --c3_max 0.9 --p4 --elec_rs --c4 %g --c4_min %g --c4_max %g  --p5 --dri --c5 %g --c5_min %g --c5_max %g --p6 --sb_rm --c6 %g --c6_min 1000 --c6_max 50e3 --p7 --sb_rmp --c7 %g --c7_min 1000 --c7_max 50e3 --p8 --sb_rmd --c8 %g --c8_min 1000 --c8_max 50e3 ", spdia, sp_min, sp_max, sdia, sddia, elec_rs, elec_min, elec_max, dri, dri_min, dri_max, sb_rm, sb_rmp, sb_rmd)
+
+// 8.5 free params  (with tipcap free param, but without sb_rmd as free param)
+
+else if (nfp==8.5) sprintf (param_string3, "--p1 --spdia --c1 %g --c1_min %g --c1_max %g --p2 --sdia --c2 %g --c2_min 0.15 --c2_max 0.4 --p3 --sddia --c3 %g --c3_min 0.15 --c3_max 0.9 --p4 --elec_rs --c4 %g --c4_min %g --c4_max %g  --p5 --dri --c5 %g --c5_min %g --c5_max %g --p6 --sb_rm --c6 %g --c6_min 1000 --c6_max 50e3 --p7 --sb_rmp --c7 %g --c7_min 1000 --c7_max 50e3 --p8 --tipcap --c8 %g --c8_min %g --c8_max 10e-12 ", spdia, sp_min, sp_max, sdia, sddia, elec_rs, elec_min, elec_max, dri, dri_min, dri_max, sb_rm, sb_rmp, tipcap, -soma_cap)
+
+// 8.6 free params  (with tipcap free param, with sb_rmd as free param, but without elec_rs as free param)
+
+else if (nfp==8.6) sprintf (param_string3, "--p1 --spdia --c1 %g --c1_min %g --c1_max %g --p2 --sdia --c2 %g --c2_min 0.15 --c2_max %g --p3 --sddia --c3 %g --c3_min 0.15 --c3_max 0.9 --p4 --dri --c4 %g --c4_min %g --c4_max %g --p5 --sb_rm --c5 %g --c5_min 1000 --c5_max 50e3 --p6 --sb_rmp --c6 %g --c6_min 1000 --c6_max 50e3 --p7 --sb_rmd --c7 %g --c7_min 1000 --c7_max 50e3  --p8 --tipcap --c8 %g --c8_min %g --c8_max 10e-12 ", spdia, sp_min, sp_max, sdia, s_max, sddia, dri, dri_min, dri_max, sb_rm, sb_rmp, sb_rmd, tipcap, -soma_cap)
+
+// 9 free params  (with tipcap free param)
+
+else if (nfp==9) sprintf (param_string3, "--p1 --spdia --c1 %g --c1_min %g --c1_max %g --p2 --sdia --c2 %g --c2_min 0.15 --c2_max 0.9 --p3 --sddia --c3 %g --c3_min 0.15 --c3_max 0.9 --p4 --elec_rs --c4 %g --c4_min %g --c4_max %g  --p5 --dri --c5 %g --c5_min %g --c5_max %g --p6 --sb_rm --c6 %g --c6_min 1000 --c6_max 50e3 --p7 --sb_rmp --c7 %g --c7_min 1000 --c7_max 50e3 --p8 --sb_rmd --c8 %g --c8_min 1000 --c8_max 50e3 --p9 --tipcap --c9 %g --c9_min %g --c9_max 10e-12 ", spdia, sp_min, sp_max, sdia, sddia, elec_rs, elec_min, elec_max, dri, dri_min, dri_max, sb_rm, sb_rmp, sb_rmd, tipcap, -soma_cap)
+
+// 9.5 free params  (with tipcap and smdia free params, but without sb_rmd as free param)
+
+else if (nfp==9.5) sprintf (param_string3, "--p1 --spdia --c1 %g --c1_min 0.2 --c1_max %g --p2 --smdia --c2 %g --c2_min 0.15 --c2_max %g  --p3 --sdia --c3 %g --c3_min 0.15 --c3_max 0.3 --p4 --sddia --c4 %g --c4_min 0.15 --c4_max 0.9 --p5 --elec_rs --c5 %g --c5_min %g --c5_max %g  --p6 --dri --c6 %g --c6_min %g --c6_max %g --p7 --sb_rm --c7 %g --c7_min 1000 --c7_max 50e3 --p8 --sb_rmp --c8 %g --c8_min 1000 --c8_max 50e3 --p9 --tipcap --c9 %g --c9_min %g --c9_max 10e-12 ", spdia, sp_max, smdia, sm_max, sdia, sddia, elec_rs, elec_min, elec_max, dri, dri_min, dri_max, sb_rm, sb_rmp, tipcap, -soma_cap)
+
+// 9.6 free params  (with tipcap and sndia, smdia free params, but without sb_rmd, elec_rs as free params)
+
+else if (nfp==9.6) sprintf (param_string3, "--p1 --spdia --c1 %g --c1_min 0.2 --c1_max %g --p2 --sndia --c2 %g --c2_min 0.15 --c2_max %g --p3 --smdia --c3 %g --c3_min 0.15 --c3_max %g --p4 --sdia --c4 %g --c4_min 0.15 --c4_max 0.3 --p5 --sddia --c5 %g --c5_min 0.15 --c5_max 0.9 --p6 --dri --c6 %g --c6_min %g --c6_max %g --p7 --sb_rm --c7 %g --c7_min 1000 --c7_max 50e3 --p8 --sb_rmp --c8 %g --c8_min 1000 --c8_max 50e3 --p9 --tipcap --c9 %g --c9_min %g --c9_max 10e-12 ", spdia, sp_max, sndia, sn_max, smdia, sm_max, sdia, sddia, dri, dri_min, dri_max, sb_rm, sb_rmp, tipcap, -soma_cap);
+
+};
+
+options = "";
+if (!notinit(fit_type)) sprintf (options,"%s --fit_type %g", options, fit_type); // =1 ->LM fit, =2 -> st_search
+if (!notinit(info))     sprintf (options,"%s --info %g", options, info);	// info level
+if (!notinit(sa_ilim))  sprintf (options,"%s --sa_ilim %g", options, sa_ilim);	// stop criterion for st_srch
+if (!notinit(sa_st))    sprintf (options,"%s --sa_st %g", options, sa_st);	// starting temperature
+if (!notinit(sa_td))    sprintf (options,"%s --sa_td %g", options, sa_td);      // temperature decrement
+if (!notinit(sa_sdi))   sprintf (options,"%s --sa_sdi %g", options, sa_sdi);	// count for recalc sd
+if (!notinit(sa_sanb))  sprintf (options,"%s --sa_sanb %g", options, sa_sanb);	// number of recent best matches for avg
+if (!notinit(sa_wavg))  sprintf (options,"%s --sa_wavg %g", options, sa_wavg);	// use weighted average 
+if (!notinit(sa_itb))   sprintf (options,"%s --sa_itb %g", options, sa_itb);	// base for pow iter 
+if (!notinit(sa_sdmul)) sprintf (options,"%s --sa_sdmul %g", options, sa_sdmul);// multiplier for sd 
+if (!notinit(rseed))    sprintf (options,"%s --rseed %g", options, rseed);	// rseed for st_srch 
+if (!notinit(sb_arbscale)) sprintf (options,"%s --sb_arbscale %g", options, sb_arbscale); // sb_arbscale (x,y) scale
+if (!notinit(sb_denddia))  sprintf (options,"%s --sb_denddia %g", options, sb_denddia); // sb_denddia dend dia mult
+param_string3 = param_string3 + options;
+
+// expt string
+
+   expt_string = file_string + param_string1 + param_string2;
+
+   sprintf (modelfit_string, "modelfit --data_file %s --tracelen 350 --expt_string \"%s\" %s ", 
+							data_file, expt_string, param_string3);
+
+   run_string = modelfit_string + " >&" + output_file;
+   if (amp > 0) run_string += " &";
+ 
+   // print run_string, "\n";
+   if (pr>0) print modelfit_string;
+
+   system (run_string);
+

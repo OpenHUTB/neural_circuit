@@ -1,0 +1,34 @@
+#! /home/rob/bin/nci -c 
+# 
+#  Script to migrate mosrun processes evenly among machine nodes in a network
+#
+nmos = atof(system ("ps aux | grep mosrun | grep -v grep | wc -l"));
+mos_procs = ccstr(system ("ps aux | grep mosrun | grep -v grep | awk '{print $2, \" \"}'"));
+mprocs = mos_procs;
+
+if (mos_procs!="") {
+
+x = strtok (mos_procs," ");
+for (i=1; i>0; i++) {			// count how many lines contain proc number
+   if (strtok (0," ") == "") {break;};
+};
+// print i;
+
+dim procs[i+2] = {{""}};
+
+procs[0] = strtok (mprocs," ");
+for (j=1; j<i; j++) {
+   procs[j] = strtok (0," ");
+};
+
+for (i=0; i<nmos; i++) {
+  k = i+2;
+  for (k=k; k>13; k -= 12) {};				// 12 machines besides daz1
+  if (k>10) k += 2;     				// machines 11,12 not running
+  sprintf (runline,"migrate %s %g",procs[i],k);
+  print runline;
+  system (runline);
+};
+
+};
+

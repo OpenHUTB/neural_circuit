@@ -1,0 +1,5 @@
+#! /bin/csh -f
+foreach i ($argv) 
+  printpeakdsiv $i  
+end
+

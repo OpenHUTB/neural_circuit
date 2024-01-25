@@ -1,0 +1,61 @@
+
+retsim --expt cbp_dyad --ninfo 2 --mxrot 0 --vnoise 0 -d 1 -v | vid 
+
+retsim --expt cbp_dyad --ninfo 2 --mxrot 0 --vnoise 0 --make_am_dbp1 0 -p 1 | & less
+
+#
+retsim --expt cbp_dyad --g_dbp1_am 1e-10 --ninfo 2 --mxrot 0 --vnoise 0 --make_am_dbp1 1 -v | vid
+
+
+# vnoise, cnoise work, need to make unitary smaller than cond
+#  stimtype 1, chirp, vcontrast
+#
+retsim --expt cbp_dyad --g_dbp1_am 0.5e-10 --g_dbp1_gca 0.5e-10 --ninfo 2 --mxrot 0 --vnoise 1 --cnoise 0 --make_am_dbp1 1 --dampau 4e-12 -v | vid
+
+# vnoise, cnoise 0, vcontrast
+#
+retsim --expt cbp_dyad --g_dbp1_am 0.5e-10 --g_dbp1_gca 0.5e-10 --ninfo 2 --mxrot 0 --vnoise 0 --cnoise 0 --vcontrast 1 --make_am_dbp1 1 --dampau 4e-12 -v | vid
+
+
+# vnoise, cnoise 0, vcontrast, dbp1_mr dbp1_mp 500 
+#
+#
+retsim --expt cbp_dyad --g_dbp1_am 0.5e-10 --g_dbp1_gca 0.5e-10 --ninfo 2 --mxrot 0 --vnoise 0 --cnoise 0 --vcontrast 1 --make_am_dbp1 1 --dampau 4e-12 --dbp1_mr 500 --dbp1_mp 500 --cmult 0.006 -v | vid
+
+#
+#
+retsim --expt cbp_dyad --g_dbp1_am 0.5e-10 --g_dbp1_gca 0.5e-10 --ninfo 2 --mxrot 0 --vnoise 0 --cnoise 0 --vcontrast 1 --make_am_dbp1 1 --dampau 4e-12 --dbp1_mr 500 --dbp1_mp 500 --cmult 0.006 --casoma 4e-3 -v | vid -c > cbp_dyad-v1.ps
+
+#
+#
+retsim --expt cbp_dyad --g_dbp1_am 0.5e-10 --g_dbp1_gca 0.5e-10 --ninfo 2 --mxrot 0 --vnoise 0 --cnoise 0 --vcontrast 1 --make_am_dbp1 1 --dampau 4e-12 --dbp1_mr 500 --dbp1_mp 500 --cmult 0.01 --casoma 1.5e-3 -v | vid
+
+#
+# with T-type Ca
+#
+retsim --expt cbp_dyad --g_dbp1_am 0.5e-10 --g_dbp1_gca 2e-10 --ninfo 2 --mxrot 0 --vnoise 0 --cnoise 0 --vcontrast 1 --make_am_dbp1 1 --dampau 4e-12 --dbp1_mr 500 --dbp1_mp 500 --cmult 0.009 --minten -0.040 --casoma 2.5e-3 --catsoma 20e-3 -v | vid
+
+
+
+# sine wave, tfreq 2
+#
+retsim --expt cbp_dyad --g_dbp1_am 0.5e-10 --g_dbp1_gca 0.5e-10 --ninfo 2 --mxrot 0 --vnoise 0 --cnoise 0 --make_am_dbp1 1 --dampau 4e-12 --vcontrast 1 --stimtype 4 --stimdur 2 --tfreq 2  -v | vid
+
+# sine wave, tfreq 5
+#
+retsim --expt cbp_dyad --g_dbp1_am 0.5e-10 --g_dbp1_gca 0.5e-10 --ninfo 2 --mxrot 0 --vnoise 0 --cnoise 0 --make_am_dbp1 1 --dampau 4e-12 --vcontrast 1 --stimtype 4 --stimdur 2 --tfreq 5  --cmult 0.008 -v | vid
+
+# sine wave, tfreq 10
+#
+retsim --expt cbp_dyad --g_dbp1_am 0.5e-10 --g_dbp1_gca 0.5e-10 --ninfo 2 --mxrot 0 --vnoise 0 --cnoise 0 --make_am_dbp1 1 --dampau 4e-12 --vcontrast 1 --stimtype 4 --stimdur 2 --tfreq 10  --cmult 0.008 -v | vid
+
+# sine wave, tfreq 20
+#
+retsim --expt cbp_dyad --g_dbp1_am 0.5e-10 --g_dbp1_gca 0.5e-10 --ninfo 2 --mxrot 0 --vnoise 0 --cnoise 0 --make_am_dbp1 1 --dampau 4e-12 --vcontrast 1 --stimtype 4 --stimdur 2 --tfreq 20  --cmult 0.008 -v | vid
+
+# set itransducer, but casoma, ksoma need adjusting
+#
+retsim --expt cbp_dyad --g_dbp1_am 0.5e-10 --g_dbp1_gca 0.5e-10 --g_am_dbp1 2e-14 --ninfo 2 --mxrot 0 --vnoise 0 --cnoise 0 --make_am_dbp1 0 --dampau 4e-12 --vcontrast 1 --stimtype 1 --itransducer 1 --casoma 0.2e-3 --ksoma 0.008e-3 -v | vid
+
+retsim --expt cbp_dyad --g_dbp1_am 0.5e-10 --g_dbp1_gca 4e-10 --g_am_dbp1 2e-14 --ninfo 2 --mxrot 0 --vnoise 0 --cnoise 0 --make_am_dbp1 0 --dampau 4e-12 --vcontrast 1 --stimtype 1 --itransducer 1 --casoma 1.5e-3 --ksoma 0.016e-3 --cbp_rm 5e3 --minten 3.5e-12 --cmult 1.5e-12 -v | vid
+

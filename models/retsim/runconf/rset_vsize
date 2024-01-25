@@ -1,0 +1,10 @@
+#! ../../../bin/nc -c
+#
+
+for (i=1; i<argc; i++) {
+
+   print argv[i];
+   sprintf (buf,"set_vsize %s > xxx; mv xxx %s",argv[i],argv[i]);
+   system (buf);
+};
+

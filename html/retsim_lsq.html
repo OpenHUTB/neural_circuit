@@ -1,0 +1,94 @@
+<head>
+<title>Least-Squares fitting of biophysical parameters in a neuron</title>
+</head>
+<body bgcolor="#efc792">
+
+<TABLE width="700">
+ <TR>
+  <TD>
+ <H2 align=center><FONT color="#800040"> Least-Squares fitting of biophysical parameters in a neuron</h2>
+<h2 align=center>Robert G. Smith</h2>
+
+
+<TABLE width="700">
+ <TR>
+  <TD>
+To obtain the best correspondence between a model of a neuron and the data
+recorded from the neuron, the model must include a realistic morphology along
+with estimates of the neuron's biophysical parameters. To accomplish the best
+estimates of the internal axial resistivity Ri, membrane resistivity Rm, and the
+membrane capacitance, as well as several other parameters, you can run the
+"modelfit" program which runs the Levenberg-Marquardt algorithm for
+least-squares fitting. The program evaluates the model containing the realistic
+morphology and compares the output to a set of data points, which are often a
+voltage or current trace recorded from the real cell. The modelfit program then
+computes the difference between the real trace and the model trace for all the
+data points, and computes the sum of the squares of the differences, which
+emphasizes the biggest differences. The program then runs the model with
+different sets of parameters, computing the sum of the squared differences for
+each set, and choosing the parameter set that has the smallest sum of squared
+differences.<p>
+
+The modelfit program can work with a parameter set containing up to 12
+parameters. Each parameter can be limited to a specified range and can be given
+a starting value for the least-squares fit.  In practice it is usually best to
+give a maximum of 5-8 free parameters, depending on their influence in the
+model. The modelfit program passes the parameters to the retsim model which runs
+the model and returns with the output data to be compared with the real data.
+The parameters are typically Rm (membrane resistivity), Ri (axial restivity), Cm
+(membrane capacitance per unit area), and others such as electrode resistance
+and capacitance, and injected current.  The Rm and Ri parameters can be split
+into different sub-parameters for the different regions of the cell.<p>
+
+The modelfit program is given a "charging curve" data set that shows how much
+current drawn by an electrode that is voltage clamping the cell with a pulse
+voltage.  Typically the first few msec represent the charging of the cell soma
+where the electrode is located. As time advances, the current recorded from the
+electrode represents segments of the cell more distal from the soma, for
+example, the axon and dendrites.  When the values of Ri, Rm, Cm and the other
+parameters are optimal, the model produces the best fit to the original data. 
+<p>
+
+To accelerate the process of running models to compare to the original real
+data, several copies of the the modelfit program can be run in parallel with
+different sets of parameter values. These parallel "jobs" can be run on a
+parallel job system such as "Mosix" which automatically runs computational jobs
+on a set of CPUs.  The system attempts to load each CPU with an identical load
+of jobs so all the Jobs are run at the same overall speed.
+<p>
+
+Once these basic biophysical parameters have been fitted, the model can be run
+using these parameter values with the realistic morphology, for the purpose of
+testing the function of the circuit using other parameters. <p>
+
+For more on this fitting process, see <a href="ncman5.html">Curve Fitting with Neuron-C</a>
+<p>
+
+Recent studies that used modelfit include:<p>
+
+<A href="/~rob/absfull.html#10042"> Percival KA, Venkataramani S, Smith RG, Taylor WR (2017)</a> Directional Excitatory Input to Direction-Selective Ganglion Cells in the Rabbit Retina. J. Comp. Neurol. Accepted Jan 31, 2017. doi: 10.1002/cne.24207  <p>
+
+<A href="/~rob/absfull.html#10040"> Stincic T, Smith RG, Taylor WR (2016)</a> Time-course of EPSCs in On-type starburst amacrine cells in mouse retina is independent of dendritic location. J. Physiol. 594:5685-5694, doi: 10.1113/jp272384.<p>
+
+  </TD> 
+ </TR> 
+</TABLE>
+
+<TABLE width="700" cellpadding=20>
+ <TR>
+  <TD>
+<p>
+
+
+<hr size=5 noshade>
+
+  </TD>
+ </TR>
+</TABLE>
+
+<Address>
+<a href="rob_smith.html">Rob Smith</a><p>
+<A href="mailto:rob@retina.anatomy.upenn.edu"
+TARGET="">rob&lt;at&gt;retina.anatomy.upenn.edu</A>
+
+</Address>

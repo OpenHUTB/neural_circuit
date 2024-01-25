@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# Script to convert .fig file data to standard anatomy format for Neuron-C
+#  when a photograph of a cell is labeled with "text" numbers to represent
+#  the node numbers in nc.
+#
+# The parent node is assumed here to be the previous one, which is not
+#  always correct but since many nodes follow an unbranched dendrite it
+#  is best to start.  Parent nodes then need to be corrected by hand.
+#
+#  original scale is 19200 per 100 um (scale=192), more recently reduced to scale=40
+#    set scale to 47.7 for Wei's figure 
+#                 
+awk 'BEGIN {
+	    scale = 47.7; 
+	    par   = 0;
+            dia   = "sb_dia1"
+            reg   = "DEND";
+            dend = 0;
+            z = 0;
+      printf ("#    node  parent   dia     xbio     ybio     zbio    region   dendr\n#\n");
+            }
+
+     NR>10 && $1=="4" { 
+#             x = $12/scale; y = $13/scale; z = 15; n=substr($14,1,length($14)-4); 
+             x = $12/scale; y = $13/scale; z = $4; n=substr($14,1,length($14)-4); 
+             if (n=="0") { xs=x; ys=y; }
+             printf ("  %4s     %4s    %4s    %-8.4g   %-8.4g   %g       %s      %d\n",
+	              n, par, dia, x-xs, y-ys, z, reg, dend); 
+	     par = n;
+	}
+    ' $1
+

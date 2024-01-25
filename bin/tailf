@@ -1,0 +1,3 @@
+#! /bin/tcsh -f
+#
+tail -f -n +1 $argv

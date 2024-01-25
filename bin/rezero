@@ -1,0 +1,30 @@
+#! ../../bin/nci -c
+#
+#  rezero
+#
+#  Script to zero time points in a .r file, starting with first point -> 0
+#    cat file.r | rezero > filex.r
+#
+nparm = setvar();               /* get parameters from command line */ 
+
+if (argc>1) {
+   for (i=1; i<argc && strstr (argv[i],"--") >= 0; i+=2) {   /* skip over "--param xx", find file name */
+                if (i>=argc-2) {printf ("%s: no input file name\n",argv[0]); exit;};
+   };
+   fd = fopen (argv[i],"r");
+} else {
+   fd = fopen ("stdin","r");
+}; 
+
+dim Fld[] = {{"x"}};
+for (t0=0,line=flds=0; Fld = getflds(fd), flds=sizeof(Fld) > 0; line++) {
+
+    if (line==0) t0 = atof(Fld[1]);
+
+    if (substr(Fld[0],0,1) != "#") {
+	    t = atof(Fld[1]) - t0;
+	    v = atof(Fld[2]);
+	    printf ("%-5g %-10.5g \n",t, v);
+    };
+};
+

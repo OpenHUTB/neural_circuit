@@ -1,0 +1,601 @@
+#! ../../bin/nci -c
+#
+#! /home/rob/bin/nci -c
+#
+# rdsgc_sbac_r
+#
+# usage:  (see rdsgc_sbac script)
+#
+
+mosrun = "mosrun -b -l";         /* for running jobs in parallel with Mosix system */
+//mosrun = "";
+filename = "";
+
+v = 0;		/* use vid to display directly on screen */
+w = 1;		/* set size of vid window */
+B = 7;		/* set background color */
+d = 0;		/* display model */
+F = 0;		/* make fig image */
+R = 0;		/* make povray image */
+p = 0;		/* print out compartments */
+D = 0;		/* print out command line */
+
+ninfo = 2;
+vers = 1;
+plotpdf = 0;
+pjobs = 0;
+
+ps  = 1e-12;
+hps = 100e-12;
+
+presyn1 = 8;		// presynaptic region for dbp1 -> am  recip synapse
+presyn2 = 8;		// presynaptic region for dbp1 -> am2 recip synapse
+presyn3 = 8;		// presynaptic region for dbp2 -> am2 recip synapse
+
+mxrot = 0;
+myrot = 0;
+mzrot = 0;
+
+
+// for str1:
+
+        minten = -0.042;
+     scontrast = 0.006;
+      dsomadia = 8;
+         spdia = 0.4;
+          sdia = 0.2;
+         sddia = 0.8;
+         sbarr = 0;
+make_sbac_sbac = 1;
+  sbac_species = 1;
+    run_vclamp = 0;
+      dtreedia = 500;
+        sb1mul = 2.0;
+         vhold = 0;
+        predur = 0.2;
+        sbac_r = 120;
+        dsgc_x = -150;  
+        n_dsgc = 1;
+    morph_frac = 0;
+          dri = 200;
+
+// for str2:
+
+      sbac_file  = "morph_sbac_168c6";
+      sbac_file2 = "morph_R1MS151208_06d";
+      dsgc_file  = "morph_ds1eb";
+
+// for str3:
+
+      camid = 0e-3;
+     cadist = 0e-3;
+    catsoma = 0e-3;
+    catprox = 0e-3;
+     catmid = 0e-3;
+    catdist = 0e-3;
+       amca = 0.2e-3;
+      am2ca = 0.05e-3;
+     dscavg = 1e5;
+     dscaeg = 1;
+sbac_nscale = -2.05;
+dsgc_nscale = -2.01;
+
+// for str4:
+
+ g_dbp1_dsgc = 5e-10;
+ g_dbp1_sbac = 2e-10;
+ g_sbac_dsgc = 10e-10;
+ g_sbac_sbac = 5e-10;
+   g_am_dsgc = 4.2e-14;
+  g_am2_dsgc = 4.2e-14;
+ n_dbp1_sbac = 0;
+
+   syn_savefile  = "";
+syn_restorefile  = "";
+
+   set_ploti = 1e-3;
+      mglur2 = 0;
+
+      n_am  = 0;
+      n_am2 = 0;
+
+     povres = 2048;
+
+comnd_line_only = 0;
+
+// -  -  -  -  -
+
+
+x = setvar();                   /* get parameters from command line */
+
+if (run_vclamp > 0) {
+   if (vhold==0) cclamp = "i"
+   else          cclamp = "e";
+}  else          cclamp = "v";
+
+ if (g_am_dsgc  > 1e-12) g_am_dsgc_f  = g_am_dsgc/hps  else g_am_dsgc_f = 0;
+ if (g_am2_dsgc > 1e-12) g_am2_dsgc_f = g_am2_dsgc/hps else g_am2_dsgc_f = 0;
+
+    if (sbarr==100) {
+       if (!notinit(sbarrsiz)) {
+	   if (notinit(sbxarrsiz)) sbxarrsiz = sbarrsiz;
+	   if (notinit(sbyarrsiz)) sbyarrsiz = sbarrsiz;
+       }
+       else if (!notinit(sbxarrsiz)) {
+	   if (notinit(sbyarrsiz)) sbyarrsiz = sbxarrsiz;
+       } else {
+           if (notinit(sbxarrsiz)) sbxarrsiz = 100;
+           if (notinit(sbyarrsiz)) sbyarrsiz = 100;
+       };
+    };
+
+    if (sbarr==0) {
+	if      (morph_frac==0) sprintf (filename_header,"%s",sbac_file)
+	else if (morph_frac==1) sprintf (filename_header,"%s",sbac_file2);
+    }
+    else if (sbarr<100)  sprintf (filename_header,"dsgc_sbac_%g_%g",sbarr,dtreedia)
+    else if (sbarr==100) sprintf (filename_header,"dsgc_sbac_%g_%g_%g",sbarr,sbxarrsiz,sbyarrsiz)
+    else		 sprintf (filename_header,"dsgc_sbac_%g_%g",sbarr-100,dtreedia);
+
+    if ((filename == "") || v > 0) {
+	if (d > 0) sprintf (filenamec,"%s_%g_%g_%g_%g",filename_header,mxrot,myrot,sbac_r,rnd)
+	else       sprintf (filenamec,"%s_%s_%g_%g_%g_%g_%g_%g_%g_%g_%g_%g_%g_%g_%g_%g",filename_header, cclamp,
+					g_am_dsgc_f, g_am2_dsgc_f,
+					g_sbac_sbac/hps, g_sbac_dsgc/hps,camid/1e-3,cadist/1e-3,
+					g_dbp1_dsgc/hps,g_dbp1_sbac/hps,dscavg/1e6,
+					minten*-1000,scontrast,sbac_r,dsgc_x,sdia);
+    }
+    else                        sprintf (filenamec, "%s",   filename);
+    if (!notinit(filenum)) sprintf (filenamec, "%s_x%g",filenamec,filenum);
+
+    sprintf(str1,"retsim --expt dsgc_sbac_bar --sbac_file %s", sbac_file);
+    if (n_dsgc>0) sprintf(str1,"%s --dsgc_file %s", str1, dsgc_file);
+
+    sprintf (str2,"%s --dsomadia %g --dri %g --spdia %g --sdia %g --sddia %g", str1, dsomadia, dri, spdia, sdia, sddia); 
+
+    // Check and maybe set dbp1_dens, soma_z, sb_denddia, sb_arbscale
+
+    // set default cell parameters based on file name
+    //   sbz  => sbac_soma_z 
+    //   sbd  => sb_denddia
+    //   sbdx => sb_denddia when sbs (sb_arbscale) > 1
+    //   sbs  => sb_arbscale
+    //   sbb  => dens_dbp1
+ 
+    if (notinit(sb_arbscale2)) if (!notinit(sb_arbscale)) sb_arbscale2 = sb_arbscale;
+
+    if      (sbac_file=="morph_sbac_168c6")	         { sbz= -45;  sbd=1;    sbdx=1;    sbs = 1;    sbb = 7500; }
+    else if (sbac_file=="morph_R1MS151208_06d")          { sbz= -45;  sbd=3;    sbdx=1;    sbs = 1;    sbb = 7500; }
+    else if (sbac_file=="morph_sbac3f")		         { sbz= -45;  sbd=1.4;  sbdx=1.4;  sbs = 1.6;  sbb = 7500; }
+    else if (sbac_file=="morph_sbac_ti_11_9_18_cell_1")  { sbz= -45;  sbd=1.0;  sbdx=1.0;  sbs = 1.5;  sbb = 9500; }
+    else if (sbac_file=="morph_sbac_ti_11_17_18_cell_1") { sbz= -45;  sbd=1.0;  sbdx=1.0;  sbs = 1.5;  sbb = 9500; }
+    else if (sbac_file=="morph_sbac_ti_12_10_20")        { sbz= -45;  sbd=1.0;  sbdx=1.0;  sbs = 1.5;  sbb = 9500; }
+    else if (sbac_file=="morph_10222018-1308-695-2")     { sbz= -45;  sbd=1.0;  sbdx=1.0;  sbs = 1.8;  sbb = 9500; }
+    else if (sbac_file=="morph_1132-710")	         { sbz= -45;  sbd=1.0;  sbdx=1.0;  sbs = 1.8;  sbb = 9500; }
+    else if (sbac_file=="morph_maxi_sac1")	         { sbz= -45;  sbd=1.0;  sbdx=1.0;  sbs = 1.65; sbb = 9500; }
+    else if (sbac_file=="morph_maxi_sac2")	         { sbz= -45;  sbd=1.0;  sbdx=1.0;  sbs = 1.65; sbb = 9500; }
+    else if (sbac_file=="morph_sbac_cell1")	         { sbz= -45;  sbd=1.0;  sbdx=1.0;  sbs = 1.4;  sbb = 9500; }
+    else if (sbac_file=="morph_sbac_cell5")	         { sbz= -45;  sbd=1.0;  sbdx=1.0;  sbs = 1.4;  sbb = 9500; }
+    else if (sbac_file=="morph_sbac_dd_cell2")	         { sbz= -45;  sbd=1.0;  sbdx=1.0;  sbs = 1.0;  sbb = 6000; }
+    else 					         { sbz= -45;  sbd=1;    sbdx=1.0;  sbs = 1;    sbb = 9500; };
+ 
+    if      (sbac_file2=="morph_sbac_168c6")	          { sbz2= -45; sbd2=1;   sbdx2=1;   sbs2 = 1;    }
+    else if (sbac_file2=="morph_R1MS151208_06d")          { sbz2= -45; sbd2=3;   sbdx2=3;   sbs2 = 1;    }
+    else if (sbac_file2=="morph_sbac3f")	          { sbz2= -45; sbd2=1.4; sbdx2=1.4; sbs2 = 1.6;  }
+    else if (sbac_file2=="morph_sbac_ti_11_9_18_cell_1")  { sbz2= -45; sbd2=1.0; sbdx2=1.0; sbs2 = 1.5;  }
+    else if (sbac_file2=="morph_sbac_ti_11_17_18_cell_1") { sbz2= -45; sbd2=1.0; sbdx2=1.0; sbs2 = 1.5;  }
+    else if (sbac_file2=="morph_sbac_ti_12_10_20")        { sbz2= -45; sbd2=1.0; sbdx2=1.0; sbs2 = 1.5;  }
+    else if (sbac_file2=="morph_10222018-1308-695-2")     { sbz2= -45; sbd2=1.0; sbdx2=1.0; sbs2 = 1.8;  }
+    else if (sbac_file2=="morph_1132-710")	          { sbz2= -45; sbd2=1.0; sbdx2=1.0; sbs2 = 1.8;  }
+    else if (sbac_file2=="morph_maxi_sac1")	          { sbz2= -45; sbd2=1.0; sbdx2=1.0; sbs2 = 1.65; }
+    else if (sbac_file2=="morph_maxi_sac2")	          { sbz2= -45; sbd2=1.0; sbdx2=1.0; sbs2 = 1.65; }
+    else if (sbac_file2=="morph_sbac_cell1")	          { sbz2= -45; sbd2=1.0; sbdx2=1.0; sbs2 = 1.4;  }
+    else if (sbac_file2=="morph_sbac_cell5")	          { sbz2= -45; sbd2=1.0; sbdx2=1.0; sbs2 = 1.4;  }
+    else if (sbac_file2=="morph_sbac_dd_cell2")	          { sbz2= -45; sbd2=1.0; sbdx2=1.0; sbs2 = 1.0;  }
+    else 					          { sbz2= -45; sbd2=1;   sbdx2=1.0; sbs2 = 1;    };
+   
+    // sbb = 7500;		// set default dbp1_dens 7500 for all cells (for the time being...)
+
+    if (!notinit(dbp1_maxsdist))                     sprintf (str2,"%s --dbp1_maxsdist %g",str2, dbp1_maxsdist); 
+    if (!notinit(dbp2_maxsdist))                     sprintf (str2,"%s --dbp2_maxsdist %g",str2, dbp2_maxsdist); 
+    if (notinit(dbp1_dens))   { dbp1_dens   = sbb;}; sprintf (str2,"%s --dbp1_dens %g",    str2, dbp1_dens); 
+    if (notinit(dbp2_dens))   { dbp2_dens   = sbb;}; sprintf (str2,"%s --dbp2_dens %g",    str2, dbp2_dens); 
+    if (notinit(sbac_soma_z)) { sbac_soma_z = sbz;}; sprintf (str2,"%s --sbac_soma_z %g",  str2, sbac_soma_z); 
+    if (notinit(sb_arbscale)) { sb_arbscale = sbs;}; sprintf (str2,"%s --sb_arbscale %g",  str2, sb_arbscale); 
+    if (notinit(sb_denddia))  { if (sb_arbscale > 1) sb_denddia  = sbdx else sb_denddia = sbd;}; 
+						     sprintf (str2,"%s --sb_denddia %g",   str2, sb_denddia); 
+
+    if (!notinit(morph_frac))		// If morph_frac > 0, sbac_file2 will be used. 
+       if (morph_frac>0) {
+         sprintf (str2,"%s --sbac_file2 %s --morph_frac %g",str2,sbac_file2,morph_frac);
+
+       if (notinit(sbac_soma_z2)) {sbac_soma_z2 = sbz2;}; sprintf (str2,"%s --sbac_soma_z2 %g", str2, sbac_soma_z2);
+       if (notinit(sb_arbscale2)) {sb_arbscale2 = sbs2;}; sprintf (str2,"%s --sb_arbscale2 %g", str2, sb_arbscale2);
+       if (notinit(sb_denddia2))  {if (sb_arbscale2 > 1)  sb_denddia2  = sbdx2 else sb_denddia2 = sbd2;};
+							  sprintf (str2,"%s --sb_denddia2 %g",  str2, sb_denddia2); 
+    };
+
+    sprintf(str3,"--n_dsgc %g --sbarr %g --minten %g --scontrast %g --endwait 0.2 --ninfo %g --make_sbac_sbac %g --sbac_species %g --sbac_nscale %g -d 0 --sb_biophys 1 --dsgc_biophys 0 --am_nscale -3.2 --dsgc_nscale %g --run_vclamp %g --dtreedia %g --predur %g --sbac_r %g --dsgc_x %g", n_dsgc, sbarr, minten, scontrast, ninfo, make_sbac_sbac, sbac_species, sbac_nscale, dsgc_nscale, run_vclamp, dtreedia, predur, sbac_r, dsgc_x);
+
+    if (n_dsgc > 0) {
+       if (dsgc_file=="morph_ww_sample_cell_crossover") {
+	   if (notinit(dsgc_thetax)) dsgc_thetax = -5;
+	   if (notinit(dsgc_thetay)) dsgc_thetay = 6;
+	   if (notinit(dsgc_thetaz)) dsgc_thetaz = 0;
+       };
+       if (notinit(dsgc_thetax)) dsgc_thetax = 0;
+       if (notinit(dsgc_thetay)) dsgc_thetay = 0;
+       if (notinit(dsgc_thetaz)) dsgc_thetaz = 0;
+       sprintf(str3,"%s --dsgc_thetax %g --dsgc_thetay %g --dsgc_thetaz %g",
+				str3, dsgc_thetax,dsgc_thetay,dsgc_thetaz);
+    };
+    sprintf(str3,"%s --mxrot %g --myrot %g --mzrot %g",str3,mxrot,myrot,mzrot);
+
+   sprintf(str4,"--sb1mul %g --vhold %g --camid %g --cadist %g --catsoma %g --catprox %g --catmid %g --catdist %g --amca %g --am2ca %g --dscavg %g --dscaeg %g", sb1mul, vhold, camid, cadist, catsoma, catprox, catmid, catdist, amca, am2ca, dscavg, dscaeg);
+
+   sprintf (str5,"--g_dbp1_dsgc %g --g_dbp1_sbac %g --g_sbac_dsgc %g --g_sbac_sbac %g --g_am_dsgc %g --g_am2_dsgc %g", g_dbp1_dsgc, g_dbp1_sbac, g_sbac_dsgc, g_sbac_sbac, g_am_dsgc, g_am2_dsgc);
+
+   // make sure stim_fnum is string type
+   if (!notinit(stim_fnum)) { t1 = stim_fnum; if (type(stim_fnum)==type(9)) t2=stim_fnum; };
+   if (!notinit(t1)) erase stim_fnum;
+   if (!notinit(t1)) if (notinit(t2)) stim_fnum = t1 else sprintf(stim_fnum,"%g",t2); 
+ 
+   options = "";
+   if (!notinit(set_ploti))   sprintf (options,"%s --set_ploti %g",  options,set_ploti);
+   if (!notinit(sb_rm))       sprintf (options,"%s --sb_rm %g",      options,sb_rm);
+   if (!notinit(sb_rmp))      sprintf (options,"%s --sb_rmp %g",     options,sb_rmp);
+   if (!notinit(sb_rmd))      sprintf (options,"%s --sb_rmd %g",     options,sb_rmd);
+   if (!notinit(sbsynang))    sprintf (options,"%s --sbsynang %g",   options,sbsynang);
+   if (!notinit(sbspac))      sprintf (options,"%s --sbspac %g",   options,sbspac);
+   if (!notinit(sbac_isynrngi)) sprintf (options,"%s --sbac_isynrngi %g",   options,sbac_isynrngi);
+   // if (!notinit(spdia))       sprintf (options,"%s --spdia %g",   options,spdia);
+   // if (!notinit(sddia))       sprintf (options,"%s --sddia %g",   options,sddia);
+   if (!notinit(sb_dia1))     sprintf (options,"%s --sb_dia1 %g", options,sb_dia1);
+   if (!notinit(sb_ca6_offm)) sprintf (options,"%s --sb_ca6_offm %g",options,sb_ca6_offm);
+   if (!notinit(sb_ca6_tauc)) sprintf (options,"%s --sb_ca6_tauc %g",options,sb_ca6_tauc);
+   if (!notinit(sb_ca6_taud)) sprintf (options,"%s --sb_ca6_taud %g",options,sb_ca6_taud);
+   if (!notinit(n_dbp1_sbac)) sprintf (options,"%s --n_dbp1_sbac %g",options,n_dbp1_sbac);
+   if (!notinit(v_dbp1_sbac)) sprintf (options,"%s --v_dbp1_sbac %g",options,v_dbp1_sbac);
+   if (!notinit(mglur2))      sprintf (options,"%s --mglur2 %g",options,mglur2);
+   if (!notinit(revdir))      sprintf (options,"%s --revdir %g",options,revdir);
+   if (!notinit(spotdia))     sprintf (options,"%s --spotdia %g",options,spotdia);
+   if (!notinit(spotdur))     sprintf (options,"%s --spotdur %g",options,spotdur);
+   if (!notinit(spotint))     sprintf (options,"%s --spotint %g",options,spotint);
+   if (!notinit(spotdia_incr)) sprintf (options,"%s --spotdia_incr %g",options,spotdia_incr);
+   if (!notinit(spotdia_max)) sprintf (options,"%s --spotdia_max %g",options,spotdia_max);
+   if (!notinit(annulus_width)) sprintf (options,"%s --annulus_width %g",options,annulus_width);
+   if (!notinit(annulus_odia)) sprintf (options,"%s --annulus_odia %g",options,annulus_odia);
+   if (!notinit(scontrastn))  sprintf (options,"%s --scontrastn %g",options,scontrastn);
+   if (!notinit(barlength))   sprintf (options,"%s --barlength %g",options,barlength);
+   if (!notinit(barwidth))    sprintf (options,"%s --barwidth %g",options,barwidth);
+   if (!notinit(barwidth_max))  sprintf (options,"%s --barwidth_max %g",options,barwidth_max);
+   if (!notinit(barwidth_incr)) sprintf (options,"%s --barwidth_incr %g",options,barwidth_incr);
+   if (!notinit(velocity))    sprintf (options,"%s --velocity %g",options,velocity);
+   if (!notinit(nstim))       sprintf (options,"%s --nstim %g",options,nstim);
+   if (!notinit(min_sp))      sprintf (options,"%s --min_sp %g",options,min_sp);
+   if (!notinit(max_sp))      sprintf (options,"%s --max_sp %g",options,max_sp);
+   if (!notinit(incr_sp))     sprintf (options,"%s --incr_sp %g",options,incr_sp);
+   if (!notinit(ncycles))     sprintf (options,"%s --ncycles %g",options,ncycles);
+   if (!notinit(tfreq))       sprintf (options,"%s --tfreq %g",options,tfreq);
+   if (!notinit(swaveshape))  sprintf (options,"%s --swaveshape %g",options,swaveshape);
+   if (!notinit(twaveshape))  sprintf (options,"%s --twaveshape %g",options,twaveshape);
+   if (!notinit(direction))   sprintf (options,"%s --direction %g",options,direction);
+   if (!notinit(stimtype))    sprintf (options,"%s --stimtype %g",options,stimtype);
+   if (!notinit(stimtime))    sprintf (options,"%s --stimtime %g",options,stimtime);
+   if (!notinit(poststimdur)) sprintf (options,"%s --poststimdur %g",options,poststimdur);
+   if (!notinit(soma_clamp_time)) sprintf (options,"%s --soma_clamp_time %g",options,soma_clamp_time);
+   if (!notinit(ivplot))      sprintf (options,"%s --ivplot %g",options,ivplot);
+   if (!notinit(iscal))       sprintf (options,"%s --iscal %g",options,iscal);
+   if (!notinit(orad1))       sprintf (options,"%s --orad1 %g",options,orad1);
+   if (!notinit(irad1))       sprintf (options,"%s --irad1 %g",options,irad1);
+   if (!notinit(n_dbp1))      sprintf (options,"%s --n_dbp1 %g",options,n_dbp1);
+   if (!notinit(n_am))        sprintf (options,"%s --n_am %g",options,n_am);
+   if (!notinit(n_am2))       sprintf (options,"%s --n_am2 %g",options,n_am2);
+   if (!notinit(n_ams))       sprintf (options,"%s --n_ams %g",options,n_ams);
+   if (!notinit(n_sbac))      sprintf (options,"%s --n_sbac %g",options,n_sbac);
+   if (!notinit(arrsiz))      sprintf (options,"%s --arrsiz %g",options,arrsiz);
+   if (!notinit(xarrsiz))     sprintf (options,"%s --xarrsiz %g",options,xarrsiz);
+   if (!notinit(yarrsiz))     sprintf (options,"%s --yarrsiz %g",options,yarrsiz);
+   if (!notinit(sbarrsiz))    sprintf (options,"%s --sbarrsiz %g",options,sbarrsiz);
+   if (!notinit(sbxarrsiz))   sprintf (options,"%s --sbxarrsiz %g",options,sbxarrsiz);
+   if (!notinit(sbyarrsiz))   sprintf (options,"%s --sbyarrsiz %g",options,sbyarrsiz);
+   if (!notinit(mask_dia))    sprintf (options,"%s --mask_dia %g",options,mask_dia);
+   if (!notinit(mask_x))      sprintf (options,"%s --mask_x %g",options,mask_x);
+   if (!notinit(mask_y))      sprintf (options,"%s --mask_y %g",options,mask_y);
+   if (!notinit(sbac_dens))   sprintf (options,"%s --sbac_dens %g",options,sbac_dens);
+   if (!notinit(dsgc_y))      sprintf (options,"%s --dsgc_y %g",options,dsgc_y);
+   if (!notinit(rloc))        sprintf (options,"%s --rloc %g",options,rloc);
+   if (!notinit(dbpthr))      sprintf (options,"%s --dbpthr %g",options,dbpthr);
+   if (!notinit(sbac_rnd))    sprintf (options,"%s --sbac_rnd %g",options,sbac_rnd);
+   if (!notinit(rnd))         sprintf (options,"%s -r %g",options,rnd);
+   if (!notinit(sbac_synspac)) sprintf (options,"%s --sbac_synspac %g",options,sbac_synspac);
+   if (!notinit(sbac_maxsdist)) sprintf (options,"%s --sbac_maxsdist %g",options,sbac_maxsdist);
+   if (!notinit(make_sbac_dsgc)) sprintf (options,"%s --make_sbac_dsgc %g",options,make_sbac_dsgc);
+   if (!notinit(sb_mglur_maxdist)) sprintf (options,"%s --sb_mglur_maxdist %g",options,sb_mglur_maxdist);
+   if (!notinit(remove_nconns)) sprintf (options,"%s --remove_nconns %g",options,remove_nconns);
+   if (!notinit(run_vclamp_sbac)) sprintf (options,"%s --run_vclamp_sbac %g",options,run_vclamp_sbac);
+   if (!notinit(sbac_vhold)) sprintf (options,"%s --sbac_vhold %g",options,sbac_vhold);
+   if (!notinit(sbac_vpulse)) sprintf (options,"%s --sbac_vpulse %g",options,sbac_vpulse);
+   if (!notinit(sbac_vpulse_dur)) sprintf (options,"%s --sbac_vpulse_dur %g",options,sbac_vpulse_dur);
+   if (!notinit(sbaclm)) sprintf (options,"%s --sbaclm %g",options,sbaclm);
+   if (!notinit(cesium)) sprintf (options,"%s --cesium %g",options,cesium);
+   if (!notinit(istart)) sprintf (options,"%s --istart %g",options,istart);
+   if (!notinit(istep)) sprintf (options,"%s --istep %g",options,istep);
+   if (!notinit(istim)) sprintf (options,"%s --istim %g",options,istim);
+   if (!notinit(sbac_istim)) sprintf (options,"%s --sbac_istim %g",options,sbac_istim);
+   if (syn_savefile != "")    sprintf (options,"%s --syn_savefile %s",options,syn_savefile);
+   if (syn_restorefile != "") sprintf (options,"%s --syn_restorefile %s",options,syn_restorefile);
+   if (!notinit(sbac_first_cent)) sprintf (options,"%s --sbac_first_cent %g",options,sbac_first_cent);
+   if (!notinit(g_sbac_dbp1)) sprintf (options,"%s --g_sbac_dbp1 %g",options,g_sbac_dbp1);
+   if (!notinit(g_dbp1_ams)) sprintf (options,"%s --g_dbp1_ams %g",options, g_dbp1_ams);
+   if (!notinit(g_ams_sbac)) sprintf (options,"%s --g_ams_sbac %g",options, g_ams_sbac);
+   if (!notinit(g_ams_sbac)) sprintf (options,"%s --make_ams %g",options, make_ams);
+   if (!notinit(ams_synanpi)) sprintf (options,"%s --ams_synanpi %g",options, ams_synanpi);
+   if (!notinit(ams_synanpo)) sprintf (options,"%s --ams_synanpo %g",options, ams_synanpo);
+   if (!notinit(dbp1_anpo)) sprintf (options,"%s --dbp1_anpo %g",options, dbp1_anpo);
+   if (!notinit(sb_db_anni))  sprintf (options,"%s --sb_db_anni %g",options, sb_db_anni);
+   if (!notinit(sb_db_dur))  sprintf (options,"%s --sb_db_dur %g",options, sb_db_dur);
+   if (!notinit(sb_db_casens))  sprintf (options,"%s --sb_db_casens %g",options, sb_db_casens);
+   if (!notinit(sb_db_synr))    sprintf (options,"%s --sb_db_synr %g",options, sb_db_synr);
+   if (!notinit(r_dbp1_sbac))  sprintf (options,"%s --r_dbp1_sbac %g",options, r_dbp1_sbac);
+   if (!notinit(m_sbac_sbac))  sprintf (options,"%s --m_sbac_sbac %g",options, m_sbac_sbac);
+   if (!notinit(r_sbac_sbac))  sprintf (options,"%s --r_sbac_sbac %g",options, r_sbac_sbac);
+   if (!notinit(n_sbac_sbac))  sprintf (options,"%s --n_sbac_sbac %g",options, n_sbac_sbac);
+   if (!notinit(ksoma))       sprintf (options,"%s --ksoma %g",options, ksoma);
+   if (!notinit(kprox))       sprintf (options,"%s --kprox %g",options, kprox);
+   if (!notinit(kmid))        sprintf (options,"%s --kmid %g",options, kmid);
+   if (!notinit(kdist))       sprintf (options,"%s --kdist %g",options, kdist);
+   if (!notinit(kdrs))        sprintf (options,"%s --kdrs %g",options, kdrs);
+   if (!notinit(kdrp))        sprintf (options,"%s --kdrp %g",options, kdrp);
+   if (!notinit(kdrm))        sprintf (options,"%s --kdrm %g",options, kdrm);
+   if (!notinit(nadist))      sprintf (options,"%s --nadist %g",options, nadist);
+   if (!notinit(namid))       sprintf (options,"%s --namid %g",options, namid);
+   if (!notinit(naprox))      sprintf (options,"%s --naprox %g",options, naprox);
+   if (!notinit(nasoma))      sprintf (options,"%s --nasoma %g",options, nasoma);
+   if (!notinit(tea))         sprintf (options,"%s --tea %g",options, tea);
+   if (!notinit(vstart))      sprintf (options,"%s --vstart %g",options, vstart);
+   if (!notinit(vstep))       sprintf (options,"%s --vstep %g",options, vstep);
+   if (!notinit(vstop))       sprintf (options,"%s --vstop %g",options, vstop);
+   if (!notinit(dbp1_nscale)) sprintf (options,"%s --dbp1_nscale %g",options, dbp1_nscale);
+   if (!notinit(dbp2_nscale)) sprintf (options,"%s --dbp2_nscale %g",options, dbp2_nscale);
+   if (!notinit(disp_stim_max)) sprintf (options,"%s --disp_stim_max %g",options, disp_stim_max);
+   if (!notinit(disp_stim_min)) sprintf (options,"%s --disp_stim_min %g",options, disp_stim_min);
+   if (!notinit(disp_stim_incr)) sprintf (options,"%s --disp_stim_incr %g",options, disp_stim_incr);
+   if (!notinit(disp_calib_x)) sprintf (options,"%s --disp_calib_x %g",options, disp_calib_x);
+   if (!notinit(disp_calib_y)) sprintf (options,"%s --disp_calib_y %g",options, disp_calib_y);
+   if (!notinit(blur_csize))  sprintf (options,"%s --blur_csize %g",options, blur_csize);
+   if (!notinit(blur_ssize))  sprintf (options,"%s --blur_ssize %g",options, blur_ssize);
+   if (!notinit(stim_fnum))   sprintf (options,"%s --stim_fnum %s",options, stim_fnum);
+   if (!notinit(stim_tstep))  sprintf (options,"%s --stim_tstep %g",options, stim_tstep);
+   if (!notinit(stim_theta))  sprintf (options,"%s --stim_theta %g",options, stim_theta);
+   if (!notinit(use_stimfile)) sprintf (options,"%s --use_stimfile %g",options, use_stimfile);
+   if (!notinit(makestim))    sprintf (options,"%s --makestim %g",options, makestim);
+   if (!notinit(sb_cap))      sprintf (options,"%s --sb_cap %g",options, sb_cap);
+   if (!notinit(sb_capm))     sprintf (options,"%s --sb_capm %g",options, sb_capm);
+   if (!notinit(sb_capp))     sprintf (options,"%s --sb_capp %g",options, sb_capp);
+   if (!notinit(sb_dca))      sprintf (options,"%s --sb_dca %g",options, sb_dca);
+   if (!notinit(dbp1_mrate))  sprintf (options,"%s --dbp1_mrate %g",options, dbp1_mrate);
+   if (!notinit(dbp1_mpool))  sprintf (options,"%s --dbp1_mpool %g",options, dbp1_mpool);
+   if (!notinit(dbp1_hdur))   sprintf (options,"%s --dbp1_hdur %g",options,  dbp1_hdur);
+   if (!notinit(dbp1_hfilt))  sprintf (options,"%s --dbp1_hfilt %g",options, dbp1_hfilt);
+   if (!notinit(dbp1_hgain))  sprintf (options,"%s --dbp1_hgain %g",options, dbp1_hgain);
+   if (!notinit(dbp1_hoffs))  sprintf (options,"%s --dbp1_hoffs %g",options, dbp1_hoffs);
+   if (!notinit(surr_delay))  sprintf (options,"%s --surr_delay %g",options, surr_delay);
+   if (!notinit(surr_tau))    sprintf (options,"%s --surr_tau %g",options, surr_tau);
+   if (!notinit(surr_weight)) sprintf (options,"%s --surr_weight %g",options, surr_weight);
+   if (!notinit(center_weight))sprintf (options,"%s --center_weight %g",options, center_weight);
+   if (!notinit(cadiap))      sprintf (options,"%s --cadiap %g",options, cadiap);
+   if (!notinit(cadiam))      sprintf (options,"%s --cadiam %g",options, cadiam);
+   if (!notinit(cadiad))      sprintf (options,"%s --cadiad %g",options, cadiad);
+   if (!notinit(nshell))      sprintf (options,"%s --nshell %g",options, nshell);
+   if (!notinit(sb_vs))       sprintf (options,"%s --sb_vs %g",options, sb_vs);
+
+   if (!notinit(make_dbp2_sbac)) sprintf (options,"%s --make_dbp2_sbac %g",options,make_dbp2_sbac);
+   if (!notinit(dbp2thr))     sprintf (options,"%s --dbp2thr %g",options,dbp2thr);
+   if (!notinit(n_dbp2))      sprintf (options,"%s --n_dbp2 %g",options,n_dbp2);
+   if (!notinit(dbp2_mrate))  sprintf (options,"%s --dbp2_mrate %g",options, dbp2_mrate);
+   if (!notinit(dbp2_mpool))  sprintf (options,"%s --dbp2_mpool %g",options, dbp2_mpool);
+   if (!notinit(g_dbp2_sbac)) sprintf (options,"%s --g_dbp2_sbac %g",options,g_dbp2_sbac);
+   if (!notinit(n_dbp2_sbac)) sprintf (options,"%s --n_dbp2_sbac %g",options,n_dbp2_sbac);
+   if (!notinit(v_dbp2_sbac)) sprintf (options,"%s --v_dbp2_sbac %g",options,v_dbp2_sbac);
+   if (!notinit(t2bipolar)) sprintf (options,"%s --t2bipolar %g",options,t2bipolar);
+
+   if (!notinit(sreg1))       sprintf (options,"%s --sreg1 %g",options, sreg1);
+   if (!notinit(sreg2))       sprintf (options,"%s --sreg2 %g",options, sreg2);
+   if (!notinit(sreg3))       sprintf (options,"%s --sreg3 %g",options, sreg3);
+   if (!notinit(sreg4))       sprintf (options,"%s --sreg4 %g",options, sreg4);
+   if (!notinit(sreg5))       sprintf (options,"%s --sreg5 %g",options, sreg5);
+   if (!notinit(sreg6))       sprintf (options,"%s --sreg6 %g",options, sreg6);
+   if (!notinit(sreg7))       sprintf (options,"%s --sreg7 %g",options, sreg7);
+   if (!notinit(sreg8))       sprintf (options,"%s --sreg8 %g",options, sreg8);
+
+   if (!notinit(sr5_r5))      sprintf (options,"%s --sr5_r5 %g",options, sr5_r5);
+   if (!notinit(sr6_r3))      sprintf (options,"%s --sr6_r3 %g",options, sr6_r3);
+   if (!notinit(db1_r5))      sprintf (options,"%s --db1_r5 %g",options, db1_r5);
+   if (!notinit(db2_r5))      sprintf (options,"%s --db2_r5 %g",options, db2_r5);
+   if (!notinit(db1_r6))      sprintf (options,"%s --db1_r6 %g",options, db1_r6);
+   if (!notinit(db2_r6))      sprintf (options,"%s --db2_r6 %g",options, db2_r6);
+   if (!notinit(stonic))      sprintf (options,"%s --stonic %g",options, stonic);
+
+   if (!notinit(node_color))     sprintf (options,"%s --node_color %g",options,  node_color);
+   if (!notinit(bknd_color))     sprintf (options,"%s --bknd_color %g",options,  bknd_color);
+   if (!notinit(draw_synapse))   sprintf (options,"%s --draw_synapse %g",options,  draw_synapse);
+   if (!notinit(sbac_color))     sprintf (options,"%s --sbac_color %g",options,  sbac_color);
+   if (!notinit(sbac_densfile))  sprintf (options,"%s --sbac_densfile %s",options,  sbac_densfile);
+   if (!notinit(sbac_densfile2)) sprintf (options,"%s --sbac_densfile2 %s",options, sbac_densfile2);
+   if (!notinit(dbp2_file))      sprintf (options,"%s --dbp2_file %s",options, dbp2_file);
+   if (!notinit(dbp2_densfile))  sprintf (options,"%s --dbp2_densfile %s",options, dbp2_densfile);
+   if (!notinit(dbp1_densfile))  sprintf (options,"%s --dbp1_densfile %s",options, dbp1_densfile);
+   if (!notinit(cbplam))         sprintf (options,"%s --cbplam %g",options, cbplam);
+   if (!notinit(db1_lam))        sprintf (options,"%s --db1_lam %g",options, db1_lam);
+   if (!notinit(db1_lax))        sprintf (options,"%s --db1_lax %g",options, db1_lax);
+   if (!notinit(db1_biophys))    sprintf (options,"%s --db1_biophys %g",options, db1_biophys);
+   if (!notinit(db1_morph))      sprintf (options,"%s --db1_morph %g",options, db1_morph);
+   if (!notinit(db1_axdia))      sprintf (options,"%s --db1_axdia %g",options, db1_axdia);
+   if (!notinit(db1_sca))        sprintf (options,"%s --db1_sca %g",options, db1_sca);
+   if (!notinit(db2_lam))        sprintf (options,"%s --db2_lam %g",options, db2_lam);
+   if (!notinit(db2_lax))        sprintf (options,"%s --db2_lam %g",options, db2_lax);
+   if (!notinit(db2_biophys))    sprintf (options,"%s --db2_biophys %g",options, db2_biophys);
+   if (!notinit(db2_morph))      sprintf (options,"%s --db2_morph %g",options, db2_morph);
+   if (!notinit(db2_axdia))      sprintf (options,"%s --db2_axdia %g",options, db2_axdia);
+   if (!notinit(db2_sca))        sprintf (options,"%s --db2_sca %g",options, db2_sca);
+   if (!notinit(db_vs))          sprintf (options,"%s --db_vs %g",options, db_vs);
+   
+   if (!notinit(nahd))        sprintf (options,"%s --nahd %g",options,nahd);
+   if (!notinit(naab))        sprintf (options,"%s --naab %g",options,naab);
+   if (!notinit(naax))        sprintf (options,"%s --naax %g",options,naax);
+   if (!notinit(kax))         sprintf (options,"%s --kax %g",options,kax);
+   if (!notinit(ca1ax))       sprintf (options,"%s --ca1ax %g",options,ca1ax);
+   if (!notinit(ca6ax))       sprintf (options,"%s --ca6ax %g",options,ca6ax);
+   if (!notinit(ca5ax))       sprintf (options,"%s --ca5ax %g",options,ca5ax);
+   if (!notinit(ca7ax))       sprintf (options,"%s --ca7ax %g",options,ca7ax);
+   if (!notinit(db1_ca1_offm)) sprintf (options,"%s --db1_ca1_offm %g",options,db1_ca1_offm);
+   if (!notinit(db1_ca6_offm)) sprintf (options,"%s --db1_ca6_offm %g",options,db1_ca6_offm);
+   if (!notinit(db1_ca7_offm)) sprintf (options,"%s --db1_ca7_offm %g",options,db1_ca7_offm);
+   if (!notinit(db2_ca1_offm)) sprintf (options,"%s --db2_ca1_offm %g",options,db2_ca1_offm);
+   if (!notinit(db2_ca6_offm)) sprintf (options,"%s --db2_ca6_offm %g",options,db2_ca6_offm);
+   if (!notinit(db2_ca6_tauc)) sprintf (options,"%s --db2_ca6_tauc %g",options,db2_ca6_tauc);
+   if (!notinit(db2_ca6_taud)) sprintf (options,"%s --db2_ca6_taud %g",options,db2_ca6_taud);
+   if (!notinit(db1_ca1ax))    sprintf (options,"%s --db1_ca1ax %g",options,db1_ca1ax);
+   if (!notinit(db1_ca6ax))    sprintf (options,"%s --db1_ca6ax %g",options,db1_ca6ax);
+   if (!notinit(db2_ca1ax))    sprintf (options,"%s --db2_ca1ax %g",options,db2_ca1ax);
+   if (!notinit(db2_ca6ax))    sprintf (options,"%s --db2_ca6ax %g",options,db2_ca6ax);
+   if (!notinit(db1_cap))     sprintf (options,"%s --db1_cap %g",options,db1_cap);
+   if (!notinit(db2_cap))     sprintf (options,"%s --db2_cap %g",options,db2_cap);
+   if (!notinit(na5offs))     sprintf (options,"%s --na5offs %g",options,na5offs);
+   if (!notinit(k1offm))      sprintf (options,"%s --k1offm %g",options,k1offm);
+   if (!notinit(k6offm))      sprintf (options,"%s --k6offm %g",options,k6offm);
+   if (!notinit(set_sr))      sprintf (options,"%s --set_sr %g",options,set_sr);
+   if (!notinit(chanparamsfile))  sprintf (options,"%s --chanparamsfile %s",options, chanparamsfile);
+
+   if (!notinit(dsgc_denddia)) sprintf (options,"%s --dsgc_denddia %s",options, dsgc_denddia);
+   
+   if (!notinit(info_chan)) sprintf (options,"%s --info_chan %g",options, info_chan);
+
+   if (notinit(plotlabel)) {
+       plotlabel = filenamec;
+   };
+
+   sprintf (str6,"%s %s %s",str4,str5,options);
+
+   sprintf (run_string,"%s %s %s",str2,str3,str6);
+
+   if (D>0) sprintf (run_string,"%s --plotlabel %s -D",run_string,plotlabel)
+   else     sprintf (run_string,"%s --plotlabel %s",run_string,plotlabel);
+
+//    if (!notinit(makestim) && makestim > 0) {			// if makestim==1, don't display or run
+//            sprintf (stim_string,"%s %s %s",str2,str3,str6);
+//	    if (comnd_line_only) print "\n", stim_string
+//	    else system (stim_string);
+//    }    /* if makestim == 1 */
+
+    /* display or run model */
+
+//    else if (p > 0) {		// print compartments
+
+    if (p > 0) {		// print compartments
+
+            sprintf(system_string,"%s -p %g |& cat 1>&2 ",run_string,p);
+	    if (comnd_line_only) {print "\n",system_string;} 
+	    else system (system_string);
+	    //print (system_string);
+    }
+
+    else if (d > 0) {		// display model
+
+          if (R > 0) {		// make povray image
+
+            sprintf(ret_string,"%s -d %g -R > %s.pov",run_string,d,filenamec);
+            // sprintf(pov_string,"povray -w%g -h%g -i%s.pov -dx",povres,povres,filenamec);
+            sprintf(pov_string,"povray -w%g -h%g -i%s.pov",povres,povres,filenamec);
+            sprintf(system_string,"%s; %s",ret_string,pov_string);
+	    if (comnd_line_only) print "\n",system_string 
+	    else system (system_string);
+
+          } else 
+
+          if (F > 0) {		// make fig image
+
+            sprintf(system_string,"%s -d %g -v | vid -F > %s.fig",run_string,d,filenamec);
+	    if (comnd_line_only) print "\n",system_string 
+	    else system (system_string);
+
+          } else {			/* display model with vid */
+
+	    if (v > 0) {	// make image with vid
+
+              sprintf(system_string,"%s -d %g -v | vid -B %g -w %g",run_string,d,B,w);
+	      if (comnd_line_only) print "\n",system_string 
+	      else system (system_string);
+
+	    } else {		// make .ps image, convert to pdf
+	      sprintf(system_string,"%s -d %g -v | vid -B %g -c ",run_string,d,B);
+	      sprintf(system_string,"%s | ps2pdf - -  > %s.pdf",system_string,filenamec);
+	      if (comnd_line_only) print "\n",system_string 
+	      else system (system_string);
+
+	    }; /* make ps image */
+
+          }; /* display model with vid */
+
+     }  /* if (d > 0) */
+
+     else {			// run model
+
+	  if (v > 0) {		// run to vid window
+
+            sprintf(system_string,"%s -v | vid -B %g -w %g",run_string,B,w);
+	    if (comnd_line_only) print "\n",system_string 
+	    else system (system_string);
+
+	 } else {		// run and make file, if not parallel, convert to pdf 
+
+	   if (mosrun!="") pjobs = 1;
+
+	   if (plotpdf > 0) {	// after running parallel jobs, convert .r file into pdf
+
+	      sprintf(system_string,"plotmod %s.r | vid -B %g -c ",filenamec,B);
+	      sprintf(system_string,"%s | ps2pdf - - > %s.pdf",system_string,filenamec);
+	      if (comnd_line_only) print "\n",system_string 
+	      else system (system_string);
+
+	   } else {		// make .r file
+
+	      if (pjobs==0) {	// if not parallel, make .r file
+
+	        sprintf(model_string,"%s >& %s.r",run_string,filenamec);
+	        // sprintf(plot_string,"plotmod %s.r | vid -c | ps2pdf - - > %s.pdf",filenamec,filenamec);
+	        // sprintf(system_string,"%s; %s",model_string,plot_string);
+	        sprintf(system_string,"%s",model_string);
+                if (!notinit(makestim) && makestim > 0) {	// if makestim==1, don't make .r file
+	                 sprintf(system_string,"%s >& /dev/null & sleep 0.5",run_string);
+                };
+	        if (comnd_line_only) print "\n",system_string 
+                else system (system_string);
+	     } 
+	     else {		// make file in parallel
+
+                 if (!notinit(makestim) && makestim > 0) {	// if makestim==1, don't make .r file
+	              if (mosrun=="") {
+	                sprintf(system_string,"%s & sleep 0.5",run_string);
+	              } else {
+		        sprintf(system_string,"%s >& /dev/null & sleep 0.5",run_string);
+	              };
+                } else {					// run and make .r file
+	             if (mosrun=="") {
+	               sprintf(system_string,"%s >& %s.r &",run_string,filenamec);
+	             } else {
+		       sprintf(system_string,"%s %s >& %s.r & sleep 0.5",mosrun,run_string,filenamec);
+                     };
+	        };
+	        if (comnd_line_only) print "\n",system_string 
+	        else system (system_string);
+               };
+
+	   };  /* else plotpdf==0 */
+
+	 }; /* make .r file */
+
+     }; /* run model */
+
+

@@ -1,0 +1,25 @@
+# Densities of currents for DB3A cone bipolar (S/cm2).
+#
+#  This is an abbreviated file; see full length default file dens_dbp1_full.n
+#
+#     dend  dend_prox dend_dist soma   hillock  ax_thin axon  axon_dist ax_node varicos
+#
+# Name 
+# 0    DENDD   DENDP   SOMA      HCK     AXONT    AXON    AXOND   VARIC  R9     R10
+#
+0      R1      R2      R3        R4      R5       R6      R7      R8     R9     R10 
+#
+_NA5   0e-3    0e-3      0e-3    0e-3     0e-3    0e-3     0e-3   0e-3   0e-3   0e-3   # Na 
+_KDR   0e-3    0e-3      0e-3    0e-3     0e-3    0e-3     0e-3   0e-3   0e-3   0e-3   # Kdr
+_KA    0e-3    0e-3      0e-3    0e-3     0e-3    0e-3     0e-3   0e-3   0e-3   0e-3   # KA
+_KH    0e-3    0e-3    0.0e-3    0e-3     0e-3    0e-3   0.0e-3   0e-3   0e-3   0e-3   # KH
+_KIR   0e-3    0e-3      0e-3    0e-3     0e-3    0e-3     0e-3   0e-3   0e-3   0e-3   # KHz
+_CA_T  0e-3    0e-3      0e-3    0e-3     0e-3    0e-3     0e-3   0e-3   0e-3   0e-3   # Ca-T, markov
+_VST   dvst    dvst      dvst    dvst     dvst    dvst     dvst   dvst   dvst   dvst   # Vstart
+_VRV   dvrev   dvrev     dvrev   dvrev    dvrev   dvrev    dvrev  dvrev  dvrev  dvrev  # Vrev
+_RM    drm     drm       drm     drm      drm     drm      drm    drm    drm    drm    # Rm
+_RI    dri     dri        50     dri      dri     dri      dri    dri    dri    dri    # Ri
+_CM    dcm     dcm       dcm     dcm      dcm     dcm      dcm    dcm    dcm    dcm    # Cm
+_CPL   0.5     0.1       0.2     cbplam   cbplam  cbplam   cbplam 0.05    0.1    0.1    # cplam
+_COL   green   blue      red     blue     cyan    magenta  brown  yellow ltgreen ltred # color
+#

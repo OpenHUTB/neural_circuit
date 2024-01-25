@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+#  script to convert comma-separated data recordings (time, voltage/current) 
+#    into a space-separated data file.
+#
+#
+awk 'BEGIN {
+     first = 1;
+     FS=",";
+     }
+
+     NR>1 { print $1, $2 } 
+   ' $1

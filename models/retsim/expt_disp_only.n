@@ -1,0 +1,25 @@
+
+/* Experiment disp_only */
+
+proc setparams ()
+
+{
+  /* allow make params from command line */
+
+  if (!notinit(n_gc))  make_gc  = 1;
+  if (!notinit(n_cbp)) make_cbp = 1;
+  if (!notinit(n_cones)) make_cones = 1;
+  if (!notinit(n_sb)) make_sb  = 1;
+  if (notinit(bg_inten)) bg_inten  = 1e4;
+  if (notinit(arrsiz)) arrsiz      = 200;
+}
+
+/*--------------------------------------------------*/
+
+proc runexpt()
+
+{
+
+
+};
+

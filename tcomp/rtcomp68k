@@ -1,0 +1,13 @@
+
+nc -v tcomp68k | vid
+
+nc --sb_ca6_offm -v tcomp68k | vid
+
+nc --sb_ca6_offm 0.026 --setymax 0 -v tcomp68k | vid
+
+nc --sb_ca6_offm 0.026 --setymax 0 --setymin 5e-12 -v tcomp68k | vid
+
+nc --sb_ca6_offm 0.026 --setymax 20e-12 --setymin -20e-12 -v tcomp68k | vid
+
+nc --sb_ca6_offm 0.026 --setymax 20e-12 --setymin -20e-12 tcomp68k > tcomp68k.r
+

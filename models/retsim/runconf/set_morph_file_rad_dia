@@ -1,0 +1,61 @@
+#! ../../../bin/nci -c
+#
+#  Script to multiply diameter by 2 (radius -> diameter)
+#   also re-zeroes the soma location
+
+first = 1;
+
+diascale = 1.0;
+xscale   = 1.0;
+yscale   = 1.0;
+zscale   = 1.0;
+xyscale  = 0;
+xyzscale = 0;
+radincr = 10;
+
+nparm = setvar();               /* get parameters from command line */ 
+
+if (xyzscale > 0) { xyscale = xyzscale; zscale = xyzscale; };
+if (xyscale > 0)  { xscale  = xyscale;  yscale = xyscale; };
+
+for (i=1; i<argc && strstr (argv[i],"--") >= 0; i+=2) {   /* skip over "--param xx", find file name */
+                if (i>=argc-2) {printf ("%s: no input file name\n",argv[0]); exit;};
+};
+
+fd = fopen (argv[i],"r");
+dim Fld[] = {{"x"}};
+for (flds=0; Fld = getflds(fd), flds=sizeof(Fld) > 0; flds=flds) {
+
+    if (Fld[1] == "#") {
+	    print Fld[0];
+    }
+    else {
+	n   = atof(Fld[1]);
+	par = atof(Fld[2]);
+	dia = Fld[3];
+	x   = atof(Fld[4]) * xscale;
+	y   = atof(Fld[5]) * yscale;
+	z   = atof(Fld[6]) * zscale;
+        reg = Fld[7];
+	dend = atof(Fld[8]);
+	if (first == 1) {
+	    //printf ("#   node  parent    dia       xbio       ybio      zbio      region   dendr\n#\n");
+	    first = 0;
+	    xs = x;
+	    ys = y;
+	    zs = z;
+	};
+        if (!isalpha(dia)) {		 // this allows dia to be a char string
+	    temp = atof(dia) * diascale; // scale dia
+            sprintf (dia,"%g",temp);	 // make it back into a char string
+	};
+	if (isnum(dia)) 
+	   printf ("  %4g     %4g     %-8g   %-8.4g   %-8.4g  %-5.3g    ",
+	                n,    par,     dia, x - xs, y - ys, z - zs)
+	else
+	   printf ("  %4g     %4g     %-8s   %-8.4g   %-8.4g  %-5.3g    ",
+	                n,    par,     dia, x - xs, y - ys, z - zs);
+	printf ("%-4s      %g\n", reg, dend);
+    };
+};
+

@@ -1,0 +1,34 @@
+# Densities of currents for starburst (S/cm2).
+#
+#   dend_dist  dend dend_prox soma    hillock   thin    axon axon_dist node  varicos
+#
+0        R1     R2     R3      R4       R5       R6      R7      R8     R9     R10
+#
+# 0      DENDD  DEND   DENDP   SOMA     HILLOCK  AXONT   AXON    AXOND  VARIC  R9
+#
+_NA     0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # Na 
+_NA5    0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # Na5
+_NA6    0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # Na6
+_NA8    0e-3   namid  namid   0e-3    namid    namid   nadist   nadist  nadist nadist   # Na8
+#_KDR    5e-3   5e-3   5e-3    5e-3     0e-3     0e-3    0e-3    0e-3   0e-3   0e-3   # Kdr
+_KV3    0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # Kv3
+_KA     0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # KA
+_KH     0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # KH
+_KIR    0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # KHz
+_SKCA1  0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # sKCa1
+_SKCA2  0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # sKCa2
+_BKCA   0e-3   0e-3   0e-6    0e-3     0e-6     0e-6    0e-6    0e-6    0e-3   0e-3   # bKCa
+_CLCA   0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # ClCa
+_CA_L   0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3 # Ca
+_CA_T   0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3 # Ca6
+_CAP    0e-6   0e-7   sb_cap  0e-7     sb_cap   sb_cap  sb_cap  sb_cap  sb_cap sb_cap # Capump
+_CAE    0e-2   0e-3   0e-3    0e-7     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # Caexch
+_VST    sb_vs  sb_vs  sb_vs   sb_vs    sb_vs    sb_vs   sb_vs   sb_vs   sb_vs  sb_vs  # Vstart
+_VRV    sb_vr  sb_vr  sb_vr   sb_vr    sb_vr    sb_vr   sb_vr   sb_vr   sb_vr  sb_vr  # Vrev
+_RM     sb_rm  sb_rm  sb_rm   sb_rm    sb_rm    sb_rm   sb_rm   sb_rm   sb_rm  sb_rm  # Rm
+_RI     sb_rid sb_rii sb_rip  dri      dri      dri     dri     dri     dri    dri    # Rm
+_CM     dcm    dcm    dcm     dcm      dcm      dcm     dcm     dcm     dcm    dcm    # Cm
+_CPL    sbaclm sbaclm sbaclm  sbaclm   sbaclm   sbaclm  sbaclm  sbaclm  sbaclm sbaclm # complam
+_CMUL   0      0      0       0        0        0       0       0       0      0      # cmul
+_COL    gray   gray   gray    red      gray     gray    gray    gray    gray   gray   # color
+_DIA    spdia  spdia  sdia    1        sdia     sdia    sdia    sdia    sdia   sdia   # dia factor

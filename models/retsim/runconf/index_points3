@@ -1,0 +1,119 @@
+#!/bin/sh
+#
+#  script to find branch points and tips
+#
+awk 'BEGIN {
+       maxnodes = 50000;
+       # distlimit = 1.5;
+       distlimit = 0.1;
+       soma = 0;
+       for (i=0; i<maxnodes; i++) isnode[i] = 0;
+       
+       for (i=0; i<maxnodes; i++) isparent[i] = 0;
+       for (i=0; i<maxnodes; i++) nodeparent[i] = 0;
+       for (i=0; i<maxnodes; i++) istip[i] = 0;
+       for (i=0; i<maxnodes; i++) isbranchpnt[i] = 0;
+       for (i=0; i<maxnodes; i++) xpos[i] = 0;
+       for (i=0; i<maxnodes; i++) ypos[i] = 0;
+       for (i=0; i<maxnodes; i++) zpos[i] = 0;
+     }
+     function ndist(a,b) {
+       	    return sqrt ((xpos[a] - xpos[b])^2 + (ypos[a] - ypos[b])^2 + (zpos[a] - zpos[b])^2)
+     }
+
+     !/^#/ { 
+	    node = $1; parent = $2; 
+            nodeparent[node] = parent;
+            xpos[node] = $4;
+            ypos[node] = $5;
+            zpos[node] = $6;
+            region[node] = $7;
+	    isnode[node] = 1;
+	    isparent[parent]++;
+	} 
+      END { 
+            for (i=0; i<maxnodes; i++) {					# find all tips
+		    if (isnode[i] && isparent[i] == 0) istip[i] = 1;
+	    }
+            for (i=0; i<maxnodes; i++) {					 # find all branch points
+		    if (isparent[i] > 1) isbranchpnt[i] = 1; 
+            }
+
+            # for each tip, find parent branch point 
+
+            for (i=0; i<maxnodes; i++) {					# find parents, test distance
+		    if (istip[i]) {
+			   for (j=i; ndist(i,j) < distlimit; j=k) {
+			        k = nodeparent[j];
+				# print "checking",i,k;
+				if (k==soma) break;
+			        if (isbranchpnt[k]) {
+					if (ndist(i,k) < distlimit) {
+						if (--isparent[k]<2) isbranchpnt[k] = 0;
+						istip[i] = 0;
+						break;
+					}
+			        }
+			   }
+		    }
+	    }
+	    printf ("Using distance criterion %g um\n",distlimit);
+	    printf ("Branch points: \n");
+            for (i=0; i<maxnodes; i++) {
+		    if (isbranchpnt[i]) { printf ("%4s ",i); } 
+            }
+            printf ("\n\n");
+            printf ("Tips:  \n");
+            for (i=0; i<maxnodes; i++) {
+		    if (istip[i]) { printf ("%4s ",i);}
+            }
+            for (r6x=r6y=i=j=0; i<maxnodes; i++) {
+		    if (region[i] == "R6") { 	# find average X,Y loc of R6 (base of prox axon)
+			    r6x += xpos[i];
+			    r6y += ypos[i];
+			    r6z += zpos[i];
+			    j++;
+		    }
+            }
+	    if (j==0) j=1;
+	    avgx = r6x / j;		# calculate average
+	    avgy = r6y / j;
+	    avgz = r6z / j;
+
+            printf ("\n\n");
+	    printf ("Axon base: %g %g %g\n",avgx, avgy, avgz);
+
+            for (i=0; i<maxnodes; i++) {	# find distance to tip from prox axon
+		  if (istip[i]) {
+		      tipdist[i] = sqrt((xpos[i]-avgx)^2 + (ypos[i]-avgy)^2);
+                  }
+            }
+
+            printf ("\n");
+            # printf ("Axon branch tips:  \n");
+            for (i=k=0; i<maxnodes; i++) {	# find distance to axonal branch tips
+		   if (istip[i] && (avgz-zpos[i]) > 0) {
+	    #	        printf ("%4g ",tipdist[i]);
+			axtip[k++] = i;
+		   }
+            }
+            # printf ("\n\n");
+            for (j=0; j<k; j++) {	# sort by distance
+             for (i=0; i<k; i++) {
+	    #    printf (" %d %g %g\n",i,tipdist[axtip[i]], tipdist[axtip[i+1]]);
+		    if (tipdist[axtip[i]] < tipdist[axtip[i+1]]) {
+			    t = axtip[i];
+			    axtip[i] = axtip[i+1];
+			    axtip[i+1] = t;
+		    }	
+	     }
+	    }
+            printf ("Farthest axon branch tips:  \n\n");
+	    printf (" node  dist\n\n");
+
+            for (i=0; i<k; i++) {
+	        printf (" %4d  %g\n",axtip[i], tipdist[axtip[i]]);
+	    }
+            printf ("\n");
+      }
+   ' $1

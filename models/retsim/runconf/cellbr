@@ -1,0 +1,616 @@
+#! /home/rob/bin/nci -c
+//
+//#! ../../../bin/nci -c
+//
+//  script to find branch points and tips of neurons
+//
+//   "cbp" - bipolar cell axonal arbor
+//   "sbac" - starburst amacrine dendritic arbor
+//
+//  usage:  
+//      cellbr --plot orderlen  file1 ...                (gives plot of length of branch points by branch order)
+//      cellbr --plot ordernum  file1 ...                (gives plot of number of branch points by branch order)
+//      cellbr --plot brlen     file1 ...                (gives histogram of branch lengths)
+//      cellbr --plot brlen --xmax n --dbinwidth n  file1 ... (sets x-axis length of plot)
+//      cellbr --celltype cbp  --plot orderl file1 ...
+//      cellbr --celltype sbac --plot ordern file1 ...
+//      cellbr --celltype sbac --label cbp_0576.t5 file1 ...
+//      cellbr --ninfo 1 file1 ...                 (gives info on how branch points and distances are derived)
+//      cellbr --ninfo 2 file1 ...                 (gives more info for debugging)
+//
+//  NB: to get this to run, set the path for nci (on first line above) to run correctly on your system.
+// 
+ninfo = 0;
+plot = "orderlen";
+//celltype = "sbac";
+celltype = "cbp";
+//label = "";
+
+maxnodes = 5000;
+maxbr = 25;
+axon_start = 12;
+direction = -1;				// direction (-1 -> axon,  1 -> dendrites)
+distlimit = 1.5;
+majorbranchthresh = 2.5;
+soma = 0;
+
+maxdbins = 200;
+zbinwidth = 2;				// bin size for finding initial axon branch 
+maxzloc = 80;
+node = 0;
+
+draw_graphics = 1;			// set to 0 to remove graphics commands for plotmod
+
+nparm = setvar();
+
+if (celltype=="sbac") {
+    direction = 1;
+    axon_start = 0;
+}; 
+axon_top = 0 + axon_start*direction;	// ignore proximal branch points (above -8 um)
+
+dim isaxnode[maxnodes];
+dim isparent[maxnodes];	        // number of descendent branches
+dim nodeparent[maxnodes];	// parent node
+dim isbranchpnt[maxnodes];	// has more than 1 descendent
+dim majorbranchpnt[maxnodes];
+dim n_parent_brpnt[maxnodes];	// how many parent branch points on path to top
+dim order[maxnodes];		// how many times parent branch has been counted
+dim orderlength[maxnodes];	// how many times parent branch has been counted
+dim tipdist[maxnodes];		// distance to tips 
+dim axtip[maxnodes];		// array to sort tips by distance
+dim istip[maxnodes];
+dim xpos[maxnodes];
+dim ypos[maxnodes];
+dim zpos[maxnodes];
+dim region[maxnodes];
+dim endbranchpnt[maxnodes][maxbr];
+dim seglen[maxnodes][maxbr];
+
+dim orderl[maxbr];		 // avg length of order segments
+dim ordern[maxbr];		 // number of order segments
+dim dbin[maxdbins];		 // length of segments
+
+dim avg_orderl[maxbr] = {{0}};	 // avg length of order segments
+dim avg_ordern[maxbr] = {{0}};	 // number of order segments
+dim avg_dbin[maxdbins] = {{0}};	 // length of segments
+
+dim sum_orderl[maxbr] = {{0}};	 // sum of length of order segments
+dim sum_ordern[maxbr] = {{0}};	 // sum of number of order segments
+dim sum_dbin[maxdbins] = {{0}};	 // sum of length of segments
+
+dim sumsq_orderl[maxbr] = {{0}}; // sumsq of length of order segments
+dim sumsq_ordern[maxbr] = {{0}}; // sumsq of number of order segments
+dim sumsq_dbin[maxdbins] = {{0}};// sumsq of length of segments
+
+dim sd_orderl[maxbr] = {{0}};    // stdev of length of order segments
+dim sd_ordern[maxbr] = {{0}};    // stdev of number of order segments
+dim sd_dbin[maxdbins] = {{0}};   // stdev of length of segments
+
+maxzbins = maxzloc / zbinwidth;
+dim zbin[maxzbins];		 // number of branch pnt zdists
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+func noddist(a,b) {
+    return sqrt ((xpos[a] - xpos[b])^2 + (ypos[a] - ypos[b])^2 + (zpos[a] - zpos[b])^2);
+};
+
+func roundupaxis (x,xmax) {
+    return (int(x/5+1)*5);
+};
+
+proc draw_ax_labels(xaxis,yaxis,ysd) {
+       local yh;
+    yh = 0.98;
+    printf ("# graphics commands for plotmod:\n");
+    if (strlen(label)>0) printf ("#f plotlabel %s\n",label);
+    printf ("#gpen 7\n");
+    printf ("#gm 0.35 0.04\n");
+    printf ("#gt %s\n",xaxis);
+    printf ("#gm 0.18 %g\n",yh);
+    if (ncells>1) printf ("#gpen 1\n");
+    printf ("#gt %s\n",yaxis);
+    if (ncells>1) {
+      printf ("#gm 0.32 %g\n",yh);
+      printf ("#gpen 2\n");
+      printf ("#gt %s\n",ysd);
+      printf ("#gm 0.42 %g\n",yh);
+      printf ("#gpen 7\n");
+      printf ("#gt %s %g\n","ncells",ncells);
+    };
+    printf ("# \n");
+};
+
+if (argc<2) {print "cellbr: no file name"; exit;}
+else for (f=1; f<argc && strstr (argv[f],"--") >= 0; f+=2) {   /* skip over "--param xx", find file name */
+        if (f>=argc-2) {print "cellbr: no file name"; exit;};
+};
+
+func shift (arr,n) {
+     local i,j,s;
+     dim arr2[sizeof(arr)];
+
+   arr2 = arr;
+   s = sizeof(arr)-n;
+   for (i=0; i<s; i++) {arr2[i] = arr2[i+n];};
+   for (j=0; j<n; j++) {arr2[i++] = "";};
+   return arr2;
+};
+
+/*- - - - - - - - - - - - - - - - - - - - - - - - - -*/
+
+ncells = 0;
+for (c=f; c<argc; c++,ncells++) {		// for several cells
+
+  print "#", argv[c];
+  if (notinit(label)) label = argv[c];
+  
+  for (i=0; i<maxnodes; i++) isaxnode[i] = 0;
+  for (i=0; i<maxnodes; i++) isparent[i] = 0;
+  for (i=0; i<maxnodes; i++) nodeparent[i] = 0;
+  for (i=0; i<maxnodes; i++) isbranchpnt[i] = 0;
+  for (i=0; i<maxnodes; i++) majorbranchpnt[i] = 0;
+  for (i=0; i<maxnodes; i++) n_parent_brpnt[i] = 0;
+  for (i=0; i<maxnodes; i++) order[i] = 0;
+  for (i=0; i<maxnodes; i++) orderlength[i] = 0;
+  for (i=0; i<maxnodes; i++) tipdist[i] = 0;
+  for (i=0; i<maxnodes; i++) axtip[i] = 0;
+  for (i=0; i<maxnodes; i++) istip[i] = 0;
+  for (i=0; i<maxnodes; i++) xpos[i] = 0;
+  for (i=0; i<maxnodes; i++) ypos[i] = 0;
+  for (i=0; i<maxnodes; i++) zpos[i] = 0;
+  for (i=0; i<maxnodes; i++) region[i] = "0";
+  for (i=0; i<maxnodes; i++) 
+       for (j=0; j<maxbr; j++) {
+            endbranchpnt[i][j] = 0; 
+            seglen[i][j] = 0; 
+       };
+  for (i=0; i<maxbr; i++) orderl[i] = 0;
+  for (i=0; i<maxbr; i++) ordern[i] = 0;
+  for (i=0; i<maxzbins; i++) zbin[i] = 0;
+  for (i=0; i<maxdbins; i++)  dbin[i] = 0;
+
+  if ((fd = fopen (argv[c],"r"))==0) {
+     fprintf(stderr,"cellbr: can't open file %s\n",argv[c]);
+     exit;
+  };
+
+  dim Fld[] = {{"x"}};
+  for (flds=0; Fld = getflds(fd), flds=sizeof(Fld) > 0; flds=flds)
+  {
+     if (strchr(Fld[1], "#") != 0) {
+        node   = int(atof(Fld[1])); 
+        parent = int(atof(Fld[2]));
+        xpos[node] = atof(Fld[4]);
+        ypos[node] = atof(Fld[5]);
+        zpos[node] = atof(Fld[6]);
+        region[node] = Fld[7];
+        nodeparent[node] = parent;
+        if (zpos[node]*direction >= axon_top*direction) {		// exclude dendrites
+             isaxnode[node] = 1;
+    	     isparent[parent]++;
+        };
+     };
+  };
+
+ //for (i=0; i<maxnodes; i++) {					// print zpos and region
+ //     if (isaxnode[i]) printf ("%g zpos %g %s\n", i, zpos[i], region[i]);
+ //};
+
+  for (i=0; i<maxnodes; i++) {					// find all axon tips
+    if (isaxnode[i] && isparent[i] == 0) istip[i] = 1;
+  };
+  for (i=0; i<maxnodes; i++) {					 // find all axon branch points
+       if (isparent[i] > 1) isbranchpnt[i] = 1; 
+  };
+
+  // for each tip, find parent branch point and distance, remove spines
+
+  for (i=0; i<maxnodes; i++) {					// find parents, measure tot distance
+        if (istip[i]) {
+	     k = -1;
+	     branchpntdist = 0;
+	     for (j=i; k!=soma ; j=k) {
+	          k = nodeparent[j];
+		  if (celltype=="cbp" && k==soma) break;
+		  branchpntdist += noddist(j,k);		// add dist along branch 
+		  // print j,k,noddist(j,k);
+		  // print "checking",i,k,isbranchpnt[k];
+		  if (isbranchpnt[k]) {
+		        if (branchpntdist < distlimit) {		// ignore branch if too short
+		 	    if (--isparent[k]<2) isbranchpnt[k] = 0;
+			    istip[i] = 0;
+			    // printf ("ignore tip %g parentbranchpnt %g\n",i,k);
+			    break;
+			};
+		  };
+	     };
+	};
+  };
+
+  for (i=0; i<maxnodes; i++) {				// make histogram of branch pnt zdists
+	  if (isbranchpnt[i]) {
+	    zdist = int(abs(zpos[i])/zbinwidth); 
+	    zbin[zdist]++;
+          };
+  };
+
+  axend = 0;
+  for (i=0; i<maxzbins; i++) {				// look for no branches after axonal arbor
+      if (zbin[i]>0) {
+          axend = i;
+      };
+  };
+  if (celltype=="cbp") 
+      axon_base = axend*0.35*zbinwidth
+  else if (celltype=="sbac")
+      axon_base = zpos[0];
+
+  axon_smalltips = 0;
+  for (axs=i=0; i<maxzbins-2; i++) {				// look for branches before axonal arbor
+        if (i*zbinwidth < abs(axon_base)) continue;
+        if       ((zbin[i]>=1) && (zbin[i+1]==0)) axs = i+1
+        else if  ((zbin[i]==1) && (zbin[i+1]>=1) && (zbin[i+2]==0)) axs = i+2;
+        if (axs > 0) { 
+            axon_smalltips = (i+2)*zbinwidth;
+            break;
+        };
+  };
+  if (ninfo>0) {
+     printf ("#\n");
+     printf ("# histogram of branch pnt z distances, binsize %g\n#\n",zbinwidth);
+     axzbin = axend+4;
+     if (axzbin > maxzbins) axzbin = maxzbins;
+     for (i=0; i<axzbin; i++) {
+        printf ("%-7.4g  %-7.4g\n",i*zbinwidth,zbin[i]);
+     };
+  };
+
+  if (axend==0) axon_smalltips = 0;
+
+  if (ninfo>0) {
+     printf ("# \n");
+     printf ("# axs %g axend %g\n",axs,axend);
+     printf ("# \n");
+     printf ("# axonal arbor zdist %4.3g\n", axend*zbinwidth*direction);
+     printf ("# starting axon_base %4.3g\n", axon_base*direction);
+  };
+
+  if (celltype=="cbp") {
+      for (i=0; i<maxzbins; i++) {				// find first branch in axonal arbor
+          if (i*zbinwidth > abs(axon_base) && zbin[i]>=1) {
+	       axon_base = i*zbinwidth;
+	       break;
+          };
+      };
+
+      axon_base2 = axon_base;
+      for (i=0; i<maxzbins; i++) {				// skip over initial small branches
+         if (i*zbinwidth > abs(axon_base)) {
+            if (zbin[i]>=1) axon_base2 = i*zbinwidth
+            else break;
+         };
+      };
+
+      for (i=0; i<maxzbins; i++) {				// skip over no branch zone
+         if (i*zbinwidth > abs(axon_base2)) {
+            if (zbin[i]==0) continue
+            else { axon_base2 = i*zbinwidth; break; };
+         };
+      };
+      if (abs(axon_base2) >= axend*zbinwidth) axon_base2 = axon_base+zbinwidth;
+
+  } 		/* if (celltype=="cbp") */
+  else {
+       axon_base2 = axon_base;
+       axon_smalltips = 0;
+  };
+
+  if (ninfo>0) printf ("# axon_base  %-5.3g %-5.3g um\n",axon_base*direction,axon_base2*direction);
+
+  for (i=0; i<maxnodes; i++) {				// start looking below first branch
+       if ((abs(zpos[i]) < abs(axon_base)) && isbranchpnt[i]) 
+	     isbranchpnt[i] = 0;
+  };
+  if (ninfo > 1) {
+     print "# majorbranchthresh", majorbranchthresh, axon_base2-axon_base;
+     printf ("# \n");
+  };
+
+  for (i=0; i<maxnodes; i++) {				// skip over short initial branches
+        if (istip[i]) {
+	     k = -1;
+	     branchpntdist = 0;
+	     for (j=i; k!=soma ; j=k) {
+	          k = nodeparent[j];
+		  if (celltype=="cbp" && k==soma) break;
+		  branchpntdist += noddist(j,k);	// add dist along cable segment 
+	  	  // print i, "dist", branchpntdist;
+		  if (isbranchpnt[k]) {
+		      if (((branchpntdist > (majorbranchthresh + axon_base2-axon_base)) ||
+		         (abs(zpos[k]) >= axon_smalltips)) || axon_smalltips==0) 
+		            majorbranchpnt[k]++;
+		       if (ninfo>1) printf ("%4g  %4g  %5.3g  %5.3g  %5.3g  %5.3g  %2g\n",i, k, 
+			   abs(zpos[k]), axon_base, axon_smalltips, branchpntdist,majorbranchpnt[k]);
+	         };
+	     };
+	     if (ninfo>1) printf("\n");
+	};
+  };
+
+  // identify main branchpoint at distal end of proximal axon 
+
+  // for (brmax=i=soma; i<maxnodes; i++) {			// test to find best majorbranchthresh
+  // 	    print i, majorbranchpnt[i];
+  // };
+
+  main_branchpnt = 0;
+  for (brmax=i=0; i<maxnodes; i++) {				// find the highest number of majorbranchpnt
+       if (brmax <= majorbranchpnt[i]) {			//  that has more sub-branches
+	     brmax = majorbranchpnt[i];			        //  than the one below 
+       };
+  };
+  for (i=0; i<maxnodes; i++) {					// find lowest branch point
+       if (brmax == majorbranchpnt[i]) {			//  that has max sub-branches
+	   k = -1;
+	   for (j=i; k!=soma ; j=k) {
+	      k = nodeparent[j];
+	      if (isbranchpnt[k] && majorbranchpnt[k]>0) {
+	 	  majorbranchpnt[k] = 0;			// remove parent with same majorbranchpnt
+		  isbranchpnt[k] = 0;
+              };
+           };
+	   if (majorbranchpnt[i]>0) main_branchpnt = i;
+       };
+  };
+  for (i=0; i<maxnodes; i++) {					// erase tips higher than main branchpnt
+        if (istip[i]) {
+	     k = -1;
+	     found = 0;
+	     for (j=i; k!=soma ; j=k) {
+	          k = nodeparent[j];
+		  if (k==main_branchpnt) {
+		      found = 1;
+		      break;
+                  };
+	     };
+	     if (!found) istip[i] = 0;
+	};
+  };
+
+  if (ninfo>0) printf ("# main proximal branch point %g (zloc = %g)\n",main_branchpnt,zpos[main_branchpnt]);
+
+  for (ntips=i=0; i<maxnodes; i++) {				// find parents, measure tot distance
+       if (istip[i]) {
+	     k = -1;
+	     segend = i;
+	     slen = 0;
+	     branchpntdist = 0;
+	     for (j=i; k!=soma ; j=k) {
+	          k = nodeparent[j];
+		  branchpntdist += noddist(j,k);	// add dist along cable segment 
+		  slen += noddist(j,k);			// add dist along segment between branches 
+	  	  // print i, "dist", branchpntdist;
+		  if (isbranchpnt[k]) {
+			seglen[i][n_parent_brpnt[i]] = slen;
+			endbranchpnt[i][n_parent_brpnt[i]] = segend;
+			n_parent_brpnt[i]++;
+			segend = k;
+			slen = 0;			// reset dist along segment
+		  };
+		  if (k==main_branchpnt) break;		// stop at axon base
+	     };
+	     // print i, "dist", branchpntdist;
+	     ntips++;
+       };
+  };
+  if (ninfo>0) printf ("# ntips %g\n",ntips);
+
+  for (i=soma; i<maxnodes; i++) {				// calculate avg dist by order 
+       if (istip[i]) {
+	     if (ninfo>0) printf ("tip %g nbr %g\n",i, n_parent_brpnt[i]);
+	     for (j=0; j<n_parent_brpnt[i]; j++) {		// add dist from tip to parents
+		 o = n_parent_brpnt[i]-j-1;			// order: proximal=0 distal=n_parent_brpnt 
+	 	 distnode = endbranchpnt[i][j];
+		 // print distnode, o;
+		 d = seglen[i][j];
+		 order[distnode] = o+1;
+	         orderlength[distnode] = d;
+		 if (ninfo==1) printf ("    or %2g node %4g  n %-3g len  %-5.3g\n",
+		   		o+1,endbranchpnt[i][j], isparent[distnode],d);
+		 segend = endbranchpnt[i][j];
+		 if (ninfo==2) printf("i %4g j %2g  o %2g s %4g len %6.3g n %2g cum %g\n",
+	  	             i,j, o, segend, d,  order[distnode], orderlength[distnode]);
+	     };
+       };
+  };
+
+  for (i=0; i<maxnodes; i++) {
+        o = order[i] - 1;
+        if (o >= 0) {
+		 ordern[o]++;		// count how many segments per order
+// print i, o, ordern[o];
+	};
+  };
+
+  for (i=0; i<maxnodes; i++) {
+       o = order[i] - 1;
+       if (o >= 0) {
+	     orderl[o] += orderlength[i] / ordern[o];	// calc avg order length
+       };
+  };
+
+  if (ninfo>0) {
+      printf ("Using distance criterion %g um\n",distlimit);
+      printf ("Branch points: \n");
+      for (i=0; i<maxnodes; i++) {
+	   if (isbranchpnt[i]) { printf ("%4g ",i); };
+      };
+      printf ("\n\n");
+  };
+
+  // printf ("Tips:  \n");
+  for (i=j=0; i<maxnodes; i++) {
+	if (istip[i]) { 
+	    for (d=j=0; j<n_parent_brpnt[i]; j++) {
+	           d += seglen[i][j];
+	    };
+  	    if (ninfo>0) printf ("tip %4g  dist %-4.3g to %g\n",i, d, main_branchpnt);
+	    tipdist[i] = d;				// remember xtotal distance from tip to prox axon
+	};
+  };
+
+  if (ninfo>0) printf ("\n");
+  a = main_branchpnt;
+  if (ninfo>0) {
+     printf ("# Main branch base: node %g (%g, %g, %g)\n",a,xpos[a],ypos[a],zpos[a]);
+     printf ("#\n");
+  };
+
+  for (j=0; j<maxbr; j++) {			// make sum and sumsq of order length and number
+       sum_orderl[j] += orderl[j];
+       sum_ordern[j] += ordern[j];
+       sumsq_orderl[j] += orderl[j] * orderl[j];
+       sumsq_ordern[j] += ordern[j] * ordern[j];
+  };
+
+
+  if (ninfo>0) printf ("#\n");
+  // printf ("Axon branch tips:  \n");
+  for (i=k=0; i<maxnodes; i++) {	// find distance to axonal branch tips below prox axon
+	if (istip[i]) {
+   	     // printf ("%4g ",tipdist[i]);
+	     axtip[k++] = i;
+        };
+  };
+
+  // printf ("\n\n");
+  for (j=0; j<k; j++) {		// sort branch tips by distance
+       for (i=0; i<k; i++) {
+            // printf (" %g %g %g\n",i,tipdist[axtip[i]], tipdist[axtip[i+1]]);
+            if (tipdist[axtip[i]] < tipdist[axtip[i+1]]) {
+		  t = axtip[i];
+		  axtip[i] = axtip[i+1];
+		  axtip[i+1] = t;
+	    };
+	};
+  };
+  farthest_branch = tipdist[axtip[0]];
+
+  if (ninfo>0) {
+	printf ("# Farthest axon branch tips:  \n#\n");
+        printf ("# node  dist    region\n#\n");
+        for (i=0; i<k; i++) {
+            printf (" %4g   %-7.4g %s\n",axtip[i], tipdist[axtip[i]], region[axtip[i]]);
+        };
+  };
+
+  // dbinwidth = 2;				       // bin size for brlen plot
+  if (!notinit(dbinwidth)) dbinwidth = int(dbinwidth);
+
+  if (ncells==0) {				// must set bin size only once
+     if (notinit(dbinwidth)) dbinwidth = int (farthest_branch/12)+1;
+     if (dbinwidth==0) dbinwidth = 1;
+     if (strstr("brlen",plot)==0) print "# dbinwidth",dbinwidth;
+  };
+ 
+  for (i=0; i<k; i++) {
+       dist = int (tipdist[axtip[i]] / dbinwidth);
+       // print i,dist;
+       dbin[dist]++;
+  };
+
+  for (i=0; i<maxdbins; i++) {
+       sum_dbin[i] += dbin[i];
+       sumsq_dbin[i] += dbin[i] * dbin[i];
+  };
+
+  if (ninfo>0) {
+    printf("#\n");
+    printf("#------------------------------------\n");
+  };
+
+};	// for (c=f; c<argc; c++,ncells++) 
+
+/* - - - - - - - - - - - - - - - - - - - - -*/
+
+ if (ncells==0) ncells = 1;
+ ncells2 = ncells;
+ if (ncells2==1) ncells2 = 2;
+ for (orderend=j=0; j<maxbr; j++) {			// make average and stdev of order length and number
+     avg_orderl[j] = sum_orderl[j] / ncells;
+     avg_ordern[j] = sum_ordern[j] / ncells;
+     sd_orderl[j] = sqrt((sumsq_orderl[j] - (sum_orderl[j] * avg_orderl[j])) / (ncells2-1));
+     sd_ordern[j] = sqrt((sumsq_ordern[j] - (sum_ordern[j] * avg_ordern[j])) / (ncells2-1));
+     if (avg_ordern[j] > 0) orderend = j;
+ };
+
+ printf ("# ncells %g\n",ncells);
+ printf ("#\n");
+ printf ("# %s\n",argv[0]);
+ printf ("# %s version %s\n",progname,print_version(ncversion));
+ printf ("# date %s",system("date +'%a %F %R'"));
+ printf ("#\n");
+
+ if (strstr("orderlen",plot)==0) {				// plot length of branches by order
+    if (draw_graphics==1) draw_ax_labels("branch order","avg length","sd");
+    // printf ("# order  avg len    avg-sd    cum len\n#\n");
+    printf ("# order  avg len    sd\n#\n");
+    if (!notinit(xmax)) maxbrz = xmax
+    else maxbrz = roundupaxis(orderend+4,maxbr);
+    if (maxbrz > maxbr) maxbrz = maxbr;
+    for (accum=j=0; j<maxbrz; j++) {
+         d  = avg_orderl[j];
+         accum += d;
+         // printf ("%-2g    %-8.3g   %-8.3g  %-8.3g\n", j+1, avg_ordern[j], d, accum);
+         //sd = avg_orderl[j]-sd_orderl[j];
+         sd = sd_orderl[j];
+         if (sd<0) sd = 0;
+         //printf ("%-2g       %-8.3g   %-8.3g  %-8.3g\n", j+1, avg_orderl[j], sd, accum);
+         printf ("%-2g       %-8.3g   %-8.3g\n", j+1, avg_orderl[j], sd);
+    };
+ };
+
+ if (strstr("ordernum",plot)==0) {				// plot number of branches by order
+    if (draw_graphics==1) {
+         if (ncells==1) draw_ax_labels("branch order","number of branches","sd")
+         else          draw_ax_labels("branch order","avg number","sd");
+    };
+    printf ("# order  nbr        sd\n#\n");
+    if (!notinit(xmax)) maxbrz = xmax
+    else maxbrz = roundupaxis(orderend+4,maxbr);
+    if (maxbrz > maxbr) maxbrz = maxbr;
+    for (accum=j=0; j<maxbrz; j++) {
+         d  = avg_orderl[j];
+         accum += d;
+         // printf ("%-2g    %-8.3g   %-8.3g  %-8.3g\n", j+1, avg_ordern[j], d, accum);
+         // sd = avg_ordern[j]-sd_ordern[j];
+         sd = sd_ordern[j];
+         if (sd<0) sd = 0;
+         printf ("%-2g       %-8.3g   %-8.3g\n", j+1, avg_ordern[j], sd);
+    };
+ };
+
+ dbinend = 0;
+ for (nzero=i=0; i<maxdbins; i++) {			// make average and stdev of length to tips
+      avg_dbin[i] = sum_dbin[i] / ncells;
+      sd_dbin[i]  = sqrt((sumsq_dbin[i] - (sum_dbin[i] * avg_dbin[i])) / (ncells2-1));
+      if (avg_dbin[i] > 0) dbinend = i;
+ };
+
+ if (strstr("brlen",plot)==0) {					// plot histogram of length to tips
+     if (draw_graphics==1) draw_ax_labels("dist to tip (um)","N tips","sd");
+     printf ("# histogram of distances from axon base to axon branch tips:  \n#\n");
+     printf ("# dist   num      sd\n#\n");
+     if (!notinit(xmax)) maxdbinz = xmax/dbinwidth+1
+     else maxdbinz = roundupaxis(dbinend+2,maxdbins)+1;
+     if (maxdbinz > maxdbins) maxdbinz = maxdbins;
+     for (i=0; i<maxdbinz; i++) {
+          // sd = avg_dbin[i]-sd_dbin[i];
+          sd = sd_dbin[i];
+          if (sd<0) sd = 0;
+          printf ("%-7.3g  %-8.3g %-8.3g\n",i*dbinwidth,avg_dbin[i],sd);
+     };
+ };
+

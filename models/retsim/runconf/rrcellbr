@@ -1,0 +1,57 @@
+#! /home/rob/bin/nci -c
+#
+// #! ../../../nci -c
+#
+#   script to make plots that describe branching in neurons
+#
+#   usage:
+#       rrcellbr files                  -- makes individual pdf plots of order length, number, and branch length by order
+#       rrcellbr --ninfo 1 files        -- makes pdf plots, prints file names
+#       rrcellbr --ninfo 1 --label x ... files  -- makes pdf plots with label in avg file name only.
+#
+#  NB: to get this to run, set the path for nci (on first line above) to run correctly on your system.
+#
+#
+ninfo = 0;
+comnd_line_only = 0;		// print out command line but do not run
+label = "";
+ 
+nparm = setvar();
+
+// print "argc",argc;
+
+if (argc>1) {
+    for (f=1; f<argc && strstr (argv[f],"--") >= 0; f+=2) {   /* skip over "--param xx", find file name */
+        if (f>=argc-2) {print "cellbr: no file name"; exit;};
+    };
+} else exit;
+
+  cellnames = "";
+  for (c=f; c<argc; c++) {                    // average of several cells
+       cellnames += " "+ argv[c];
+       if (ninfo>0) print argv[c];
+  };
+
+if (label!="") sprintf (labelstr,"  --label %s ",label)
+else           sprintf (labelstr," ");
+
+for (i=0; i<2; i++) {
+  for (j=0; j<2; j++) {
+
+    sprintf (make_string,"--make_avg %g --make_pdf %g",i,j);
+
+    sprintf (run_string,"rcellbr --plot orderl %s%s --ninfo 0 %s", make_string,labelstr,cellnames);
+    if (comnd_line_only) print run_string
+    else system (run_string);
+
+    sprintf (run_string,"rcellbr --plot ordern %s%s --ninfo 0 %s", make_string,labelstr,cellnames);
+    if (comnd_line_only) print run_string
+    else system (run_string);
+
+    sprintf (run_string,"rcellbr --plot brlen  %s%s --ninfo 0 %s", make_string,labelstr,cellnames);
+    if (comnd_line_only) print run_string
+    else system (run_string);
+  };
+};
+
+

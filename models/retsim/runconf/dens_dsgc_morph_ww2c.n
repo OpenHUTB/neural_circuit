@@ -1,0 +1,42 @@
+# Default membrane properties (density) file
+#
+# Densities of currents for the cell's different regions (S/cm2). */
+#
+#       dend dend_prox dend_dist soma  hillock  thin   axon    axon_dist node varicos
+#
+0         R1      R2      R3      R4      R5       R6      R7      R8     R9     R10
+#
+# 0     DENDD   DEND    DENDP   DEND    DEND    SOMA    AXON    AXOND  VARIC   R9    R10
+#
+#_NA     0e-3    0e-3    0e-3	0e-3	0e-3	0e-3	20e-3   0e-3	0e-3   0e-3  0e-3  # Na 
+#_NA5    0e-3    0e-3    0e-3    0e-3    0e-3 	0e-3   	0e-3    0e-3  	0e-3   0e-3  0e-3  # Na5
+# _NA6   35e-3	35e-3   35e-3  	35e-3 	35e-3   4e-3	8e-3	100e-3	0e-3   0e-3  0e-3  # Na6
+#_NA8    0e-3	0e-3    0e-3  	0e-3 	0e-3    0e-3	0e-3	0e-3	0e-3   0e-3  0e-3  # Na8
+# _KDR   15e-3	15e-3   15e-3  15e-3    15e-3   20e-3	10e-3	20e-3   0e-3   0e-3  0e-3  # Kdr
+# _KA    35e-3 	35e-3   35e-3  35e-3	35e-3	0e-3	0e-3	0e-3 	0e-3   0e-3  0e-3  # KA
+#  _KH     0e-3	0e-3    0e-3  0.09e-3   0e-3	0.8e-3	0.8e-3	0e-3	0e-3   0e-3  0e-3  # KIh
+# _KIR    0e-3	0e-3    0e-3	0e-3    0e-3	0e-3	0e-3	0e-3	0e-3   0e-3  0e-3  # Khz
+# _SKCA1  0.12e-3 0.12e-3 0.12e-3 0.12e-3	0.12e-3 0e-3    0e-3	0e-3	0e-3   0e-3  0e-3  # sKCa1
+# _SKCA2  0.05e-3 0.05e-3 0.05e-3 0.05e-3	0.05e-3 0e-3	0e-3	0e-3	0e-3   0e-3  0e-3  # sKCa2
+# _BKCA   0e-3	0e-3    0e-6	0e-3	0e-3	0e-6	0e-6	0e-6	0e-6   0e-3  0e-3  # bKCa
+# _CLCA   0e-3	0e-3    0e-6	0e-3	0e-3	0e-6	0e-6	0e-6	0e-6   0e-3  0e-3  # ClCa
+_CA_L 0.014e-3 0.014e-3 0.014e-3 0.014e-3 0.014e-3 0.014e-3  0e-3    0e-3	0e-3   0e-3  0e-3  # Ca 
+# _CA_T   0e-3    0e-3  0e-3	0e-3	0e-3    0e-3	0e-3    0e-3	0e-3   0e-3  0e-3  # Ca5
+_CAP    2e-7    0e-3  0e-3    1e-3 	1e-7    1e-7	0e-12  	0e-3    0e-3   0e-3  0e-3  # CAPUMP
+_CAE    0e-7    0e-3    0e-3    0e-3 	0e-7    0e-7	0e-12  	0e-3    0e-3   0e-3  0e-3  # Caexch
+_VST   dvst     dvst    dvst    dvst    dvst    dvst    dvst    dvst    dvst   dvst  dvst  # vstart
+_VRV   dvrev    dvrev   dvrev   dvrev  	dvrev   dvrev   dvrev   dvrev   dvrev  dvrev dvrev # vrev
+_RM    dendrm   dendrm  dendrm  dendrm 	dendrm  drm     drm     drm     drm    drm   drm   # Rm
+_CM    dendcm   dendcm  dendcm  dendcm  dcm     dcm     dcm     dcm     dcm    dcm   dcm   # Cm
+_RI    dri      dri     dri     dri     dri     dri     dri     dri     dri    dri   dri   # Ri
+_DIA   1        ddia    ddia    ddia    1       1       1       1       1      1     1     # Dia
+_CPL   dcplam   dcplam  dcplam  dcplam  dcplam  dcplam  0.1     0.1     0.1    0.1   0.1   # cplam
+_COL   blue     red     cyan    brown   green   magenta blue    yellow  brown  red   ltred # color
+_COL2  vcolor   vcolor  vcolor  vcolor  vcolor  vcolor  blue    yellow  brown  red   ltred # color
+_COL3  nocolor  vcolor  nocolor nocolor vcolor  vcolor  blue    yellow  brown  red   ltred # off_layer color
+_COL4  vcolor   nocolor vcolor  vcolor  nocolor vcolor  blue    yellow  brown  red   ltred # on layer color
+_COL5  nocolor  white   nocolor nocolor white   white   blue    yellow  brown  red   ltred # label off layer color
+_COL6  white    nocolor white   white   nocolor white   blue    yellow  brown  red   ltred # label on layer color
+_SREG1 0        1       0       0       1       0       0       0       0      0     0     # Off-BP input
+_SREG2 1        0       1       1       0       0       0       0       0      0     0     # On-BP input
+

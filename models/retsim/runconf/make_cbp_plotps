@@ -1,0 +1,30 @@
+
+mplot --label "orderl" avg_t1_orderl.txt avg_t2_orderl.txt avg_t1t2_branching_down_orderl.txt avg_t1t2_curving_back_up_orderl.txt avg_t1t2_bushy_orderl.txt | plotmod | vid -c > avg_t1t2_orderl.ps;
+
+mplot --label "ordern" avg_t1_ordern.txt avg_t2_ordern.txt avg_t1t2_branching_down_ordern.txt avg_t1t2_curving_back_up_ordern.txt avg_t1t2_bushy_ordern.txt | plotmod | vid -c >avg_t1t2_ordern.ps;
+
+mplot --label "brlen" avg_t1_brlen.txt avg_t2_brlen.txt avg_t1t2_branching_down_brlen.txt avg_t1t2_curving_back_up_brlen.txt avg_t1t2_bushy_brlen.txt | plotmod | vid -c > avg_t1t2_brlen.ps;
+
+
+mplot --label "orderl" avg_t3a_orderl.txt avg_t3b_orderl.txt avg_t4_orderl.txt | plotmod | vid -c > avg_t34_orderl.ps;
+
+mplot --label "ordern" avg_t3a_ordern.txt avg_t3b_ordern.txt avg_t4_ordern.txt | plotmod | vid -c > avg_t34_ordern.ps; 
+
+mplot --label "brlen" avg_t3a_brlen.txt avg_t3b_brlen.txt avg_t4_brlen.txt | plotmod | vid -c > avg_t34_brlen.ps; 
+
+
+
+mplot --label "orderl" avg_t5i_orderl.txt avg_t5o_orderl.txt avg_t5t_orderl.txt avg_t5_curving_back_up_orderl.txt | plotmod | vid -c > avg_t5_orderl.ps;
+
+mplot --label "ordern" avg_t5i_ordern.txt avg_t5o_ordern.txt avg_t5t_ordern.txt avg_t5_curving_back_up_ordern.txt | plotmod | vid -c > avg_t5_ordern.ps;
+
+mplot --label "brlen" avg_t5i_brlen.txt avg_t5o_brlen.txt avg_t5t_brlen.txt avg_t5_curving_back_up_brlen.txt | plotmod | vid -c > avg_t5_brlen.ps;
+
+
+mplot --label "orderl" avg_t6_orderl.txt avg_t7_orderl.txt avg_t8_orderl.txt avg_tx_orderl.txt | plotmod | vid -c > avg_t678x_orderl.ps;
+
+mplot --label "ordern" avg_t6_ordern.txt avg_t7_ordern.txt avg_t8_ordern.txt avg_tx_ordern.txt | plotmod | vid -c > avg_t678x_ordern.ps;
+
+mplot --label "brlen" avg_t6_brlen.txt avg_t7_brlen.txt avg_t8_brlen.txt avg_tx_brlen.txt | plotmod | vid -c > avg_t678x_brlen.ps;
+
+

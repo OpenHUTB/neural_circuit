@@ -1,0 +1,102 @@
+#! /home/rob/bin/nci -c
+#
+// #! ../../../nci -c
+#
+#   script to make plots that describe branching in neurons
+#
+#   usage:
+#       rcellbr --plot orderl ...                    -- makes plot of branch length by order
+#       rcellbr --plot ordern ...                    -- makes plot of branch numbers by order
+#       rcellbr --plot brlen  ...                    -- makes plot of branch length to tip 
+#       rcellbr --plot brlen  --xmax 25 ...          -- makes plot of branch length, set xaxis length
+#       rcellbr --make_avg 1 --make_pdf 1 ... files  -- makes average in pdf file
+#       rcellbr --make_avg 1 --make_pdf 0 ... files  -- makes average in text file
+#       rcellbr --make_avg 0 --make_pdf 1 ... files  -- makes individual pdf files
+#       rcellbr --make_avg 0 --make_pdf 0 ... files  -- makes individual text files
+#
+#  NB: to get this to run, set the path for nci (on first line above) to run correctly on your system.
+#
+plot = "orderlen";
+//plot = "ordernum";
+//plot = "brlen";
+
+label = "";
+dbinwidth = 3;
+make_pdf = 1;
+make_avg = 1;
+comnd_line_only = 0;
+info = 0;			// no elapsed time printout from nc
+ninfo = 0;
+ 
+nparm = setvar();
+
+for (f=1; f<argc && strstr (argv[f],"--") >= 0; f+=2) {   /* skip over "--param xx", find file name */
+        if (f>=argc-2) {print "cellbr: no file name"; exit;};
+};
+
+if (label!="") sprintf (labelstr,"  --label %s ",label)
+else           sprintf (labelstr," ");
+
+// set xmax and dbinwidth for same xaxis length
+
+if (notinit(xmax)) {
+   if (strstr("brlen",plot)==0) xmax = 48
+   else                         xmax = 25;
+};
+
+if (!notinit(xmax)) sprintf (labelstr,"%s --xmax %g --dbinwidth %g ",labelstr,xmax,dbinwidth)
+else                sprintf (labelstr,"%s ",labelstr);
+
+// fprintf (stderr,"labelstr %s\n",labelstr);
+
+if (make_avg >= 1) {
+    cellnames = "";
+    for (c=f; c<argc; c++) {			// average of several cells
+         cellnames += " "+ argv[c];
+         if (ninfo>0) print argv[c]; 
+    };
+    //print cellnames;
+
+    sprintf (cellbr_string,"cellbr --plot %s%s%s",plot,labelstr,cellnames);
+
+    cellname = label;
+ 
+    if (make_pdf >= 1) {
+        sprintf (fname_pdf,"avg_%s_%s.pdf",cellname,plot);
+        sprintf (fname_string,"| plotmod | vid -c | ps2pdf  - > %s",fname_pdf);
+    } else {
+        sprintf (fname_txt,"avg_%s_%s.txt",cellname,plot);
+        sprintf (fname_string,"> %s",fname_txt);
+    };
+
+    sprintf (run_string,"%s %s\n",cellbr_string, fname_string);
+
+    if (comnd_line_only) print run_string
+    else           x = system (run_string);
+
+
+} else {
+
+   for (c=f; c<argc; c++) {			// single cells from argv list 
+
+       cellname = argv[c];
+       if (ninfo>0) print cellname;
+
+       sprintf (cellbr_string,"cellbr --plot %s%s%s",plot,labelstr,cellname);
+
+       if (make_pdf >= 1) {
+           sprintf (fname_pdf,"%s_%s.pdf",cellname,plot);
+           sprintf (fname_string,"| plotmod | vid -c | ps2pdf - > %s",fname_pdf);
+       } else {
+           sprintf (fname_txt,"%s_%s.txt",cellname,plot);
+           sprintf (fname_string,"> %s",fname_txt);
+       };
+
+       sprintf (run_string,"%s %s\n",cellbr_string, fname_string);
+
+       if (comnd_line_only) print run_string
+       else           x =  system (run_string);
+   };
+
+};
+ 

@@ -1,0 +1,55 @@
+
+1. Compile nc (see nc manual, ncman1.html):  
+cd nc
+make
+cd models/retsim
+make
+
+2. If on Mac OSX, modify nc/src/makefile, nc/models/retsim/makefile for Mac. See
+"Compiling nc on Mac OSX". The makefile specifies how to compile and link
+binaries such as nc and retsim.
+
+3. See nc manual under "Compiling under Linux" to set your path to include the
+nc/bin directory.  This will allow the nc, vid, plotmod, vidpdf, commands that
+are in the nc/bin directory to run from other directories. However, retsim
+should be run from the nc/models/retsim folder:
+
+cd nc/models/retsim
+retsim ... | vid
+
+4. Read the retsim manual (nc/html/ncman6.html).
+
+5. See command line scripts in rsbac_noise
+
+6. Display the model:
+
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.017 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 2000 --predur 0.05 --prestimdur 0.005 --poststimdur 0 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.06 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel morph_R1MS151208_06b -d 1 -v | vidpdf > sbac_noise.pdf
+
+6. Restore the datfile: 
+gzip -d KO_cell_1_scaled.txt.gz
+cp KO_cell_1_scaled.txt ~/nc/models/retsim
+
+7. The *.r files are text files that contain the data from the simulations.
+The first column is time, and sequential columns are the sequential plots. The
+"plotmod" program selects columns from the "-p x-y" command-line switches. The
+"-t" switch makes the output format the same text format as the input.
+
+8. The commaand lines that were used to generate data for Fig 4:
+----------------------------------------------------------------------------
+
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot13 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 1.0e-3 --ksoma 10e-3 --kprox 10e-3 --kmid 10e-3 --kdist 20e-3 -d 0 >& sbac_noise_plot13.r &
+
+plotmod -p 1-8 -p 9-10 -p 13 -t sbac_noise_plot13.r > sbac_noise_plot13b.r
+plotmod sbac_noise_plot13b.r | vidpdf > sbac_noise_plot13b.pdf
+
+----------------------------------------------------------------------------
+
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot30 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --nscale 1 -d 0 >& sbac_noise_plot30.r &
+
+plotmod -p 10 -p 13 sbac_noise_plot30.r | vidpdf > sbac_noise_plot30b.pdf
+alt:
+plotmod -p 10 -p 13 sbac_noise_plot30.r | vid -c > sbac_noise_plot30b.ps
+
+
+
+

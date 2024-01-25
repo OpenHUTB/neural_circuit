@@ -1,0 +1,87 @@
+#! ../../../bin/nci -c
+#
+#  Script to convert regions in retsim files.
+#   Also re-zeroes the soma location.
+#
+
+reg = "DEND";
+first = 1;
+
+diascale = 1.0;
+xscale   = 1.0;
+yscale   = 1.0;
+zscale   = 1.0;
+xyscale  = 0;
+xyzscale = 0;
+radincr = 10;
+
+nparm = setvar();               /* get parameters from command line */ 
+
+if (xyzscale > 0) { xyscale = xyzscale; zscale = xyzscale; };
+if (xyscale > 0)  { xscale  = xyscale;  yscale = xyscale; };
+
+reg1 = radincr;
+reg2 = reg1 + radincr;
+reg3 = reg2 + radincr;
+reg4 = reg3 + radincr;
+reg5 = reg4 + radincr;
+reg6 = reg5 + radincr;
+reg7 = reg6 + radincr;
+reg8 = reg7 + radincr;
+reg9 = 1000;
+
+for (i=1; i<argc && strstr (argv[i],"--") >= 0; i+=2) {   /* skip over "--param xx", find file name */
+                if (i>=argc-2) {printf ("%s: no input file name\n",argv[0]); exit;};
+};
+
+fd = fopen (argv[i],"r");
+dim Fld[] = {{"x"}};
+for (flds=0; Fld = getflds(fd), flds=sizeof(Fld) > 0; flds=flds) {
+
+    if (Fld[1] == "#") {
+	    print Fld[0];
+    }
+    else {
+	n   = atof(Fld[1]);
+	par = atof(Fld[2]);
+	dia = Fld[3];
+	x   = atof(Fld[4]) * xscale;
+	y   = atof(Fld[5]) * yscale;
+	z   = atof(Fld[6]) * zscale;
+	dend = atof(Fld[8]);
+	if (first == 1) {
+	    //printf ("#   node  parent    dia       xbio       ybio      zbio      region   dendr\n#\n");
+	    first = 0;
+	    xs = x;
+	    ys = y;
+	    zs = z;
+	};
+	if (isnum(dia) && diascale != 1.0) {	// this allows dia to be a char string
+	    dia *= diascale;
+	};
+	dx = x - xs;
+	dy = y - ys;
+	dz = z - zs;
+	dist = sqrt(dx * dx + dy * dy + dz * dz);
+	if (dist > 0) {
+	    if    (dist < reg1) { reg = "R1"; }
+	    else if (dist < reg2) { reg = "R2"; }
+	    else if (dist < reg3) { reg = "R3"; }
+	    else if (dist < reg4) { reg = "R5"; }
+	    else if (dist < reg5) { reg = "R6"; }
+	    else if (dist < reg6) { reg = "R7"; }
+	    else if (dist < reg7) { reg = "R8"; }
+	    else if (dist < reg8) { reg = "R9"; }
+	    else                  { reg = "R9"; };
+	}
+	else                    { reg = "SOMA"; };
+	if (isnum(dia)) 
+	   printf ("  %4g     %4g     %-8g   %-8.4g   %-8.4g  %-5.3g    ",
+	                n,    par,     dia, x - xs, y - ys, z - zs)
+	else
+	   printf ("  %4g     %4g     %-8s   %-8.4g   %-8.4g  %-5.3g    ",
+	                n,    par,     dia, x - xs, y - ys, z - zs);
+	printf ("%-4s      %g\n", reg, dend);
+    };
+};
+

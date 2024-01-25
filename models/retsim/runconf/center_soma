@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+#  script to scale and center move soma in standard anatomy format for Neuron-C 
+#
+#
+awk 'BEGIN {
+     xyscale  = 1.0;        # 
+     zscale   = 1.0;	    # 
+     diascale = 1.0;        # 
+     xs=0; ys=0; zs=0;
+     first = 1;
+     }
+
+     /^#/ { print; }
+     !/^#/ { 
+	    node=$1; parent=$2; dia=$3*diascale; x=$4*xyscale; y=$5*xyscale; z=$6*zscale; region=$7; dendr=$8;
+	    if (first==1) {
+		if (region=="SOMA" || region=="PSOMA") { xs=x; ys=y; zs=z; }
+		first = 0;
+	    }
+	    printf ("  %4s     %4s     %-7.4g   %-8.4g   %-8.4g  %-5.3g     %s      %d\n",
+		node, parent, dia, x-xs, y-ys, z-zs, region, dendr); 
+	} 
+   ' $1

@@ -1,0 +1,31 @@
+# Densities of currents for am amacrine (S/cm2).
+#
+#  This is an abbreviated file; see full length default file dens_dbp1_full.n
+#
+#     dend  dend_prox dend_dist soma   hillock  ax_thin axon  axon_dist ax_node varicos
+#
+# Name 
+ 0    DENDD   DENDP   SOMA      HCK     AXONT    AXON    AXOND   VARIC  R9      R10
+#
+# 0      R1      R2      R3        R4      R5       R6      R7      R8     R9      R10 
+#
+_NA2   amna    0e-3      0e-3    0e-3     0e-3    0e-3     0e-3   amna   0e-3    0e-3   # Na 
+_KDR   amk     0e-3      0e-3    0e-3     0e-3    0e-3     0e-3   amk    0e-3    0e-3   # Kdr
+_KA    0e-3    0e-3      0e-3    0e-3     0e-3    0e-3     0e-3   0e-3   0e-3    0e-3   # KA
+_KH    0e-3    0e-3      0e-3    0e-3     0e-3    0e-3     0e-3   0e-3   0e-3    0e-3   # KH
+_KIR   0e-3    0e-3      0e-3    0e-3     0e-3    0e-3     0e-3   0e-3   0e-3    0e-3   # KHz
+_CA_L  0e-3    0e-3      0e-3    0e-3     0e-3    0e-3     0e-3   0e-3   0e-3    0e-3   # Ca-L
+_CAP   0e-6    0e-6      0e-6    0e-6     0e-6    0e-6     0e-3   0e-6   0e-6    0e-6   # Capump
+_CABV  0e-2    0e-3      0e-7    0e-3     0e-3    0e-3     0e-3   4e7    0e-3    0e-3   # Cabuf vmax
+_CABK  0e-2    0e-3      0e-7    0e-3     0e-3    0e-3     0e-3   2e-6   0e-3    0e-3   # Cabuf kd
+_CABT  0e-2    0e-3      0e-7    0e-3     0e-3    0e-3     0e-3   10e-6  0e-3    0e-3   # Cabuf btot
+_CABI  0e-2    0e-3      0e-7    0e-3     0e-3    0e-3     0e-3   10e-6  0e-3    0e-3   # Cabuf btoti
+_VST   dvst    dvst      dvst    dvst     dvst    dvst     dvst   dvst   dvst    dvst   # Vstart
+_VRV   amvrev  amvrev    amvrev  amvrev   amvrev  amvrev   amvrev amvrev amvrev  amvrev # Vrev
+_RM    amrm    amrm      amrm    amrm     amrm    amrm     amrm   amrm   amrm    amrm   # Rm
+_RI    dri     dri       dri     dri      dri     dri      dri    dri    dri     dri    # Ri
+_CM    dcm     dcm       dcm     dcm      dcm     dcm      dcm    dcm    dcm     dcm    # Cm
+_CPL   0.1     0.1       0.1     0.1      0.1     0.1      0.1    0.1    0.1     0.1    # cplam
+_DIA   1.0     1.0       1.0     1.0      1.0     1.0      1.0    1.0    1.0     1.0    # dia
+_COL   blue    blue      red     blue     red     magenta  green  yellow ltgreen ltred  # color
+#

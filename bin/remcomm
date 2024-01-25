@@ -1,0 +1,24 @@
+#! ../../bin/nci -c
+#
+#  Script to remove comments from a .r file
+#    cat file.r | remcomm > filex.r
+#
+nparm = setvar();               /* get parameters from command line */ 
+
+if (argc>1) {
+   for (i=1; i<argc && strstr (argv[i],"--") >= 0; i+=2) {   /* skip over "--param xx", find file name */
+                if (i>=argc-2) {printf ("%s: no input file name\n",argv[0]); exit;};
+   };
+   fd = fopen (argv[i],"r");
+} else {
+   fd = fopen ("stdin","r");
+}; 
+
+dim Fld[] = {{"x"}};
+for (flds=0; Fld = getflds(fd), flds=sizeof(Fld) > 0; flds=flds) {
+
+    if (substr(Fld[0],0,1) != "#") {
+	    print Fld[0];
+    };
+};
+

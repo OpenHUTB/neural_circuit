@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+#  Script to fix morpholoty file "ds1c".
+#
+#   R.G. Smith, May, 2005
+#
+#  This script fixes mistake with original dia -- it was thought
+#  to be radius and was originally mulitiplied by 2. Here we
+#  divide by 2 to fix mistake.
+#
+awk ' {
+      node = $1; pn = $2; dia = $3;
+      x = $4; y = $5; z = $6;
+      region = $7; dendr = $8;
+      printf (" %6d %6d     %-8.4g %-8.5g %-8.5g %-8.5g %-9s %2d\n",
+                        node, pn, dia/2, x, y, -z, region, dendr);
+      }
+    ' $1

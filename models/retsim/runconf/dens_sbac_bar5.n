@@ -1,0 +1,42 @@
+# Densities of currents for starburst (S/cm2).
+#   for mouse morphology
+#
+#   dend_dist  dend dend_prox soma    hillock   thin    axon axon_dist node  varicos
+#
+0        R1     R2     R3      R4       R5       R6      R7      R8     R9     R10
+#
+# 0      DENDD  DEND   DENDP   SOMA     HILLOCK  AXONT   AXON    AXOND  VARIC  R10
+#
+_NA     0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # Na 
+_NA5    0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # Na5
+_NA6     naprox namid  namid   nasoma   namid    namid   nadist  nadist  nadist nadist # Na
+# _NA8    naprox namid  namid   nasoma   namid    namid   nadist  nadist  nadist nadist # Na8
+_KDR    kdrp   kdrp   kdrm    kdrs     kdrm     kdrm    kdrd    kdrd    kdrd   kdrd   # Kdr
+_KV3    kprox  kprox  kmid    ksoma    kmid     kmid    kdist   kdist   kdist  kdist  # Kv3
+_KA     0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # KA
+_KH     0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # KH
+_KIR    0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # KHz
+_SKCA1  0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # sKCa1
+_SKCA2  0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # sKCa2
+_BKCA   0e-3   0e-3   0e-6    0e-3     0e-6     0e-6    0e-6    0e-6    0e-3   0e-3   # bKCa
+_CLCA   0e-3   0e-3   0e-3    0e-3     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # ClCa
+_CA_L   0e-3   0e-3   camid   0e-3     camid    camid   cadist  cadist  cadist cadist # Ca
+_CA_T  catprox catprox catmid catsoma catmid    catmid  catdist catdist catdist catdist # Ca6
+_CAP   sb_capp sb_capp sb_capm sb_cap  sb_capm  sb_capm sb_cap  sb_cap  sb_cap sb_cap # Capump
+_CAE    0e-2   0e-3   0e-3    0e-7     0e-3     0e-3    0e-3    0e-3    0e-3   0e-3   # Caexch
+_CADIA  cadiap cadiap cadiam  1        cadiam   cadiam  cadiad cadiad   cadiad cadiad # Cadia
+_VST    sb_vs  sb_vs  sb_vs   sb_vs    sb_vs    sb_vs   sb_vs   sb_vs   sb_vs  sb_vs  # Vstart
+_VRV    sb_vr  sb_vr  sb_vr   sb_vr    sb_vr    sb_vr   sb_vr   sb_vr   sb_vr  sb_vr  # Vrev
+_RM     sb_rmp sb_rmp sb_rmp  sb_rm    sb_rmp   sb_rmp  sb_rmd  sb_rmd  sb_rmd sb_rmd # Rm
+_RI     sb_rip sb_rip sb_rip  dri      sb_rii   sb_rii  sb_rid  sb_rid  sb_rid sb_rid # Ri
+_CM     dcm    dcm    dcm     dcm      dcm      dcm     dcm     dcm     dcm    dcm    # Cm
+_CPL    sbaclm sbaclm sbaclm  sbaclm   sbaclm   sbaclm  sbaclm  sbaclm  sbaclm sbaclm # complam
+_CMUL   0      0      0       0        0        0       0       0       0      0      # cmul
+_COL    green  blue   cyan    red      gray     gray    magenta magenta magenta  magenta   # color
+_DIA    spdia  sndia  smdia   1        sdia     sdia    sddia   sddia   sddia  sddia  # dia factor
+_SREG1  1      1      1       0        1        1       1       1       0      0      # overall BP input
+_SREG2  0      0      0       0        0        0       1       1       1      0      # GABA output
+_SREG3  1      1      1       0        0        0       0       0       0      0      # inh input
+_SREG4  0      0      0       0        0        0       0       0       0      1      # BP spine input to R10
+_SREG5  0      0      db2_r5  0        db2_r5   db2_r6  0       0       0      0      # BP transient input
+_SREG6  1      1      1       0        1        db1_r6  0       0       0      0      # BP tonic input

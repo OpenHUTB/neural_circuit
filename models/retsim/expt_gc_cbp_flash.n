@@ -1,0 +1,67 @@
+/* Experiment gc_cbp_flash */
+
+proc setparams()
+
+{
+  make_rod  = 0;
+  make_cone = 1;        /* make cones, cbp, gc */
+  make_ha   = 0;
+  make_hb   = 0;
+  make_hbat = 0;
+  make_cbp  = 1;
+  make_rbp  = 0;
+  make_gc   = 1;
+  make_dsgc = 0;
+
+  if(notinit(rec_ct)) rec_ct = gc;
+  //if (notinit(arrsiz)) arrsiz = 300;
+  if (notinit(bg_inten)) bg_inten = 2.0e4;      /* background light intensity */
+};
+
+/*------------------------------------------------------*/
+
+proc runexpt()
+
+{
+  if (notinit(temp_freq)) temp_freq = 2;
+  if (notinit(ntrials)) ntrials = 1;
+  if (temp_freq == 0) {
+    fprintf (stderr,"## retsim1: temp_freq = 0, STOPPING\n");
+    temp_freq = 1;
+  };
+  dtrial = 1 / temp_freq;
+  exptdur = dtrial * ntrials;
+  endexp  = exptdur;
+
+  if (notinit(dstim))         dstim = .05;   /* stimulus duration */
+  if (notinit(sdia))           sdia = 300;  /* spot diameter */
+  if (notinit(stimtime))   stimtime = .10;  /* stimulus time */
+  if (notinit(minten))       minten = bg_inten;  /* background intensity (for make cone)*/
+  if (notinit(scontrast)) scontrast = .5; /* intensity increment */
+
+
+  midcone = findmid(xcone);
+  midcbp  = find_gtconn(cbp,7);
+  
+  if (ninfo >=1) printf ("# mid cone # %g\n", midcone);
+  if (ninfo >=1) printf ("# mid cbp  # %g\n",  midcbp);
+
+
+  plot_v_nod(ct=xcone,cn=midcone,n=soma,Vmin=-.037,Vmax =-.027,colr=cyan,"", -1, -1); /* plot Vcones*/
+  plot_synrate_out(ct=xcone,cn=midcone,rmin=0,rmax=400,colr=magenta);	/* plot rate out */
+  plot_v_nod(ct=cbp,cn=midcbp,n=soma,Vmin=-.045,Vmax =-.040,colr=red,"", -1, -1);  /* plot Vcbp */
+  plot_synrate_out(ct=cbp,cn=midcbp,rmin=0,rmax=200,colr=magenta);	/* plot rate out */
+  plot_v_nod(ct=gc, cn=1,n=soma,Vmin=-.075,Vmax =-.055,colr=blue,"", -1, -1);	  /* plot Vgc */
+  if (getn(gc,BIOPHYS)) plot Ca(1) [ct=gc][1][soma] max .5e-6 min 0 plnum 0 plsize .3 plname "Cai";
+
+  for (t=0; t<exptdur; t+= dtrial){
+
+    stim spot sdia loc (0,0) blur .1
+      inten minten start t dur dtrial;
+
+    stim spot sdia loc (0,0) blur .1
+      inten minten*scontrast start t+stimtime dur dstim;
+
+    step dtrial;
+  };
+};

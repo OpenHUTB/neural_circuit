@@ -1,0 +1,48 @@
+#
+#  AII amacrine 
+#
+#  (On-layer only)
+#
+#    node  parent   dia        xbio       ybio     zbio     region   	dendr
+#
+     0        0    8           0          0           0       SOMA      0
+     1        0    1           0         -0.1       -12       DEND      0
+     2        1    den_dia    -6         -6.15      -16       DEND      1
+     3        2    den_dia    -8.35      -17.32     -20       DEND      1
+     4        3    den_dia    -7         -30.82     -25       DEND      1
+     5        4    den_dia    -2         -40.32     -30       DEND      1
+     6        3    den_dia    -18.85     -21        -23       DEND      1
+     7        6    den_dia    -22.35     -30.65     -25       DEND      1
+     8        7    den_dia    -23.67     -42.82     -28       DEND      1
+     9        6    den_dia    -31.17     -21        -25       DEND      1
+    10        1    den_dia    -7         3.85       -15       DEND      2
+    11       10    den_dia    -16.85     5.35       -18       DEND      2
+    12       11    den_dia    -28.85     4          -20       DEND      2
+    13       11    den_dia    -22        13.17      -20       DEND      2
+    14       13    den_dia    -36.35     18.35      -25       DEND      2
+    15       14    den_dia    -44.67     14.17      -28       DEND      2
+    16       13    den_dia    -21.17     25         -25       DEND      2
+    17        1    den_dia    0.325      7.175      -16       DEND      3
+    18       17    den_dia    -3.675     17.5       -20       DEND      3
+    19       18    den_dia    -7         35.5       -28       DEND      3
+    20       19    den_dia    -15.17     39.5       -30       DEND      3
+    21       18    den_dia    6.825      28.67      -25       DEND      3
+    22       21    den_dia    7          40.67      -28       DEND      3
+    23        1    den_dia    7.65       2.175      -15       DEND      4
+    24       23    den_dia    19.5       9.675      -20       DEND      4
+    25       24    den_dia    33         9.675      -25       DEND      4
+    26       25    den_dia    34.65      28.17      -30       DEND      4
+    27       25    den_dia    42.65      3.85       -30       DEND      4
+    28       24    den_dia    22.15      18.17      -25       DEND      4
+    29        1    den_dia    8.825      -2.825     -15       DEND      5
+    30       29    den_dia    22         -10.15     -20       DEND      5
+    31       30    den_dia    32.5       -14.82     -25       DEND      5
+    32       30    den_dia    37         -4.65      -27       DEND      5
+    33        1    den_dia    5.15       -7.325     -17       DEND      6
+    34       33    den_dia    10.15      -18.82     -26       DEND      6
+    35       34    den_dia    20.15      -25.32     -28       DEND      6
+    36       35    den_dia    35         -26.5      -30       DEND      6
+    37       36    den_dia    45.15      -24        -32       DEND      6
+    38       36    den_dia    39.5       -34        -32       DEND      6
+    39       35    den_dia    22.83      -40.65     -29       DEND      6
+    40       34    den_dia    6.65       -28.5      -23       DEND      6

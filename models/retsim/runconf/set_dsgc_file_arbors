@@ -1,0 +1,101 @@
+#! ../../../bin/nci -c
+#
+#  Script to rotate dsgc arborization back to horizontal
+#    Sets the Off-arbor as DENDD 
+#   Also re-zeroes the soma location.
+#
+#   set_dsgc_file_arbors --arbor_thresh 12 --thetax 4 morph_DS060627 > morph_DS060627b
+#
+
+reg = "DEND";
+setreg = "DENDD";
+
+first = 1;
+
+diascale = 1.0;
+xscale   = 1.0;
+yscale   = 1.0;
+zscale   = 1.0;
+xyscale  = 0;
+xyzscale = 0;
+radthresh = 20;
+zarbor = 20;
+
+thetax = thetay = thetaz = 0;
+flip = 0;
+
+arbor_thresh = 14;	// set_dsgc_file_arbors --arbor_thresh 14   --thetax  0   morph_ds1e     > morph_ds1eb
+arbor_thresh = 12;	// set_dsgc_file_arbors --arbor_thresh 12   --thetax  4   morph_DS060627 > morph_DS060627b
+arbor_thresh = 16;	// set_dsgc_file_arbors --arbor_thresh 16   --thetax -0.5 morph_DS060707 > morph_DS060707b
+arbor_thresh = 15; 	// set_dsgc_file_arbors --arbor_thresh 15   --thetax -4   morph_DS060825 > morph_DS060825b
+arbor_thresh = 14.5; 	// set_dsgc_file_arbors --arbor_thresh 14.5 --thetax -2   morph_DS060822 > morph_DS060822b
+arbor_thresh = 11;	// set_dsgc_file_arbors --arbor_thresh 11 --thetax 1 --thetay -1 morph_DS060826 > morph_DS060826b
+
+nparm = setvar();               /* get parameters from command line */ 
+
+thetax *= PI / 180.0;
+thetay *= PI / 180.0;
+thetaz *= PI / 180.0;
+
+if (xyzscale > 0) { xyscale = xyzscale; zscale = xyzscale; };
+if (xyscale > 0)  { xscale  = xyscale;  yscale = xyscale; };
+
+for (i=1; i<argc && strstr (argv[i],"--") >= 0; i+=2) {   /* skip over "--param xx", find file name */
+                if (i>=argc-2) {printf ("%s: no input file name\n",argv[0]); exit;};
+};
+
+fd = fopen (argv[i],"r");
+dim Fld[] = {{"x"}};
+for (flds=0; Fld = getflds(fd), flds=sizeof(Fld) > 0; flds=flds) {
+
+    if (Fld[1] == "#") {
+	    print Fld[0];
+    }
+    else {
+	n   = atof(Fld[1]);
+	par = atof(Fld[2]);
+	dia = Fld[3];
+	x   = atof(Fld[4]) * xscale;
+	y   = atof(Fld[5]) * yscale;
+	z   = atof(Fld[6]) * zscale;
+	reg = Fld[7];
+	dend = atof(Fld[8]);
+	if (first == 1) {
+	    //printf ("#   node  parent    dia       xbio       ybio      zbio      region   dendr\n#\n");
+	    first = 0;
+	    xs = x;
+	    ys = y;
+	    zs = z;
+	};
+	if (isnum(dia) && diascale != 1.0) {	// this allows dia to be a char string
+	    dia *= diascale;
+	};
+	ax = dx = x - xs;
+	ay = dy = y - ys;
+	az = dz = z - zs;
+        dy  = (ay * cos(thetax) - az * sin(thetax));           /* x-axis rotation */
+        dz  = (ay * sin(thetax) + az * cos(thetax));
+
+        dz2 = (dz * cos(thetay) - ax * sin(thetay));           /* y-axis rotation */
+        dx  = (dz * sin(thetay) + ax * cos(thetay));
+        dz = dz2;
+
+        if (flip>0) dx = -dx;
+
+        dx2 = (dx * cos(thetaz)  - dy * sin(thetaz));  /* do z rotation last after cell is tilted correctly */
+        dy  = (dx * sin(thetaz)  + dy * cos(thetaz));
+        dx = dx2;
+
+	dist = sqrt(dx * dx + dy * dy);		// distance from soma
+	if (dist > radthresh) z = zarbor; 
+	if (dz > arbor_thresh) reg = setreg;
+	if (isnum(dia)) 
+	   printf ("  %4g     %4g     %-8g   %-8.4g   %-8.4g  %-5.3g    ",
+	                n,    par,     dia, dx, dy, dz)
+	else
+	   printf ("  %4g     %4g     %-8s   %-8.4g   %-8.4g  %-5.3g    ",
+	                n,    par,     dia, dx, dy, dz);
+	printf ("%-4s      %g\n", reg, dend);
+    };
+};
+

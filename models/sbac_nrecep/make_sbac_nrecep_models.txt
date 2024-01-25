@@ -1,0 +1,121 @@
+
+These scripts are run from nc/models/retsim.
+
+1. Read Neuron-C manual (nc/html/ncman2.html)
+2. Read retsim manual (nc/html/ncman6.html)
+3. Compile the simulator (cd ~/nc; make)
+4. Compile retsim (cd ~/nc/models/retsim; make);
+5. Run command-line scripts below.
+ 
+Plot showing good DS with feedback:
+
+# g_sbac_dbp1 1.2e-10
+#
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.17 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 3 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0035 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.0 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --g_sbac_dbp1 1.2e-10 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t26exc4iw
+
+# no feedback
+#
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.17 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 3 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0035 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.0 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --g_sbac_dbp1 1.2e-14 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t25exc4iw
+
+# same as t26exc4iw but cadiad 1.2
+#
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.17 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 3 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0035 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.2 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --g_sbac_dbp1 1.2e-10 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t26exc4iw5c
+
+# no feedback
+#
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.17 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 3 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0035 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.2 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t25exc4iw5c
+
+plotmod -p 1-7 -p 20 -p 31 t26exc4iw5c.r | vid -c > t26exc4iw5c_traces_1.pdf
+plotmod -p 1-7 -p 25 -p 36 t26exc4iw5c.r | vid -c > t26exc4iw5c_traces_2.pdf
+
+plotmod -p 1-7 -t t25exc4iw5c.r > t25exc4iw5c.bipolar_conds.txt
+plotmod -p 1-7 -t t26exc4iw5c.r > t26exc4iw5c.bipolar_conds.txt
+
+plotmod -p 1-7 -p 20 -p 31 -t t25exc4iw5c.r > t25exc4iw5c_traces_A.txt
+plotmod -p 20 -t t25exc4iw5c.r > t25exc4iw5c_traces_A1.txt
+plotmod -p 31 -t t25exc4iw5c.r > t25exc4iw5c_traces_A2.txt
+plotmod -p 1-7 -p 25 -p 36 -t t25exc4iw5c.r > t25exc4iw5c_traces_B.txt
+plotmod -p 25 -t t25exc4iw5c.r > t25exc4iw5c_traces_B1.txt
+plotmod -p 36 -t t25exc4iw5c.r > t25exc4iw5c_traces_B2.txt
+
+plotmod -p 1-7 -p 20 -p 31 -t t26exc4iw5c.r > t26exc4iw5c_traces_A.txt
+plotmod -p 20 -t t26exc4iw5c.r > t26exc4iw5c_traces_A1.txt
+plotmod -p 31 -t t26exc4iw5c.r > t26exc4iw5c_traces_A2.txt
+plotmod -p 1-7 -p 25 -p 36 -t t26exc4iw5c.r > t26exc4iw5c_traces_B.txt
+plotmod -p 25 -t t26exc4iw5c.r > t26exc4iw5c_traces_B1.txt
+plotmod -p 36 -t t26exc4iw5c.r > t26exc4iw5c_traces_B2.txt
+
+- - - - - - - - - - - - - - - - - - -
+
+# try, no feedback but higher contrast
+#  scontrast 0.0036
+#
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.17 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 3 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0036 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.0 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --g_sbac_dbp1 1.2e-14 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t25exc5
+
+#  scontrast 0.0037
+#
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.17 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 3 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0037 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.0 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --g_sbac_dbp1 1.2e-14 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t25exc6
+
+#  scontrast 0.0038
+#
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.17 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 3 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0038 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.0 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --g_sbac_dbp1 1.2e-14 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t25exc7
+
+plotmod t25exc5.r | vid -c | ps2pdf - - > t25exc5.pdf
+plotmod t25exc6.r | vid -c | ps2pdf - - > t25exc6.pdf
+plotmod t25exc7.r | vid -c | ps2pdf - - > t25exc7.pdf
+
+------------------------------------------------------------------
+
+Model display for figures
+
+t26exc4iw1a.pdf    model with 1 starburst, model with 1 sbac, no bipolar cells
+t26exc4iw1b.pdf    model with 1 starburst, with bipolar cells no node numbers
+t26exc4iw1c.pdf    model with 1 starburst, with denritic node numbers, no bipolar cells
+
+t26exc4iw3a.pdf    model with 3 starbursts, only starburst cell (soma) numbers
+t26exc4iw3b.pdf    model with 3 starbursts, with starburst and dbp1 cell numbers 
+
+Make these figures with the scripts below:
+
+# display model with 1 sbac, no bipolar cells
+#
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.17 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 0 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0035 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.0 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --g_sbac_dbp1 1.2e-10 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t26exc4iw1a --d 1 --n_dbp1 0
+
+# display model with 1 sbac, no node numbers
+#
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.17 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 0 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0035 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.0 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --g_sbac_dbp1 1.2e-10 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t26exc4iw1b --d 1
+
+# display model with 1 sbac, with node numbers, no bipolar cells
+#
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.17 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 0 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0035 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.0 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --g_sbac_dbp1 1.2e-10 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t26exc4iw1c --d 9 --n_dbp1 0 --sbac_nscale -3.04
+
+
+
+# display model with 3 sbacs, sbac and dbp1 soma numbers
+#
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.17 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 3 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0035 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.0 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --g_sbac_dbp1 1.2e-10 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t26exc4iw3b --d 9 --dbp1_nscale -2.06 
+
+# display model with 3 sbacs, only sbac soma numbers
+#  with sdia 0.3 (from 0.17) for visibility
+#
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_densfile dens_sbac_bar_fig.n --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.3 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 3 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0035 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.0 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --g_sbac_dbp1 1.2e-10 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t26exc4iw3c --d 9 --dbp1_nscale -9 --sbac_nscale -2.07 --draw_synapse 0 --sbac_color -1 --comnd_line_only 1
+
+# then make ps file instead of pdf
+#
+replace "0.1 0.4 1 setrgbcolor" "1 0 1 setrgbcolor" t26exc4iw3c.ps
+replace "0 1 1 setrgbcolor" "0.1 0.4 1 setrgbcolor" t26exc4iw3c.ps
+ps2pdf t26exc4iw3c.ps
+
+# make povray image of model
+#  with sdia 0.3 (from 0.17) for visibility
+#  to change background, set "bknd_color" in command line 
+#  
+rdsgc_sbac_r --sbac_file morph_sbac_ti_12_10_20 --sbac_densfile dens_sbac_bar_fig.n --sbac_r 255 --sb_arbscale 1.0 --sbspac 65 --dri 100 --spdia 0.4 --sdia 0.3 --sddia 0.8 --g_dbp1_sbac 15e-10 --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid 3.5e-3 --catdist 7.5e-3 --g_sbac_sbac 2.0e-10 --g_sbac_dsgc 10e-10 --sbarr 3 --dbpthr -0.050 --mglur2 0 --n_am 0 --n_am2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd 0 --rnd 35310 --make_sbac_sbac 1 --make_sbac_dsgc 0 --sbaclm 0.02 --stimtype 1 --scontrast 0.0035 --minten -0.050 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.0 --velocity 600 --predur 0.2 --poststimdur 0.5 --n_dbp1_sbac 0 --dbp1_mrate 500 --dbp1_mpool 500 --barwidth 17 --mxrot 180 --sb_db_anni 100 --sb_db_dur 100 --sb_db_casens 1.5 --n_dsgc 0 --g_sbac_dbp1 1.2e-10 --sbac_isynrngi 0 --m_sbac_sbac 200 --sb1mul 1.5 --sbac_maxsdist 15 --filename t26exc4iw3c --d 9 --dbp1_nscale -9 --sbac_nscale -2.07 --draw_synapse 0 --sbac_color -1 --R 1 --povres 4000
+
+# then, to change colors in povray file:
+#  (can use other colors defined in "colors.inc")
+#
+replace Magenta Red t26exc4iw3c.pov
+replace Blue Magenta t26exc4iw3c.pov
+replace Cyan Blue t26exc4iw3c.pov
+

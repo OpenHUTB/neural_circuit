@@ -1,0 +1,17 @@
+#! ../../../bin/nci -c
+#
+#  Script to print labels from column 8 in retsim files.
+#
+
+for (i=1; i<argc && strstr (argv[i],"--") >= 0; i+=2) {   /* skip over "--param xx", find file name */
+	                if (i>=argc-2) {print "Neuroman2nc: no .swc file name"; exit;};
+};
+
+fd = fopen (argv[i],"r");
+dim Fld[] = {{"x"}};
+for (flds=0; Fld = getflds(fd), flds=sizeof(Fld) > 0; flds=flds) {
+
+    if (Fld[1] != "#" && Fld[8] != "0") print Fld[0];
+			      
+};
+

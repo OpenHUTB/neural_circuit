@@ -1,0 +1,179 @@
+#! /usr/mont/bin/nci -c
+//
+// rrdsgc_sbac
+//
+//  run with moving annulus, CF then CP
+//    with different contrasts
+
+if (notinit(job)) job = 1;
+if (notinit(run)) run = 1;
+
+ninfo = 0;
+comnd_line_only = 0;            // print out command line but do not run
+label = "";
+filename = "";
+
+// dim rad_vals[] = {{0,20,40,60,80,100,120}};
+// dim rad_vals[] = {{0,20,40}};
+// rad_num = sizeof(rad_vals);
+
+// dim cont_vals1[] = {{0.006,0.0065,0.007,0.0075,0.008}};  // for vel 1000, barwidth 50
+// dim cont_vals2[] = {{0.008,0.0085,0.009,0.0095,0.010}};  // for vel 1000, barwidth 50
+// dim cont_vals3[] = {{0.010,0.0105,0.011,0.0115,0.012}};     // for vel 500,  barwidth 30
+dim cont_vals1[] = {{0.0055}}; 
+dim cont_vals2[] = {{0.006}}; 
+dim cont_vals3[] = {{0.0065}}; 
+dim cont_vals4[] = {{0.007}}; 
+dim cont_vals5[] = {{0.0075}}; 
+dim cont_vals6[] = {{0.008}}; 
+cont_num = sizeof(cont_vals1);
+
+          n = 10;		// number of models to run
+   stimtype = 9;		// moving annulus
+    filenum = 10;
+     mglur2 = 0;
+        rnd = 350;
+       sdia = 0.3;
+      spdia = 0.6;
+
+       cont = 0;
+  scontrast = 0.005;
+     minten = -0.042;
+
+ sbac_vpulse = -0.07;
+  
+     catmid = 3e-3;
+    catdist = 3e-3;
+g_dbp1_sbac = 0.4e-10;
+g_sbac_sbac = 2e-10;
+  sbac_dens = 800;
+     dsgc_x = -150;
+ morph_frac = 0.5;
+
+   stimtime = 0.01;
+poststimdur = 0.05;
+     predur = 0.2;
+
+      sbarr = 100;
+  sbxarrsiz = 500;
+  sbyarrsiz = 300;
+   mask_dia = 120;
+
+  ams_synanpi = 180;
+  ams_synanpo = 180;
+   g_dbp1_ams = 2e-10;
+
+sbac_isynrngi = -1180;
+   sb_denddia = 2.4;
+
+  savesyn = 0;
+
+nparm = setvar();
+
+if (!notinit(v)) 
+   if  (v > 0) n = 1;		// only display 1 vid image
+
+if (catmid == 0 && catdist == 0) cachans = 0
+else                             cachans = 1;
+
+ if      (cont==0) { cont_vals = cont_vals1; cont_num = 1; }
+ else { 
+   if      (cont==1) cont_vals = cont_vals1
+   else if (cont==2) cont_vals = cont_vals2
+   else if (cont==3) cont_vals = cont_vals3
+   else if (cont==4) cont_vals = cont_vals4
+   else if (cont==5) cont_vals = cont_vals5
+   else if (cont==6) cont_vals = cont_vals6;
+   cont_num = sizeof(cont_vals);
+ };
+
+ if (sbarr==0) sbxarrsiz = sbyarrsiz = 0;
+
+// for (m=0; m<2; m++) {
+//    morph_frac = m;
+   
+   for (c=0; c < cont_num; c++) {
+
+     if (cont > 0) scontrast = cont_vals[c];
+
+     for (r=0; r<n; r++) {
+        rnd = 350 + r;
+
+
+buf1 = "rdsgc_sbac_r --sbac_r 0 --sbarr %g --stimtype 9 --g_dbp1_sbac %g --camid 0e-3 --catmid %g --catdist %g --g_sbac_sbac %g --g_sbac_dsgc 10e-10 --sbxarrsiz %g --sbyarrsiz %g --sbac_dens %g --dsgc_x %g --dbpthr -0.052 --mglur2 %g --n_am 0 --n_am2 0 --dscavg 1e5 --sbaclm 0.2 --sb_denddia %%g --morph_frac %%g --scontrast %%g --minten %%g --mask_dia %%g --poststimdur %%g --predur %%g --rnd %g --sbac_isynrngi %%g";
+
+
+      sprintf (buf2, buf1, sbarr, g_dbp1_sbac, catmid, catdist, g_sbac_sbac, sbxarrsiz, sbyarrsiz, sbac_dens, dsgc_x, mglur2, rnd);
+
+      sprintf (buf3, buf2, sb_denddia, morph_frac, scontrast, minten, mask_dia, poststimdur, predur, sbac_isynrngi);
+
+      options = "";
+      if (!notinit(revdir))      sprintf (options,"%s --revdir %g",  options,revdir);
+      if (!notinit(velocity))    sprintf (options,"%s --velocity %g",  options,velocity);
+      if (!notinit(barwidth))    sprintf (options,"%s --barwidth %g",  options,barwidth);
+      if (!notinit(mask_x))      sprintf (options,"%s --mask_x %g",  options,mask_x);
+      if (!notinit(rloc))        sprintf (options,"%s --rloc %g",  options,rloc);
+      if (!notinit(sb_rm))       sprintf (options,"%s --sb_rm %g",  options,sb_rm);
+      if (!notinit(sbac_densfile))  sprintf (options,"%s --sbac_densfile %s",  options,sbac_densfile);
+      if (!notinit(sbac_densfile2)) sprintf (options,"%s --sbac_densfile2 %s", options,sbac_densfile2);
+      if (!notinit(n_dsgc))      sprintf (options,"%s --n_dsgc %g", options,n_dsgc);
+      if (!notinit(r_sbac_sbac)) sprintf (options,"%s --r_sbac_sbac %g", options,r_sbac_sbac);
+      if (!notinit(r_dbp1_sbac)) sprintf (options,"%s --r_dbp1_sbac %g", options,r_dbp1_sbac);
+      if (!notinit(g_sbac_dbp1)) { sprintf (options,"%s --g_sbac_dbp1 %g", options,g_sbac_dbp1);
+				   set_sbac_dbp1 = 1;
+      } else			   set_sbac_dbp1 = 0;
+      if (!notinit(g_ams_sbac)) { 
+	  set_ams_sbac = 1;       // for syn_filename below
+          sprintf (options,"%s --make_ams %g", options,1);
+          sprintf (options,"%s --g_dbp1_ams %g", options,g_dbp1_ams);
+          sprintf (options,"%s --g_ams_sbac %g", options,g_ams_sbac);
+          sprintf (options,"%s --ams_synanpi %g", options,ams_synanpi);
+          sprintf (options,"%s --ams_synanpo %g", options,ams_synanpo);
+      } else			   set_ams_sbac = 0;
+
+      disp_options = "";
+      if (!notinit(mxrot))       sprintf (disp_options,"%s --mxrot %g", disp_options,mxrot);
+      if (!notinit(d))           sprintf (disp_options,"%s --d %g", disp_options,d);
+      if (!notinit(v))           sprintf (disp_options,"%s --v %g", disp_options,v);
+      if (!notinit(B))           sprintf (disp_options,"%s --B %g", disp_options,B);
+      if (!notinit(w))           sprintf (disp_options,"%s --w %g", disp_options,w);
+
+       if (sbarr > 0) {	// only use syn_savefile / syn_restorefile for random sbac array 
+          if (savesyn) 
+             syn_file = " --syn_savefile"
+          else
+             syn_file = " --syn_restorefile";
+
+          sprintf (syn_filename, "%s dsgc_sbac_%g_%g_%g_%g_%g_%g_%g.s", 
+				syn_file, sbxarrsiz, sbyarrsiz, morph_frac, set_sbac_dbp1, set_ams_sbac, 
+								rnd, -(1000+sbac_isynrngi));
+       } else syn_filename = "";
+
+       sprintf (filename, "dsgc_sbac_c%.4f_y%g", scontrast, filenum);
+
+
+       // print buf3+filename;
+
+
+       if (notinit(makepdf)) {
+          run_string = buf3 + options + syn_filename + " --filename " + filename + disp_options;
+       } else {
+            // sprintf (run_string, "plotmod -p 1-7 -p 8 -p 11 -p 15 %s.r | vidpdf > %s.pdf",filename,filename)
+            sprintf (run_string, "plotmod -p 1-7 -p 8 -p 11 -p 15 -p 25 %s.r | vidpdf > %s.pdf",filename,filename);
+       };
+
+       if (comnd_line_only) { print run_string; print ""; }
+       else system (run_string);
+
+       filenum++;
+       system ("sleep 1"); 
+      };
+//   };
+};
+if (n==1)  system ("sleep 6");
+if (n==2)  system ("sleep 12");
+if (n >2)  system ("sleep 60 && mos_dist && sleep 60"); 
+// system ("mos_dist"); 
+// system ("sleep 60"); 
+
+

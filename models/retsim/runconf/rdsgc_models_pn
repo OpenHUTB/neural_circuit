@@ -1,0 +1,181 @@
+#! /usr/bin/perl
+#
+#
+#
+#
+# run 3f => Off, vhold = vcl;
+# run 3g => Off, vhold = vcl; pref/null = 1;
+# run 4f => On,  vhold = vcl;
+# run 4g => On,  vhold = vcl; pref/null = 1;
+
+# run 5f => Off, vhold = 0;
+# run 5g => Off, vhold = 0; pref/null = 1;
+# run 6f => On,  vhold = 0;
+# run 6g => On,  vhold = 0; pref/null = 1;
+
+$cellnum = 2;
+$condf = 2.0;		# factor to increase the conductance by from original ~4 nS in model
+$vh    = -0.07;
+$ic = 0;
+
+use Getopt::Long;
+
+&GetOptions (
+             "cellnum=f"     => \$cellnum,
+             "theta=f"       => \$theta,
+             "condf=f"       => \$condf,
+             "vh=f"          => \$vh,
+             "ic=f"          => \$ic
+            );
+
+# - - - - - - - - - - - - - - - - - - - -
+
+if ($cellnum == 2) {
+
+# cell 2, morph_R3RB140523_01b
+
+# $i = 0.00245;
+# $a = 8.3e-9  * $condf;
+$i = 0.0026;
+$a = 6e-9  * $condf;
+$g = 12e-9 * $condf;
+
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 2 --run 3f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 2 --run 5f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+$i = 0;
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 2 --run 3g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 2 --run 5g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+
+
+# $i = 0.00223;
+# $a = 5.7e-9  * $condf;
+
+$i = 0.0026;
+$a = 6e-9  * $condf;
+$g = 12e-9 * $condf;
+
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 2 --run 4f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 2 --run 6f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+$i = 0;
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 2 --run 4g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else       { system ("rdsgc_prefnull --cellnum 2 --run 6g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+
+# - - - - - - - - - - - - - - - - - - - -
+
+} elsif ($cellnum == 3) {
+
+
+# cell 3, morph_R3RB140523_01b
+
+$i = 0.0025;
+$a = 4e-9 * $condf;
+$g = 8e-9 * $condf;
+
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 3 --run 3f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 3 --run 5f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+$i = 0;
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 3 --run 3g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 3 --run 5g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+
+
+# $i = 0.00214;
+$i = 0.0025;
+$a = 4e-9 * $condf;
+$g = 8e-9 * $condf;
+
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 3 --run 4f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 3 --run 6f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+$i = 0;
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 3 --run 4g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 3 --run 6g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+
+
+# - - - - - - - - - - - - - - - - - - - -
+
+} elsif ($cellnum == 4) {
+
+# cell 4, morph_R3RB140708_04
+
+$i = 0.0025;
+# $a = 5.1e-9 * $condf; 
+# $g = 8.1e-9 * $condf;
+$a = 4e-9 * $condf; 
+$g = 8e-9 * $condf;
+
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 4 --run 3f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 4 --run 5f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+$i = 0;
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 4 --run 3g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 4 --run 5g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+
+
+# $i = 0.00217;
+# $a = 2.8e-9 * $condf; 
+# $g = 6.3e-9 * $condf;
+$i = 0.00245;
+$a = 4e-9 * $condf; 
+$g = 8e-9 * $condf;
+
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 4 --run 4f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 4 --run 6f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+$i = 0;
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 4 --run 4g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 4 --run 6g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+
+
+# - - - - - - - - - - - - - - - - - - - -
+
+} elsif ($cellnum == 5) {
+
+# cell 5, morph_R3RB140709_01
+
+# $i = 0.0024;
+$i = 0.00255;
+$a = 6.4e-9 * $condf; 
+$g = 12e-9  * $condf; 
+
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 5 --run 3f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 5 --run 5f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+$i = 0;
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 5 --run 3g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 5 --run 5g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+
+
+# $i = 0.00213;
+$i = 0.00245;
+$a = 5e-9    * $condf; 
+$g = 10.2e-9 * $condf; 
+if ($ic==0)  { system ("rdsgc_prefnull --cellnum 5 --run 4f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else         { system ("rdsgc_prefnull --cellnum 5 --run 6f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+$i = 0;
+         { system ("rdsgc_prefnull --cellnum 5 --run 4g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+if ($ic) { system ("rdsgc_prefnull --cellnum 5 --run 6g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+
+
+# - - - - - - - - - - - - - - - - - - - -
+
+} elsif ($cellnum == 6) {
+
+# cell 6, morph_R3RB140709_01
+
+$i = 0.0025;
+$a = 4.7e-9 * $condf; 
+$g = 8.3e-9 * $condf; 
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 6 --run 3f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 6 --run 5f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+$i = 0;
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 6 --run 3g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 6 --run 5g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+
+
+# $i = 0.00217;
+$i = 0.0025;
+$a = 3.8e-9 * $condf; 
+$g = 8.6e-9 * $condf; 
+if ($ic==0) { system ("rdsgc_prefnull --cellnum 6 --run 4f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 6 --run 6f --iincr $i --ampa_cond $a --gaba_cond $g"); }
+$i = 0;
+if ($ic=0)  { system ("rdsgc_prefnull --cellnum 6 --run 4g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+else        { system ("rdsgc_prefnull --cellnum 6 --run 6g --iincr $i --ampa_cond $a --gaba_cond $g"); }
+
+}

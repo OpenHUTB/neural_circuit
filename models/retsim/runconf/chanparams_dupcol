@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+#  script to add columns to retsim/runconf/chanparams 
+#     
+#  Usage:
+#  chanparams_dupcol n chanparams > chanparams.new
+#    where n is the cell column you want to duplicate
+#
+awk "BEGIN {
+     dupcol = $1+1;
+     }
+     "'
+     /^#/ { print } 
+     !/^#/ { 
+     	     for (i=1; i<=NF; i++) {
+
+		 if (i==1) printf $i;  
+		 else { printf "\t"; printf $i;}
+		 if (i==dupcol) { printf "\t"; printf $i; }
+	     }
+	     printf "\n";
+
+	} 
+   ' $2

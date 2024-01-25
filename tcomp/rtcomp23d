@@ -1,0 +1,40 @@
+
+# test of channelrhodopsin-2 adaptation
+
+# Plot scale equal to intensity
+
+tcomp23d --finten 10  --plotscal 10 tcomp23d  > chr2_10_10.r
+tcomp23d --finten 20  --plotscal 20 tcomp23d  > chr2_20_20.r
+tcomp23d --finten 50  --plotscal 500 tcomp23d > chr2_50_50.r
+tcomp23d --finten 100 --plotscal 100 tcomp23d > chr2_100_100.r
+tcomp23d --finten 200 --plotscal 200 tcomp23d > chr2_200_200.r
+tcomp23d --finten 500 --plotscal 500 tcomp23d > chr2_500_500.r
+
+plotmod chr2_10_10.r   | vid -c | ps2pdf - > chr2_10_10.pdf
+plotmod chr2_20_20.r   | vid -c | ps2pdf - > chr2_20_20.pdf
+plotmod chr2_50_50.r   | vid -c | ps2pdf - > chr2_50_50.pdf
+plotmod chr2_100_100.r | vid -c | ps2pdf - > chr2_100_100.pdf
+plotmod chr2_200_200.r | vid -c | ps2pdf - > chr2_200_200.pdf
+plotmod chr2_500_500.r | vid -c | ps2pdf - > chr2_500_500.pdf
+
+
+# - - - - -
+# 
+# Plot scale constant
+ 
+tcomp23d --finten 10  --plotscal 100 tcomp23d > chr2_10_100.r
+tcomp23d --finten 20  --plotscal 100 tcomp23d > chr2_20_100.r
+tcomp23d --finten 50  --plotscal 100 tcomp23d > chr2_50_100.r
+tcomp23d --finten 100 --plotscal 100 tcomp23d > chr2_100_100.r
+tcomp23d --finten 200 --plotscal 100 tcomp23d > chr2_200_100.r
+tcomp23d --finten 500 --plotscal 100 tcomp23d > chr2_500_100.r
+
+plotmod chr2_10_100.r  | vid -c | ps2pdf - > chr2_10_100.pdf
+plotmod chr2_20_100.r  | vid -c | ps2pdf - > chr2_20_100.pdf
+plotmod chr2_50_100.r  | vid -c | ps2pdf - > chr2_50_100.pdf
+plotmod chr2_100_100.r | vid -c | ps2pdf - > chr2_100_100.pdf
+plotmod chr2_200_100.r | vid -c | ps2pdf - > chr2_200_100.pdf
+plotmod chr2_500_100.r | vid -c | ps2pdf - > chr2_500_100.pdf
+
+zip -r chr2_files.zip chr2*.r chr2*.pdf rtcomp23d tcomp23d
+

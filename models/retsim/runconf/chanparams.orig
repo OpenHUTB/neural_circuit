@@ -1,0 +1,72 @@
+columns:	gc	gcoff	sb	dsgc	aii
+
+#Na 1.2 channel parameters 
+Na.offm:	0.001	0.001	0.005	0.0025	0.002
+Na.offh:	0.001	0.001	0.005	0.0025	0.002
+Na.taua:	1	1	1	1	24
+Na.taub:	1	1	1	1	24
+Na.tauc:	1	1	1	1	24
+Na.taud:	1	1	1	1	24
+
+#Na 1.1 channel parameters
+Na5.offm:	0.000	0.000	0.000	0.000	0.000
+Na5.offh:	0.000	0.000	0.000	0.000	0.000
+Na5.taua:	1	1	1	1	1
+Na5.taub:	1	1	1	1	1
+Na5.tauc:	150	150	1	150	1
+Na5.taud:	300	300	1	300	1
+
+#Na 1.6 channel parameters
+Na6.offm:	0.000	0.000	0.000	0.0045	0.000
+Na6.offh:	0.000	0.000	0.000	0.0045	0.000
+Na6.taua:	1	1	1	1	1
+Na6.taub:	1	1	1	1	1
+Na6.tauc:	1	1	1	1	1
+Na6.taud:	1	1	1	1	1
+
+#Kdr channel parameters
+Kdr.offm:	0.022	0.022	0.024	0.017	0.010
+Kdr.taua:	2.5	2.5	2.0	2.5	1
+Kdr.taub:	2.5	2.5	2.0	2.5	1
+Kdr.tauc:	1	1	1	1	1
+Kdr.taud:	1	1	1	1	1
+
+#KA channel parameters
+KA.offm:	0.010	0.010	0.000	0.010	0.000
+KA.offh:	0.010	0.010	0.000	0.010	0.000
+KA.taua:	1	1	1	1	28
+KA.taub:	1	1	1	1	28
+KA.tauc:	1	1	1	1	28
+KA.taud:	1	1	1	1	28
+
+#Ih channel parameters
+KH.offm:	0.010	0.010	0.000	0.000	0.000
+KH.offh:	0.010	0.010	0.000	0.000	0.000
+KH.taua:	1.5	1.5	1	1	1
+KH.taub:	1	1	1	1	1
+KH.tauc:	1	1	1	1	1
+KH.taud:	1	1	1	1	1
+
+#bKCa channel parameters
+BKCa.offm:	-0.06	0.060	0.000	-0.050	0.000
+BKCa.taua:	1	1	1	1	1
+BKCa.taub:	1	1	1	1	1
+BKCa.tauc:	1	1	1	1	1
+BKCa.taud:	1	1	1	1	1
+
+#Ca channel parameters
+Ca.offm:	-0.005	-0.005	-0.002	-0.005	-0.002
+Ca.offh:	-0.005	-0.005	-0.002	-0.005	-0.002
+Ca.taua:	1	1	1	1	1
+Ca.taub:	1	1	1	1	1
+Ca.tauc:	1	1	1	1	1
+Ca.taud:	1	1	1	1	1
+
+#Ca5 channel parameters
+Ca5.offm:	0.000	0.000	0.000	0.010	0.000
+Ca5.offh:	0.000	0.000	0.000	0.010	0.000
+Ca5.taua:	1	1	1	1	1
+Ca5.taub:	1	1	1	1	1
+Ca5.tauc:	1	1	1	1	1
+Ca5.taud:	1	1	1	1	1
+

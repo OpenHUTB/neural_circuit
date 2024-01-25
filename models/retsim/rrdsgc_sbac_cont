@@ -1,0 +1,88 @@
+#! /usr/mont/bin/nci -c
+//
+// rrdsgc_sbac
+//
+//  run with moving annulus, CF then CP
+//    with different contrasts
+//    one sbac only
+
+if (notinit(job)) job = 1;
+if (notinit(run)) run = 1;
+
+ninfo = 0;
+comnd_line_only = 0;            // print out command line but do not run
+label = "";
+filename = "";
+
+// dim rad_vals[] = {{0,20,40,60,80,100,120}};
+// dim rad_vals[] = {{0,20,40}};
+// rad_num = sizeof(rad_vals);
+
+// dim cont_vals[] = {{0.008,0.0085,0.009,0.0095,0.010}};  // for vel 1000, barwidth 50
+dim cont_vals[] = {{0.010,0.0105,0.011,0.0115,0.012}};     // for vel 500,  barwidth 30
+cont_num = sizeof(cont_vals);
+
+   stimtype = 2;		// moving annulus
+    filenum = 1100;
+     mglur2 = 0;
+        rnd = 35310;
+       sdia = 0.3;
+      spdia = 0.6;
+
+  scontrast = 0.012;
+     minten = -0.05;
+     revdir = 0;
+   velocity = 1000;
+   barwidth = 50;
+
+ sbac_vpulse = -0.07;
+  
+     catmid = 5e-3;
+    catdist = 4e-3;
+g_dbp1_sbac = 0.4e-10;
+
+   stimtime = 0.1;
+poststimdur = 0.2;
+     predur = 0.5;
+
+nparm = setvar();
+
+if (catmid == 0 && catdist == 0) cachans = 0
+else                             cachans = 1;
+
+if (g_dbp1_sbac < 2e-12) glutcond = 0
+else                     glutcond = 1;
+
+for (m=0; m<2; m++) {
+  morph_frac = m;
+  for (c=0; c < cont_num; c++) {
+
+    scontrast = cont_vals[c];
+buf1 = "rdsgc_sbac_r --sbac_r 0 --sbarr 0 --stimtype %g --g_dbp1_sbac %g --camid 0.0e-3 --catmid %g --catdist %g --g_sbac_sbac 2e-10 --g_sbac_dsgc 10e-10 --dbpthr -0.052 --mglur2 %g --rnd %g --sdia %g --spdia %g --make_sbac_sbac 0 --make_sbac_dsgc 0 --n_dsgc 0 --stimtime %%g --scontrast %%g --minten %%g --run_vclamp_sbac 0 --revdir %%g --velocity %%g --barwidth %%g --morph_frac %%g --sb_denddia 2.2 --poststimdur %%g --predur %%g --filename "; 
+
+    sprintf (buf2, buf1, stimtype, g_dbp1_sbac, catmid, catdist, mglur2, rnd, sdia, spdia);
+
+    sprintf (buf3, buf2, stimtime, scontrast, minten, revdir, velocity, barwidth, morph_frac, poststimdur, predur);
+
+    sprintf (filename, "dsgc_sbac_m%g_g%g_c%.4f_x%g", morph_frac, glutcond, scontrast, filenum);
+
+    // print buf3+filename;
+
+
+    if (notinit(makepdf)) {
+       run_string = buf3 + filename;
+    } else {
+       if (glutcond==1)
+       sprintf (run_string, "plotmod -p 1-7 -p 8 -p 11 -p 15 -p 25 %s.r | vidpdf > %s.pdf",filename,filename)
+       else
+       sprintf (run_string, "plotmod -p 1-7 -p 8 -p 11 -p 15 -p 25-26 %s.r | vidpdf > %s.pdf",filename,filename);
+    };
+
+    if (comnd_line_only) print run_string
+    else system (run_string);
+
+    filenum++;
+
+  };
+};
+

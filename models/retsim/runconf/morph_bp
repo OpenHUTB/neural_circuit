@@ -1,0 +1,29 @@
+#  morph_bp
+#
+#    node  parent   dia     	   xbio    ybio  zbio    region   dendr
+#
+     0        0    8        	   0       0     0       SOMA      0
+     1        0    1        	   0       0    -2.5     AXON      0
+    17        1    0.4      	   0       0    -7.175   AXON      0
+    18       17    0.4     	   0       0    -13.5    AXON      0
+    19       18    0.4     	   0.5     0    -18.0    AXON      0
+    20       19    0.4      	   1.0     0    -22.0    AXON      0
+    22       20    axon_br_dia     7.0     0    -25.0    AXON      0
+    22       22    varicos_dia     7.0     0    -25.0    VARICOS   0
+    25       22    axon_br_dia     15      0    -35.0    AXON      0
+    25       25    varicos_dia     15      0    -35.0    VARICOS   0
+    32       20    axon_br_dia    -7       0     -25.0   AXON      0
+    32       32    varicos_dia    -7       0     -25.0   VARICOS   0
+    35       32    axon_br_dia    -15      0     -35.0   AXON      0
+    35       35    varicos_dia    -15      0     -35.0   VARICOS   0
+    42       20    axon_br_dia     0      -7     -25.0   AXON      0
+    42       42    varicos_dia     0      -7     -25.0   VARICOS   0
+    45       42    axon_br_dia     0      -15    -35.0   AXON      0
+    45       45    varicos_dia     0      -15    -35.0   VARICOS   0
+    52       20    axon_br_dia     4       7     -25.0   AXON      0
+    52       52    varicos_dia 	   4       7     -25.0   VARICOS   0
+    55       52    axon_br_dia     4       15    -35.0   AXON      0
+    55       55    varicos_dia 	   4       15    -35.0   VARICOS   0
+    101       1    0.5             0       0      5      DEND_PROX 0
+    102     101    den_dia         5       5      10     DEND_PROX 1
+    103     101    den_dia        -5       5      10     DEND_PROX 1

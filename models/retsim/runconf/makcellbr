@@ -1,0 +1,18 @@
+#
+#  make pdf files
+#
+# type 1
+#
+rrcellbr --ninfo 1 --label t1 *t1 &
+rrcellbr --ninfo 1 --label t2 *t2 &
+rrcellbr --ninfo 1 --label t3a *t3a &
+rrcellbr --ninfo 1 --label t3b *t3b &
+rrcellbr --ninfo 1 --label t4 *t4 &
+rrcellbr --ninfo 1 --label t5i *t5i &
+rrcellbr --ninfo 1 --label t5o *t5o &
+rrcellbr --ninfo 1 --label t5t *t5t &
+rrcellbr --ninfo 1 --label tx *tx &
+rrcellbr --ninfo 1 --label t6 *t6 &
+rrcellbr --ninfo 1 --label t7 *t7 &
+rrcellbr --ninfo 1 --label t8 *t8 &
+

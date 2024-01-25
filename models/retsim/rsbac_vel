@@ -1,0 +1,161 @@
+#! /home/rob/bin/nci -c
+#
+# rsbac_vel
+#   run velocity series with transient bipolar cell
+#
+
+inh_vals = {{0,1}};
+inh_num = sizeof(inh_vals);
+
+cont_vals = {{0.005, 0.006, 0.007, 0.008}};
+cont_num = sizeof(cont_vals);
+
+vel_vals = {{100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000}};
+vel_num = sizeof (vel_vals);
+
+
+          d = 0;
+          v = 0;
+          B = -1;
+
+   stimtype = 1;                // moving bar
+    filenum = 1;
+      sbarr = 107;
+     mglur2 = 0;
+        rnd = 35310;
+     sbac_r = 180;
+   sbac_rnd = 0;
+
+//      spdia = 0.3;
+//       sdia = 0.2;
+//      sddia = 0.8;
+      spdia = 0.6;		// for dens_sbac_bar.n, like sbac_stim command lines
+       sdia = 0.5;
+      sddia = 0.5;
+
+     sb1mul = 0.5;
+
+// scontrast = 0.005;
+// velocity = 400;
+     minten = -0.05;
+     revdir = 0;
+   barwidth = 40;
+
+ sbac_vpulse = -0.07;
+
+     catmid = 3.5e-3;
+    catdist = 7.5e-3;
+
+     db1_r5 = 0.1;
+//   db2_r5 = 0.3;
+     db2_r5 = 1.0;
+     cbplam = 0.1;
+
+   dbp1_dens = 4000;
+   db1_morph = 4;
+ db1_biophys = 1;
+ g_dbp1_sbac = 15e-10;
+ n_dbp1_sbac = 0;
+ v_dbp1_sbac = 3;
+  dbp1_mrate = 100;
+  dbp1_mpool = 30;
+      dbpthr = -0.05;
+db1_ca6_offm = 0.028;
+    db1_caax = 1e-3;
+    db1_cap  = 1e-6;
+     db1_sca = 1;
+
+   dbp2_dens = 1900;
+   db2_morph = 4;
+ db2_biophys = 1;
+ g_dbp2_sbac = 15e-10;
+ n_dbp2_sbac = 0; 
+ v_dbp2_sbac = 1.7;
+  dbp2_mrate = 100;
+  dbp2_mpool = 8;
+     dbp2thr = -0.05;
+db2_ca6_offm = 0.028;
+    db2_caax = 1e-3;
+    db2_cap  = 4e-6;
+ 
+    stimtime = 0.02;
+      predur = 0.5;
+ poststimdur = 0.2;
+
+disp_stim_min = -0.05;
+disp_stim_max = -0.04;
+
+make_sbac_sbac = 1;
+comnd_line_only = 0;
+
+nparm = setvar();
+
+if (comnd_line_only>0) {
+
+     if (notinit(cont_n))   cont_n = 1
+     else                   cont_n = cont_num;
+     if (cont_n > cont_num) cont_n = cont_num;
+
+     if (notinit(vel_n))  vel_n = 1
+     else                 vel_n = vel_num;
+     if (vel_n > vel_num) vel_n = vel_num;
+};
+
+if (n_dbp1_sbac > 0) {			// If noise from dbp1 
+    g_dbp1_sbac = 5e-10;
+    v_dbp1_sbac = 3;
+         dbpthr = -0.049;
+};
+if (n_dbp1_sbac > 0) {			// If noise from dbp2 
+    g_dbp2_sbac = 5e-10;
+    v_dbp2_sbac = 1.9;
+     dbp2_mrate = 50;
+     dbp2_mpool = 10;
+        dbp2thr = -0.049;
+};
+
+// for (m=0; m<2; m++) {
+//   morph_frac = m;
+
+  if (!notinit(scontrast)) { cont_n = 1; set_scontrast = 1; } else set_scontrast = 0;
+
+  for (c=0; c < cont_n; c++) {
+     if (set_scontrast==0) 
+         scontrast = cont_vals[c];
+
+     if (!notinit(velocity)) { vel_n = 1; set_velocity = 1; } else set_velocity = 0;
+
+     for (vel=0; vel < vel_n; vel++) {
+
+        if (set_velocity==0) velocity = vel_vals[vel];
+
+        sprintf (str1,"rdsgc_sbac_r --sbac_file morph_sbac_168c6 --sbac_species 1 --sbac_r %g --sb_arbscale 1 --sbarr %g --stimtype %g --sb1mul %g --dri 150 --spdia %g --sdia %g --sddia %g --camid 0.0e-3 --cadist 0 --catprox 0.2e-3 --catmid %g --catdist %g --g_sbac_sbac 2e-10 --g_sbac_dsgc 10e-10 --mglur2 0 --n_dsgc 0 --dscavg 1e5 --sbac_rnd %g --rnd 35310 --make_sbac_sbac %g --make_sbac_dsgc 0 --sbaclm 0.02 --sb_ca6_offm 0.026 --sb_capp 2e-7 --sb_capm 3e-7 --sb_cap 6e-7 --cadiap 1.0 --cadiam 1.0 --cadiad 1.0 --predur %g --poststimdur %g --cbplam %g ",sbac_r,sbarr,stimtype,sb1mul,spdia,sdia,sddia,catmid,catdist,sbac_rnd,make_sbac_sbac,predur,poststimdur,cbplam);
+
+	sprintf (str2,"--scontrast %g --minten %g --velocity %g --barwidth %g --disp_stim_min %g --disp_stim_max %g ",scontrast,minten,velocity,barwidth,disp_stim_min,disp_stim_max);
+
+        sprintf (str3,"--dbp1_dens %g --db1_morph %g --db1_biophys %g --g_dbp1_sbac %g --n_dbp1_sbac %g --v_dbp1_sbac %g --dbpthr %g --dbp1_mrate %g --dbp1_mpool %g --db1_r5 %g --db2_r5 %g --db1_ca6_offm %g --db1_caax %g --db1_cap %g --db1_sca %g --cbplam %g ", dbp1_dens, db1_morph, db1_biophys, g_dbp1_sbac, n_dbp1_sbac, v_dbp1_sbac, dbpthr, dbp1_mrate, dbp1_mpool, db1_r5, db2_r5, db1_ca6_offm, db1_caax, db1_cap, db1_sca);
+
+        sprintf(str4,"--dbp2_dens %g --make_dbp2_sbac 1 --db2_morph %g --db2_biophys %g --g_dbp2_sbac %g --n_dbp2_sbac %g --v_dbp2_sbac %g --dbp2thr %g --dbp2_mrate %g --dbp2_mpool %g --db2_ca6_offm %g --db2_caax %g --db2_cap %g ", dbp2_dens, db2_morph, db2_biophys, g_dbp2_sbac, n_dbp2_sbac, v_dbp2_sbac, dbp2thr, dbp2_mrate, dbp2_mpool,db2_ca6_offm,db2_caax,db2_cap);
+
+        sprintf(str5,"--filename sbac_vel_db2_%g_%g_%g_%g_%g_t%g", 
+				sbarr,sbac_r,scontrast,velocity,dbp2_mpool,filenum);
+        if (!notinit(n_dpb1)) sprintf(str5," %s --n_dbp1 0 ",str5, n_dbp1);
+        if (!notinit(n_dbp2)) sprintf(str5," %s --n_dbp2 0 ",str5, n_dbp2);
+
+      str6 = "";
+      if (d>0)  sprintf (str6,"%s --d %g",d);
+      if (v>0)  sprintf (str6,"%s --v %g",str6,v); 
+      if (B>=0) sprintf (str6,"%s --B %g",str6,B);
+ 
+      run_string = str1 + str2 + str3 + str4 + str5 + str6;
+
+      if (comnd_line_only) print run_string
+      else system (run_string);
+
+      filenum++;
+
+      }; /* for (v;;) */
+   }; /* for (c;;) */
+// };
+
+

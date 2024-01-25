@@ -1,0 +1,5 @@
+#
+# script to make .pdf files from .r files
+#
+  vid -c | ps2pdf - -
+

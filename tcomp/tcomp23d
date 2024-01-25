@@ -1,0 +1,55 @@
+#! /usr/mont/bin/nc -c
+#
+# /* tcomp23d:  test of adaptation in chr */
+
+plmax = .0;
+plmin = -.06;
+endexp = 0.5;
+timinc = 1e-4;
+ploti  = 1e-3;
+
+fdur = 5;
+istart = 100;
+finten = 100;
+hz = 30;
+
+plotscal = 100;
+
+vc = 1;
+
+x = setvar();
+
+endexp = fdur;
+
+n=1;
+dim pchr[n];
+
+for (i=0; i<n; i++) {
+ //at [i] sphere dia 5 rm 50000;
+ at [i] sphere dia 1 rm 3000;
+ if (vc) at [i] chr (0,0) maxcond 200e-12 channoise=0 ename pchr[i]
+ else    at [i] chr (0,0) maxcond 20e-12 channoise=0 ename pchr[i];
+ at [i] chr (0,0) maxcond 200e-12 channoise=0 ename pchr[i];
+ // stim spot 5 loc (0,0) inten 1000 start 0.01 dur 0.1;
+
+ stim checkerboard 1 loc (0,0) xenv=1 yenv=1 inten finten start .02 dur fdur tfreq hz contrast finten; /* */
+ if (vc>0) {
+    stim node [i] vclamp -.08 start 0 dur fdur;  /* */
+    plot I[i] max 5e-12 min -20e-12;
+ } else {
+    plot V[i] max -0.01 min -0.08;
+ };
+};  /* for */
+
+// plot L[n-1] max 100*finten min 0;
+plot L[n-1] max 100*plotscal min 0;
+
+/*
+plot G(1) pchr[4] max 3 min 0;
+plot G(2) pchr[4] max 3 min 0;
+plot G(3) pchr[4] max 3 min 0;
+plot G(4) pchr[4] max 3 min 0;
+/* */
+
+run;
+

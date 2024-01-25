@@ -1,0 +1,29 @@
+#  Michael's beta cell  1997 April 10
+#  "beta8"
+#
+#  Reconstructed Apr, 1997 by Tina Geueke
+#
+#    ( Original dia calibration 1 unit (cm)  = 3.33 um )
+#    ( Original (X,Y) calibration 100 um = 3480 units )
+#
+#  Converted to um by RGS, March, 1999,
+#   using this script: 
+#
+#     awk "{printf (\"%8g %8g %8.3g %8.3g %8.3g %8.3g %8s\n\",
+#     \$1,\$2,\$3*3.33334,\$4/34.8,\$5/34.8,\$6,\$7);}" $1
+#
+#
+#  Axon modified for ath_dia variable at AXON_THIN segment.
+#   RGS 3/2001
+#
+#  Eighth column (dendrite number) added RGS 2004 Apr 7.
+#  using:
+#
+#   awk "!/^#/{printf (\"%8g %8g %8.3g %8.4g %8.4g %8.3g    %-9s %6.3g\n\",
+#   \$1,\$2,\$3,\$4,\$5,\$6,\$7,1);}" $1
+#
+#    node     parent   dia      xbio     ybio    zbio     region        dendr
+#
+       0        0       21        0        0      -25    SOMA           0
+       1        0     2.17       21    -2.47       -8    DEND_PROX      1
+       2        1    0.833     22.8   28.7       -5    DEND           1

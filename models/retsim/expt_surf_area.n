@@ -1,0 +1,51 @@
+/* Experiment surf_area */
+
+proc setparams()
+
+{
+  make_dsgc = 1;        /* make ganglion cell only */
+  make_gc   = 0;
+  //if (notinit(n_dsgc))   n_dsgc  = 1;
+};
+
+/*----------------------------------------------*/
+
+proc runexpt()
+
+{
+    local ct;
+
+  if (notinit(surf_ct)) {
+    if (ngc>0)         ct = gc
+    else if (ngcoff>0) ct = gcoff
+    else if (ndsgc>0)  ct = dsgc
+    else if (nsbac>0)  ct = sbac
+    else if (ncbp>0)   ct = cbp
+    else {
+      ct = gc;
+      //fprintf (stderr,"error: surf_ct not defined\n");
+    }; 
+  }
+  else ct = find_ct(surf_ct);
+  
+  fprintf(stderr,"# Calculating surface area of %s\n",cname[ct]);
+  totsa 	= 1e-10;
+  foreach cable ?d node [ct][1][-1] {
+      local diam,len;
+    diam = element d->dia;
+    len = element d->length;
+    //fprintf(stderr,"diam %g; length %g \n", diam, len);
+    totsa += PI*diam*len;
+  };
+  fprintf(stderr,"# Surface area of dendrites   = %g um2\n",totsa);
+  foreach sphere ?d node [ct][1][-1] {
+      local r;
+    r = element d->dia/2;
+    fprintf(stderr,"# Soma radius = %g -> surf area = 4*PI*r^2 = %g um2\n",r,4*PI*r*r);
+    totsa += 4*PI*r*r;
+  };
+  fprintf(stderr,"# Surface area including soma = %g um2\n", totsa);
+  fprintf(stderr,"# Rin estimated from surface area = %-8.3g\n",
+				getn(ct,RM)/totsa*1e8);
+  exit;
+};

@@ -1,0 +1,1204 @@
+
+# dsgc morphology with crossovers from on - off layers
+#
+retsim --expt dsgc_cbp_bar --dsgc_file morph_ww_sample_cell_crossover --mxrot -90 --n_dbp1 0 --n_ams 0 --ninfo 2 -d 1 -v | vid
+
+# with densfile
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot -90 --myrot -30 --zrot -20 --n_dbp1 0 --n_ams 0 --ninfo 2 -d 1 -v | vid
+
+# with thetax,y
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot -90 --myrot 0 --mzrot 0 --dsgc_thetax -5 --dsgc_thetay 8 --dsgc_thetaz 0 --n_dbp1 0 --n_ams 0 --ninfo 2 -d 1 -v | vid
+makestim 0
+
+#  with thetax,y,z
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot -90 --myrot 0 --mzrot 0 --dsgc_thetax -4 --dsgc_thetay 8 --dsgc_thetaz 15 --n_dbp1 0 --n_ams 0 --ninfo 2 -d 1 -v | vid
+
+#  display nodes
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 0 --dsgc_thetax -4 --dsgc_thetay 8 --dsgc_thetaz 15 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -28 --dsgc_nscale -3.02 -d 9 -v | vid -c -B 0 | ps2pdf - > x.pdf 
+
+# with somz -32 sen in expt_dsgc_dend_dive.cc
+#  showing Off arborization
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot -90 --myrot 0 --mzrot 0 --dsgc_thetax -4 --dsgc_thetay 8 --dsgc_thetaz 15 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -15 --dsgc_nscale -3.02 -d 9 -v | vid -c -B 0 | ps2pdf - > x.pdf
+
+
+# rotated thetaz 90
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot -90 --myrot 0 --mzrot 0 --dsgc_thetax -5 --dsgc_thetay 8 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -35 --disp_dsgc_zmax 0 --dsgc_nscale -3.02 -d 1 -v | vid
+
+# - - - - - - - - - -
+#
+# rotated, flipped, like manuscript
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot -90 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -35 --disp_dsgc_zmax 0 --dsgc_nscale -3.02 --mxrot 0 --dsgc_flip 1 -d 9 -v | vid -c -B 0 | ps2pdf - > x.pdf
+
+# the On layer
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot -90 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -35 --disp_dsgc_zmax -12 --dsgc_nscale -3.02 --mxrot 0 --dsgc_flip 1 -d 9 -v | vid -c -B 0 | ps2pdf - > x.pdf
+
+# the Off layer
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot -90 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -15 --disp_dsgc_zmax 0 --dsgc_nscale -3.02 --mxrot 0 --dsgc_flip 1 -d 9 -v | vid -c -B 0 | ps2pdf - > x.pdf
+
+# axial view, xrot -90, no nodes
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -35 --disp_dsgc_zmax 0 --dsgc_nscale -3.02 --mxrot -90 --dsgc_flip 1 -d 1 -v | vid -c -B 0 | ps2pdf - > x.pdf
+
+# xrot -90, zrot 270
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 270 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -35 --disp_dsgc_zmax 0 --dsgc_nscale -3.02 --mxrot -90 --dsgc_flip 1 -d 1 -v | vid -c -B 0 | ps2pdf - > x.pdf
+
+
+# zxial view, dsgc_denddia 0.8
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -35 --disp_dsgc_zmax 0 --dsgc_nscale -3.01 --mxrot 0 --dsgc_flip 1 --dsgc_denddia 0.8 -d 9 -v | vid -c -B 0 | ps2pdf - > x.pdf
+
+
+# display labels
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -35 --disp_dsgc_zmax 0 --dsgc_nscale -3.09 --mxrot 0 --dsgc_flip 1 --dsgc_denddia 0.8 -d 9 -v | vid -c -B 0 | ps2pdf - > x.pdf
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -35 --disp_dsgc_zmax 0 --dsgc_nscale -3.09 --mxrot 0 --dsgc_flip 1 --dsgc_denddia 0.8 -d 1 -v | vidpdf > dend_dive.pdf
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot -90 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -35 --disp_dsgc_zmax 0 --dsgc_nscale -3.09 --mxrot 0 --dsgc_flip 1 --dsgc_denddia 0.8 -d 1 -v | vidpdf > dend_dive_90.pdf
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -35 --disp_dsgc_zmax 0 --dsgc_nscale -3.01 --mxrot 0 --dsgc_flip 1 --dsgc_denddia 0.8 -d 9 -v | vidpdf > dend_dive_nodes.pdf
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot -90 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --disp_dsgc_zmin -35 --disp_dsgc_zmax 0 --dsgc_nscale -3.01 --mxrot 0 --dsgc_flip 1 --dsgc_denddia 0.8 -d 9 -v | vidpdf > dend_dive_nodes_90.pdf
+
+# run model
+#  istim 50e-12, dsgc_denddia 1.0
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --istim 50e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 1.0 > dend_dive_1.r &
+
+#  dsgc_denddia 0.8
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --istim 50e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.8 > dend_dive_2.r &
+
+# dsgc_denddia 0.5
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --istim 50e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 > dend_dive_3.r &
+
+# dsgc_denddia 1.2
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --istim 50e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 1.2 > dend_dive_4.r &
+
+
+plotmod dend_dive_1.r | vidpdf > dend_dive_1.pdf
+plotmod dend_dive_2.r | vidpdf > dend_dive_2.pdf
+plotmod dend_dive_3.r | vidpdf > dend_dive_3.pdf
+plotmod dend_dive_4.r | vidpdf > dend_dive_4.pdf
+
+
+# - - - - - - - 
+#  make movie
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --istim 50e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --make_movie 1 --space_time 0 --Vmax -0.057 --Vmin -0.065 --colormap 1 --backgnd 0 -v | vid -B 0
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --istim 50e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.8 --make_movie 1 --space_time 0 --Vmax -0.04 --Vmin -0.085 --colormap 3 --backgnd 0 -d 32 --frame_int 0.002 -v | vid
+
+
+# make .ps files for movie
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --istim 50e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --make_movie 1 --space_time 1 --Vmax -0.04 --Vmin -0.073 --colormap 1 --backgnd 0 --frame_int 0.002 -v | vid -B 0 -c -P dend_dive_
+
+
+make_movie3c dend_dive
+make_movie_cut --filename dend_dive --begin 50 --end 150
+make_movie3d dend_dive
+
+# show all regions vcolor, vmax -0.03, istim 10e-12
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 10e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --make_movie 1 --space_time 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0002 --ddia 1 --setscene 2 -v | vid
+
+# show Off layer
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 10e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --make_movie 1 --space_time 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0002 --ddia 1 --setscene 3 -v | vid
+
+# show On layer
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 10e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --make_movie 1 --space_time 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0002 --ddia 1 --setscene 4 -v | vid
+
+# show On layer, longer sdur 0.1, use default sinc (0.02), istim 2e-12
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 2e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --make_movie 1 --space_time 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0002 --ddia 1 --setscene 4 -v | vid
+
+
+# show On layer, turn off dives
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 10e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --make_movie 1 --space_time 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0002 --ddia 0.01 --setscene 4 -v | vid
+
+# show On layer, longer sdur 0.1, default sinc, ddia 0.01, istim 2e-12
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 2e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --make_movie 1 --space_time 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0002 --ddia 0.01 --setscene 4 -v | vid
+
+
+# - - - - - - - -
+# show all regions vcolor, vmax -0.03, istim 10e-12
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 10e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --make_movie 1 --space_time 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0002 --ddia 1 --setscene 2 -v | vid -B 0 -c -P dend_dive2_ 
+
+# show Off layer, vmax -0.03, istim 10e-12
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 10e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --make_movie 1 --space_time 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0002 --ddia 1 --setscene 3 -v | vid -B 0 -c -P dend_dive2_Off_ 
+
+# show Off layer, vmax -0.03, istim 10e-12, diving dendrites connected
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 10e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --make_movie 1 --space_time 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0002 --ddia 1 --setscene 4 -v | vid -B 0 -c -P dend_dive2_On_ 
+
+# show Off layer, vmax -0.03, istim 10e-12, diving dendrites disconnected
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 10e-12 --sinc 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --make_movie 1 --space_time 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0002 --ddia 0.01 --setscene 4 -v | vid -B 0 -c -P dend_dive2_Onx_ 
+
+# - - - - - - - - - -- - - - - - - - -
+#
+# dend_layers, istim 1.5e-12, ddia 1
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 1.5e-12 --sdur 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0005 --ddia 1 --setscene 5 -v | vid
+
+# dend_layers, istim 2.1e-12, ddia 0.1, drm 20e3, dri 100
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 2.1e-12 --sdur 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0005 --ddia 0.1 --setscene 5 -v | vid
+
+# dend_layers, istim 1.5e-12, ddia 1
+#   make movie
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 1.5e-12 --sdur 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0005 --ddia 1 --setscene 5 -v | vid -B 0 -c -P dend_dive3_On_Off_
+
+# dend_layers, istim 2.1e-12, ddia 0.1, drm 20e3, dri 100
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 2.1e-12 --sdur 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0005 --ddia 0.01 --setscene 5 -v | vid -B 0 -c -P dend_dive3_On_Offx_
+
+
+# - - - - - - - - - - - - - - - - - - -
+# dend_layers, ddia 1, istim 1.7e-12
+#   make movie
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 1.7e-12 --sdur 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0005 --ddia 1 --setscene 5 -v | vid -B 0 -c -P dend_dive3_On_Off_
+
+# dend_layers, istim 2.1e-12, ddia 0.1, drm 20e3, dri 100
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 2.0e-12 --sdur 0.05 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0005 --ddia 0.005 --setscene 5 -v | vid -B 0 -c -P dend_dive3_On_Offx_
+
+make_movie3c dend_dive3_On_Off
+make_movie3d dend_dive3_On_Off
+
+make_movie3c dend_dive3_On_Offx
+make_movie3d dend_dive3_On_Offx
+
+# - - - - - - -
+#
+retsim --expt surf_area --celltype dsgc --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --drm 20e3 --dendrm 20e3 --dendcm 1e-6 --dvrev -0.07 --dvst -0.07 --ddia 1 --SOMA 6
+
+# Retina simulation
+#
+#   retsim version:    1.8.86     
+#   nc version:        6.3.61     
+#   date:              Wed Mar 17 17:14:09 EDT 2021     
+#   machine:           dyad     
+#   experiment:        surf_area     
+#   confdir:           runconf
+#   nvalfile:          nval_cbp_flash.n
+#   dsgc  morph:       morph_ww_sample_cell_crossover,   densities: dens_dsgc_morph_ww.n
+#   chanparams file:   chanparams
+#
+#c 6142 neural elements (3.56 MB) converted to compartments.
+#c 6142 neural elements saved.
+#c Total memory space used 4.23 MB.
+#c 1103 comps, 1 cell domain, 6111 nodes, 1102 connections.
+#
+# Surface area and conductances of dsgc
+#
+# nval file          nval_cbp_flash.n
+# density file       dens_dsgc_morph_ww.n 
+#
+# Region   R1        R2        R3        R4        R5        R6        Tot 
+# Label                                                      Soma      Cell 
+# color    blue      red       cyan      brown     green     magenta   
+#
+# Area     6678      3184      902.8     1260      5609      481.2     1.811e+04 um2
+# CompLam  0.02      0.02      0.02      0.02      0.02      0.02                Lambda/comp
+#
+# Rm       2e+04     2e+04     2e+04     2e+04     2e+04     2e+04     2e+04     Ohm-cm2
+# Ri       200       200       200       200       200       200                 Ohm-cm
+# Cm       1         1         1         1         1         1                   uF/cm2
+#
+# Rin      299       628       2.22e+03  1.59e+03  357       4.16e+03  110.4     MOhm (from Rm only)
+# Cond     3339      1592      451.4     629.8     2804      240.6     9057      pS   (from Rm only)
+# Cm       66.78     31.84     9.028     12.6      56.09     4.812     181.1     pF
+# Cond/cap 50        50        50        50        50        50        50        pS/pF
+#
+retsim --expt surf_area --celltype dsgc --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --drm 20e3 --dendrm 20e3 --dendcm 1e-6 --dvrev -0.07 --dvst -0.07 --ddia 0.005 --SOMA 6
+
+# Retina simulation
+#
+#   retsim version:    1.8.86     
+#   nc version:        6.3.61     
+#   date:              Wed Mar 17 17:15:04 EDT 2021     
+#   machine:           dyad     
+#   experiment:        surf_area     
+#   confdir:           runconf
+#   nvalfile:          nval_cbp_flash.n
+#   dsgc  morph:       morph_ww_sample_cell_crossover,   densities: dens_dsgc_morph_ww.n
+#   chanparams file:   chanparams
+#
+#c 6142 neural elements (3.56 MB) converted to compartments.
+#c 6142 neural elements saved.
+#c Total memory space used 5.34 MB.
+#c 4073 comps, 1 cell domain, 6111 nodes, 4072 connections.
+#
+# Surface area and conductances of dsgc
+#
+# nval file          nval_cbp_flash.n
+# density file       dens_dsgc_morph_ww.n 
+#
+# Region   R1        R2        R3        R4        R5        R6        Tot 
+# Label                                                      Soma      Cell 
+# color    blue      red       cyan      brown     green     magenta   
+#
+# Area     6678      15.92     4.514     6.298     5609      481.2     1.279e+04 um2
+# CompLam  0.02      0.02      0.02      0.02      0.02      0.02                Lambda/comp
+#
+# Rm       2e+04     2e+04     2e+04     2e+04     2e+04     2e+04     2e+04     Ohm-cm2
+# Ri       200       200       200       200       200       200                 Ohm-cm
+# Cm       1         1         1         1         1         1                   uF/cm2
+#
+# Rin      299       1.26e+05  4.43e+05  3.18e+05  357       4.16e+03  156.3     MOhm (from Rm only)
+# Cond     3339      7.96      2.257     3.149     2804      240.6     6397      pS   (from Rm only)
+# Cm       66.78     0.1592    0.04514   0.06298   56.09     4.812     127.9     pF
+# Cond/cap 50        50        50        50        50        50        50        pS/pF
+#
+
+- - - - - - - - -
+
+dyad:~/nc/models/retsim> retsim --expt cell_Rin --celltype dsgc --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --drm 20e3 --dendrm 20e3 --dendcm 1e-6 --dvrev -0.07 --dvst -0.07 --ddia 1 --SOMA 6
+
+# Retina simulation
+#
+#   retsim version:    1.8.86     
+#   nc version:        6.3.61     
+#   date:              Thu Mar 18 20:14:01 EDT 2021     
+#   machine:           dyad     
+#   experiment:        cell_Rin     
+#   confdir:           runconf
+#   nvalfile:          nval_cbp_flash.n
+#   dsgc  morph:       morph_ww_sample_cell_crossover,   densities: dens_dsgc_morph_ww.n
+#   chanparams file:   chanparams
+#
+#c 6142 neural elements (3.56 MB) converted to compartments.
+#c Stimuli 0.000198 MB.
+#c 6142 neural elements saved.
+#c Total memory space used 4.23 MB.
+#c 1103 comps, 1 cell domain, 6111 nodes, 1102 connections.
+#
+# number of nodes = 6111
+# fracnodes       = 0.0164
+# cpu speed = 5100
+# Calculating Rin at Vm = -0.07
+# Est time per node per vstep:    186.9 minutes
+# Estimated total run time:   1.869e+04 minutes
+#
+#
+# node V     Rin(ohms)  Gin(S)    dist(um)
+#
+    0 -0.07   1.31e+08  7.63e-09  0       
+
+for ddia 0.005:
+
+   0 -0.07   1.85e+08  5.41e-09  0       
+
+--------------------------------------------------------------------------------------------------------
+
+# stimulate green, 70 pA
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 1423 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 5269 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 2417 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 920 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 4959 -v | vid -w 1.5
+
+
+# stimulate red, 70 pA
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 4475 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 1566 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 1446 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 5088 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 4206 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 2086 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 5369 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 3781 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 5552 -v | vid -w 1.5
+
+
+
+# ------------------------------------------------------------------------------------------
+#  make movies of above runs
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 1423 -v | vid -B 0 -c -P dend_dive_Off_On_1423_ 
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 5269 -v | vid -B 0 -c -P dend_dive_Off_On_5269_
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 2417 -v | vid -B 0 -c -P dend_dive_Off_On_2417_
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 920 -v | vid -B 0 -c -P dend_dive_Off_On_920_
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 4959 -v | vid -B 0 -c -P dend_dive_Off_On_4959_
+
+
+# stimulate red, 70 pA
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 4475 -v | vid -B 0 -c -P dend_dive_Off_Ond_4475_
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 1566 -v | vid -B 0 -c -P dend_dive_Off_Ond_1566_
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 1446 -v | vid -B 0 -c -P dend_dive_Off_Ond_1446_
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 5088 -v | vid -B 0 -c -P dend_dive_Off_Ond_5088_
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 4206 -v | vid -B 0 -c -P dend_dive_Off_Ond_4206_
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 2086 -v | vid -B 0 -c -P dend_dive_Off_Ond_2086_
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 5369 -v | vid -B 0 -c -P dend_dive_Off_Ond_5369_
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 3781 -v | vid -B 0 -c -P dend_dive_Off_Ond_3781_
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.002 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 5552 -v | vid -B 0 -c -P dend_dive_Off_Ond_5552_
+
+# - - - - - - -
+#
+# All Off stimulus locations.
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 1.7e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0005 --sinc 0.01 --ddia 1 --setscene 5 --nodive 0 -v | vid -B 0 -c -P dend_dive5_On_Off_
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_sample_cell_crossover --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 2.8e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0005 --sinc 0.01 --ddia 1 --setscene 5 --nodive 1 -v | vid -B 0 -c -P dend_dive5_On_Off_
+
+
+
+# ------------------------------------------------------------------------------------------
+# make same movies as above but with morph_ww_cell_crossover2
+#   display cell with nodes
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.01 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 0 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 1 --stim_loc 3294 -d 9 -v | vidpdf > morph_ww_cell_crossover2_nodes.pdf
+
+# ------------------------------------------------------------------------------------------
+#  make movies of above runs
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 3294 -v | vid -B 0 -c -P dend_dive_Off_On_0.5_3294 
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 6411 -v | vid -B 0 -c -P dend_dive_Off_On_0.5_6411
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 1337 -v | vid -B 0 -c -P dend_dive_Off_On_0.5_1337
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 287 -v | vid -B 0 -c -P dend_dive_Off_On_0.5_287
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 7147 -v | vid -B 0 -c -P dend_dive_Off_On_0.5_7147
+
+make_movie_mpg dend_dive_Off_On_0.5_3294
+make_movie_mpg dend_dive_Off_On_0.5_6411
+make_movie_mpg dend_dive_Off_On_0.5_1337
+make_movie_mpg dend_dive_Off_On_0.5_287
+make_movie_mpg dend_dive_Off_On_0.5_7147
+
+
+# stimulate red, 70 pA
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 5989 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.5_5989
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 2455 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.5_2455
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 2272 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.5_2272
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 6448 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.5_6448
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 4566 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.5_4566
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 6535 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.5_6535
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 3954 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.5_3954
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 7677 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.5_7677
+
+make_movie_mpg dend_dive_Off_Ond_0.5_5989
+make_movie_mpg dend_dive_Off_Ond_0.5_2455
+make_movie_mpg dend_dive_Off_Ond_0.5_2272
+make_movie_mpg dend_dive_Off_Ond_0.5_6448
+make_movie_mpg dend_dive_Off_Ond_0.5_4566
+make_movie_mpg dend_dive_Off_Ond_0.5_6535
+make_movie_mpg dend_dive_Off_Ond_0.5_3954
+make_movie_mpg dend_dive_Off_Ond_0.5_7677
+
+# - - - - - - -
+#
+# All Off stimulus locations.
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 1.7e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0005 --sinc 0.01 --ddia 1 --setscene 5 --nodive 0 -v | vid -B 0 -c -P dend_dive5_On_Off_0.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.01 --istim 2.8e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.0005 --sinc 0.01 --ddia 1 --setscene 5 --nodive 1 -v | vid -B 0 -c -P dend_dive5_On_Off_0.5
+
+# - - - - - - - - - -
+# 0.8
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 3294 -v | vid -B 0 -c -P dend_dive_Off_On_0.8_3294
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 6411 -v | vid -B 0 -c -P dend_dive_Off_On_0.8_6411
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 1337 -v | vid -B 0 -c -P dend_dive_Off_On_0.8_1337
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 287 -v | vid -B 0 -c -P dend_dive_Off_On_0.8_287
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 7147 -v | vid -B 0 -c -P dend_dive_Off_On_0.8_7147
+
+make_movie_mpg dend_dive_Off_On_0.8_3294
+make_movie_mpg dend_dive_Off_On_0.8_6411
+make_movie_mpg dend_dive_Off_On_0.8_1337
+make_movie_mpg dend_dive_Off_On_0.8_287
+make_movie_mpg dend_dive_Off_On_0.8_7147
+
+
+# - - - - - - - - - -
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 5989 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.8_5989
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 2455 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.8_2455
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 2272 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.8_2272
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 6448 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.8_6448
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 4566 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.8_4566
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 6535 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.8_6535
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 3954 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.8_3954
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 7677 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.8_7677
+
+make_movie_mpg dend_dive_Off_Ond_0.8_5989
+make_movie_mpg dend_dive_Off_Ond_0.8_2455
+make_movie_mpg dend_dive_Off_Ond_0.8_2272
+make_movie_mpg dend_dive_Off_Ond_0.8_6448
+make_movie_mpg dend_dive_Off_Ond_0.8_4566
+make_movie_mpg dend_dive_Off_Ond_0.8_6535
+make_movie_mpg dend_dive_Off_Ond_0.8_3954
+make_movie_mpg dend_dive_Off_Ond_0.8_7677
+
+# - - - - 
+# 0.3
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 3294 -v | vid -B 0 -c -P dend_dive_Off_On_0.3_3294
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 6411 -v | vid -B 0 -c -P dend_dive_Off_On_0.3_6411
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 1337 -v | vid -B 0 -c -P dend_dive_Off_On_0.3_1337
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 287 -v | vid -B 0 -c -P dend_dive_Off_On_0.3_287
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 7147 -v | vid -B 0 -c -P dend_dive_Off_On_0.3_7147
+
+make_movie_mpg dend_dive_Off_On_0.3_3294
+make_movie_mpg dend_dive_Off_On_0.3_6411
+make_movie_mpg dend_dive_Off_On_0.3_1337
+make_movie_mpg dend_dive_Off_On_0.3_287
+make_movie_mpg dend_dive_Off_On_0.3_7147
+
+# - - - -
+#
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 5989 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.3_5989
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 2455 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.3_2455
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 2272 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.3_2272
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 6448 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.3_6448
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 4566 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.3_4566
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 6535 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.3_6535
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 3954 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.3_3954
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover2 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 7677 -v | vid -B 0 -c -P dend_dive_Off_Ond_0.3_7677
+
+make_movie_mpg dend_dive_Off_Ond_0.3_5989
+make_movie_mpg dend_dive_Off_Ond_0.3_2455
+make_movie_mpg dend_dive_Off_Ond_0.3_2272
+make_movie_mpg dend_dive_Off_Ond_0.3_6448
+make_movie_mpg dend_dive_Off_Ond_0.3_4566
+make_movie_mpg dend_dive_Off_Ond_0.3_6535
+make_movie_mpg dend_dive_Off_Ond_0.3_3954
+make_movie_mpg dend_dive_Off_Ond_0.3_7677
+
+# - - - - - - - -
+#  New swc file, dendrites fixed
+#   display cell with node numbers
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.09 --mxrot 0 --stimtime 0.001 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 0 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim_loc 7677 --dsgc_nscale -3.01 -d 9 -v | vidpdf > morph_ww_cell_crossover3.pdf
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# movies  (from Lindsay's Simulation_model_ppt.pptx, numbers orig-1) 
+#
+# Off  Cross      On
+#
+# 6381 328        205, 305
+# 6741 3490       3286, 3046
+# 6697 3514       3013
+# 5213 4347       4314, 4421
+# 6453 2024       1702
+# 8089 2450       2439
+# 7798 2651       2370
+# 8513 2871       2300
+# 6454 2177, 1369 1873
+# 6495 1977       1740  
+#
+#
+#  dsgc_denddia 0.5,    off 6381, crossover 328,  on 205, 305
+#    cclamp
+#    dsgc_nscale
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 6381 --rec1 205 --rec2 305 -v | vid -B 0 -c -P dend_dive_0.5_6381
+
+make_movie_mpg dend_dive_0.5_6381
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.02 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 328 --rec1 205 --rec2 305 -v | vid -B 0 -c -P dend_dive_0.5_328
+
+make_movie_mpg dend_dive_0.5_328
+
+
+# - - - - - - - - - - - - - - - - - - -
+#
+# make dbp1 synapse instead of cclamp (bipolar cell is set color = black)
+#   Vmax -0.03 (from 0.02 above)
+#   n_dbp1 1
+#
+# 6381 328        205, 305
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 6381 --rec1 205 --rec2 305 -v | vid -B 0 -c -P dend_dive_0.5_6381
+
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 328 --rec1 205 --rec2 305 -v | vid -B 0 -c -P dend_dive_0.5_328
+
+
+# 6741 3490       3286, 3046
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 6741 --rec1 3286 --rec2 3046 -v | vid -B 0 -c -P dend_dive_0.5_6741
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 3490 --rec1 3286 --rec2 3046 -v | vid -B 0 -c -P dend_dive_0.5_3490
+
+
+# 6697 3514       3013
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 6697 --rec1 3013 -v | vid -B 0 -c -P dend_dive_0.5_6697
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 3514 --rec1 3013 -v | vid -B 0 -c -P dend_dive_0.5_3514
+
+make_movie_mpg dend_dive_0.5_6381
+make_movie_mpg dend_dive_0.5_328
+make_movie_mpg dend_dive_0.5_6741
+make_movie_mpg dend_dive_0.5_3490
+make_movie_mpg dend_dive_0.5_6697
+make_movie_mpg dend_dive_0.5_3514
+
+
+# 5213 4347       4314, 4421
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 5213 --rec1 4314 --rec2 4421 -v | vid -B 0 -c -P dend_dive_0.5_5213
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 4347 --rec1 4314 --rec2 4421 -v | vid -B 0 -c -P dend_dive_0.5_4347
+
+# 6453 2024       1702
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 6453 --rec1 1702 -v | vid -B 0 -c -P dend_dive_0.5_6453
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 2024 --rec1 1702 -v | vid -B 0 -c -P dend_dive_0.5_2024
+
+# 8089 2450       2439
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 8089 --rec1 2439 -v | vid -B 0 -c -P dend_dive_0.5_8089
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 2450 --rec1 2439 -v | vid -B 0 -c -P dend_dive_0.5_2450
+
+make_movie_mpg dend_dive_0.5_5213
+make_movie_mpg dend_dive_0.5_4347
+make_movie_mpg dend_dive_0.5_6453
+make_movie_mpg dend_dive_0.5_2024
+make_movie_mpg dend_dive_0.5_8089
+make_movie_mpg dend_dive_0.5_2450
+
+# 7798 2651       2370
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 7798 --rec1 2370 -v | vid -B 0 -c -P dend_dive_0.5_7798
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 2651 --rec1 2370 -v | vid -B 0 -c -P dend_dive_0.5_2651
+
+# 8513 2871       2300
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 8513 --rec1 2300 -v | vid -B 0 -c -P dend_dive_0.5_8513
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 2871 --rec1 2300 -v | vid -B 0 -c -P dend_dive_0.5_2871
+
+# 6454     2177,1369    1873
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 6454 --rec1 1873 -v | vid -B 0 -c -P dend_dive_0.5_6454
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 2177 --rec1 1873 -v | vid -B 0 -c -P dend_dive_0.5_2177
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 1369 --rec1 1873 -v | vid -B 0 -c -P dend_dive_0.5_1369
+
+# 6495 1977       1740  
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 6495 --rec1 1740 -v | vid -B 0 -c -P dend_dive_0.5_6495
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 1977 --rec1 1740 -v | vid -B 0 -c -P dend_dive_0.5_1977
+
+make_movie_mpg dend_dive_0.5_7798
+make_movie_mpg dend_dive_0.5_2651
+make_movie_mpg dend_dive_0.5_8513
+make_movie_mpg dend_dive_0.5_2871
+make_movie_mpg dend_dive_0.5_6454
+make_movie_mpg dend_dive_0.5_2177
+make_movie_mpg dend_dive_0.5_1369
+make_movie_mpg dend_dive_0.5_6495
+make_movie_mpg dend_dive_0.5_1977
+
+# same as above but dri = 50
+#
+# 6495 1977       1740  
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 6495 --rec1 1740 -v | vid -B 0 -c -P dend_dive_0.5_50_6495
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 1977 --rec1 1740 -v | vid -B 0 -c -P dend_dive_0.5_50_1977
+
+# same as above but dri = 200
+#
+# 6495 1977       1740  
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 200 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 6495 --rec1 1740 -v | vid -B 0 -c -P dend_dive_0.5_200_6495
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 200 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 1977 --rec1 1740 -v | vid -B 0 -c -P dend_dive_0.5_200_1977
+
+make_movie_mpg dend_dive_0.5_50_6495
+make_movie_mpg dend_dive_0.5_50_1977
+make_movie_mpg dend_dive_0.5_200_6495
+make_movie_mpg dend_dive_0.5_200_1977
+
+# - - - - - - - -
+# additional denddias 0.3, 0.8 for 1977
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 1977 --rec1 1740 -v | vid -B 0 -c -P dend_dive_0.3_100_1977
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.8 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 1977 --rec1 1740 -v | vid -B 0 -c -P dend_dive_0.8_100_1977
+
+make_movie_mpg dend_dive_0.3_100_1977
+make_movie_mpg dend_dive_0.8_100_1977
+
+
+
+# - - - - - - - -
+#   display cell nodes without dbp1
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3.v4 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_dbp1 0 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 0 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 1977 --rec1 1740 -d 9 --dsgc_nscale -3.01 -v | vidpdf > morph_ww_cell_crossover3.v4.pdf
+
+# additional movies  (from Lindsay's additional_stimulation_locs_20210517.pptx, numbers orig-1) 
+#
+# Off     On
+#
+# 7625    7677
+# 7451    7660
+# 8389    8444
+# 8263    8414
+# 4910    6101
+# 664     826
+# 5135    5481
+# 4720    5919
+# 5010    5804
+# 5458    5499
+# 2651    2370
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 7625 --rec1 7677 -v | vid -B 0 -c -P dend_dive_0.5_7625
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 7451 --rec1 7660 -v | vid -B 0 -c -P dend_dive_0.5_7451
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 8389 --rec1 8444 -v | vid -B 0 -c -P dend_dive_0.5_8389
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 8263 --rec1 8414 -v | vid -B 0 -c -P dend_dive_0.5_8263
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 4910 --rec1 6101 -v | vid -B 0 -c -P dend_dive_0.5_4910
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 664 --rec1 826 -v | vid -B 0 -c -P dend_dive_0.5_664
+
+make_movie_mpg dend_dive_0.5_7625
+make_movie_mpg dend_dive_0.5_7451
+make_movie_mpg dend_dive_0.5_8389
+make_movie_mpg dend_dive_0.5_8263
+make_movie_mpg dend_dive_0.5_4910
+make_movie_mpg dend_dive_0.5_664
+
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 5135 --rec1 5481 -v | vid -B 0 -c -P dend_dive_0.5_5135
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 4720 --rec1 5919 -v | vid -B 0 -c -P dend_dive_0.5_4720
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 5010 --rec1 5804 -v | vid -B 0 -c -P dend_dive_0.5_5010
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 5458 --rec1 5499 -v | vid -B 0 -c -P dend_dive_0.5_5458
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.30 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 100 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim1 2651 --rec1 2370 -v | vid -B 0 -c -P dend_dive_0.5_2651
+
+make_movie_mpg dend_dive_0.5_5135 
+make_movie_mpg dend_dive_0.5_4720
+make_movie_mpg dend_dive_0.5_5010
+make_movie_mpg dend_dive_0.5_5458
+make_movie_mpg dend_dive_0.5_2651
+
+# - - - - - - - - - - - - - - - - - -
+#
+#  stim2 1977`
+#  
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 1977 --rec1 1740 -v | vid -B 0 
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 0 --ddia 1 --mxrot -90 --set_cclamp 1 --dsgc_nscale -2.05 -d 1 -v | vid -w 1.5
+
+# - - - - -
+#  add Na / K channels in dendrites
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --stimtime 0.01 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 0 --ddia 1 --minten -0.045 --scontrast 0.005 --spotx 50 --spoty 0 --mxrot -90 --dsgc_nscale -2.05 -d 1 -v | vid -w 1.5
+
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --stimtime 0.01 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 0 --ddia 1 --minten -0.05 --scontrast 0.005 --predur 0.005 --spotdia 120 --spotx 80 --spoty 0 --sdur 0.02 --dsgc_nscale -2.05 -d 16 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --stimtime 0.01 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 0 --ddia 1 --minten -0.05 --scontrast 0.005 --predur 0.005 --spotdia 120 --spotx 80 --spoty 0 --sdur 0.02 --dsgc_nscale -2.05 >& dend_dive_sp1.r
+
+plotmod -p 3-5 dend_dive_sp1.r | vidpdf > dend_dive_sp1.pdf
+
+# - - - - -
+#  similar to dend_dive_sp1 but spotdia 80, region -80, scontrast 0.007
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --stimtime 0.01 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 0 --ddia 1 --minten -0.05 --scontrast 0.007 --predur 0.005 --spotdia 80 --spotx 80 --spoty 0 --sdur 0.02 --dsgc_nscale -2.05 >& dend_dive_sp2.r
+
+plotmod -p 3-5 dend_dive_sp2.r | vidpdf > dend_dive_sp2.pdf
+plotmod -p 3-5 dend_dive_sp2b.r | vidpdf > dend_dive_sp2b.pdf
+
+# dbp1s use stimchan 1
+# hbp1s use stimchan 2
+#  stimulus stimchan 1
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --stimtime 0.005 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 0 --ddia 1 --minten -0.05 --scontrast 0.007 --spotdia 80 --spotx 80 --spoty 0 --sdur 0.02 --dsgc_nscale -2.05 -v | vid -w 1.5
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --stimtime 0.005 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 0 --ddia 1 --minten -0.05 --scontrast 0.007 --spotdia 80 --spotx 80 --spoty 0 --sdur 0.02 --dsgc_nscale -2.05 >& dend_dive_sp3.r
+
+# check
+#  stim2 1977`
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.01 --istim 70e-12 --sdur 0.1 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.03 --Vmin -0.072 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --stim2 1977 --rec1 1740 -v | vid -B 0 
+
+# make movie with dendritic spikes
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.007 --on_spot 1 --spotdia 80 --spotx 80 --spoty 0 --sdur 0.02 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.01 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 -v | vid -B 0 
+
+# spoty -80
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.007 --spotdia 80 --spotx 80 --spoty -40 --sdur 0.02 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.01 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --on_spot 1 -v | vid -B 0 
+
+# works
+#  on_spot 1
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.012 --spotdia 80 --sdur 0.02 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.01 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --off_spot 0 --on_spot 1 -v | vid -B 0
+
+# off_spot 1
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.012 --spotdia 80 --sdur 0.02 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.01 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --off_spot 1 --on_spot 0 -v | vid -B 0
+
+# g_dbp1_nmda 5e-9
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 120 --sdur 0.02 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.01 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 3e-9 --g_dbp1_nmda 5e-9 --g_dbp1_dsgc 5e-9 --off_spot 1 --on_spot 0 -v | vid -B 0
+
+# - - - - - - - - -
+#  use dens_morph_ww2c.n, no spikes
+#   g_dbp1_nmda 5e-9
+#   Vmax 0.02
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 80 --sdur 0.02 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 3e-9 --g_dbp1_nmda 5e-9 --g_dbp1_dsgc 5e-9 --off_spot 1 --on_spot 1 -v | vid -B 0
+
+# make movie frames
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 80 --sdur 0.02 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 3e-9 --g_dbp1_nmda 5e-9 --g_dbp1_dsgc 5e-9 --off_spot 1 --on_spot 1 -v | vid -B 0 -c -P dend_dive_nmda_1
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 80 --sdur 0.02 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 25e-10 --g_dbp1_nmda 10e-10 --g_dbp1_dsgc 1e-10 --off_spot 1 --on_spot 1 -v | vid -B 0 -c -P dend_dive_nmda_2
+
+make_movie_mpg dend_dive_nmda_2
+
+# hbp1 spot 5 msec
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 25e-10 --g_dbp1_nmda 20e-10 --g_dbp1_dsgc 2e-10 --off_spot 1 --on_spot 1 -v | vid -B 0 -c -P dend_dive_nmda_2
+
+# - - - - - -
+#  2 spot locs, 1 => (30,-50), 2 => (-50,20)
+#
+# off_spot 1, on_spot 1
+#   g_hbp1_dsgc 25e-10, 
+#   g_dbp1_dsgc 1e-10,  g_dbp1_nmda 20e-10
+#   no spikes => dens_dsgc_morph_ww2c.n
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 25e-10 --g_dbp1_nmda 20e-10 --g_dbp1_dsgc 1e-10 --off_spot 1 --on_spot 1 -v | vid
+
+# off_spot 2, on_spot 1
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 25e-10 --g_dbp1_nmda 20e-10 --g_dbp1_dsgc 1e-10 --off_spot 2 --on_spot 1 -v | vid
+
+# no nmda
+#
+#   g_hbp1_dsgc 25e-10, 
+#   g_dbp1_dsgc 1e-10,  g_dbp1_nmda 0e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 25e-10 --g_dbp1_nmda 0e-10 --g_dbp1_dsgc 1e-10 --off_spot 1 --on_spot 1 -v | vid
+
+# no off_spot
+#
+#   g_hbp1_dsgc 0e-10, 
+#   g_dbp1_dsgc 1e-10,  g_dbp1_nmda 20e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 0e-10 --g_dbp1_nmda 20e-10 --g_dbp1_dsgc 1e-10 --off_spot 1 --on_spot 1 -v | vid
+
+# no off_spot, no on_spot
+#
+#   g_hbp1_dsgc 0e-10, 
+#   g_dbp1_dsgc 0e-10,  g_dbp1_nmda 20e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 0e-10 --g_dbp1_nmda 20e-10 --g_dbp1_dsgc 0e-10 --off_spot 1 --on_spot 1 -v | vid
+
+# off_spot 2, on_spot 2 
+#   g_dbp1_nmda 20e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 25e-10 --g_dbp1_nmda 20e-10 --g_dbp1_dsgc 1e-10 --off_spot 2 --on_spot 2 -v | vid
+
+# off_spot 2, on_spot 2 
+#   g_dbp1_nmda 0
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 25e-10 --g_dbp1_nmda 0e-10 --g_dbp1_dsgc 1e-10 --off_spot 2 --on_spot 2 -v | vid
+
+
+# off_spot 2, on_spot 2 
+#   g_hbp1_dsgc 25e-10, 
+#   g_dbp1_nmda 20e-10
+#   g_dbp1_dsgc 0e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 25e-10 --g_dbp1_nmda 20e-10 --g_dbp1_dsgc 0e-10 --off_spot 2 --on_spot 2 -v --plotlabel dend_dive_nmda_4 | vid -B 0 -c -P dend_dive_nmda_4
+
+# off_spot 2, on_spot 2
+#   g_hbp1_dsgc 0
+#   g_dbp1_nmda 20e-10
+#   g_dbp1_dsgc 0
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 0e-10 --g_dbp1_nmda 20e-10 --g_dbp1_dsgc 0e-10 --off_spot 2 --on_spot 2 -v --plotlabel dend_dive_nmda_5 | vid -B 0 -c -P dend_dive_nmda_5
+
+# off_spot 2, on_spot 2 
+#   g_hbp1_dsgc 25e-10, 
+#   g_dbp1_nmda 0e-10
+#   g_dbp1_dsgc 0e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 25e-10 --g_dbp1_nmda 0e-10 --g_dbp1_dsgc 0e-10 --off_spot 2 --on_spot 2 -v --plotlabel dend_dive_nmda_6 | vid -B 0 -c -P dend_dive_nmda_6
+
+# off_spot 2, on_spot 2
+#   g_hbp1_dsgc 0
+#   g_dbp1_nmda 0e-10
+#   g_dbp1_dsgc 2.5e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 0e-10 --g_dbp1_nmda 0e-10 --g_dbp1_dsgc 2.5e-10 --off_spot 2 --on_spot 2 --plotlabel dend_dive_nmda_7 -v | vid -B 0 -c -P dend_dive_nmda_7
+
+# g_hbp1_dsgc 25e-10
+#   g_dbp1_nmda 0e-10
+#   g_dbp1_dsgc 2.5e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 25e-10 --g_dbp1_nmda 0e-10 --g_dbp1_dsgc 2.5e-10 --off_spot 2 --on_spot 2 --plotlabel dend_dive_nmda_8 -v | vid -B 0 -c -P dend_dive_nmda_8
+
+# g_hbp1_dsgc 25e-10
+# g_dbp1_nmda 20e-10
+#   g_dbp1_dsgc 2.5e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 25e-10 --g_dbp1_nmda 20e-10 --g_dbp1_dsgc 2.5e-10 --off_spot 2 --on_spot 2 --plotlabel dend_dive_nmda_9 -v | vid -B 0 -c -P dend_dive_nmda_9
+
+# - - - - - - - - - -
+# spikes, uses dens_dsgc_morph_ww2b.n
+#
+# g_hbp1_dsgc 25e-10
+#   g_dbp1_nmda 0e-10
+#   g_dbp1_dsgc 2.5e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.015 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_dsgc 25e-10 --g_dbp1_nmda 20e-10 --g_dbp1_dsgc 2.5e-10 --off_spot 2 --on_spot 2 --plotlabel dend_dive_nmda_10 -v | vid -B 0 -c -P dend_dive_nmda_10
+
+make_movie_mpg dend_dive_nmda_4
+make_movie_mpg dend_dive_nmda_5
+make_movie_mpg dend_dive_nmda_6
+make_movie_mpg dend_dive_nmda_7
+make_movie_mpg dend_dive_nmda_8
+make_movie_mpg dend_dive_nmda_9
+make_movie_mpg dend_dive_nmda_10
+
+# - - - - - - - - - - - - - - - - -
+#  add nmda chans to Off dendrites
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.006 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 20e-10 --g_hbp1_dsgc 25e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 20e-10 --g_dbp1_dsgc 2.5e-10 --off_spot 2 --on_spot 2 --plotlabel dend_dive_nmda_11 -v | vid -B 0 -c -P dend_dive_nmda_11
+
+# spot_delay 0.01, spotdia 100
+#  
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.05 --scontrast 0.006 --spotdia 100 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 2e-10 --g_hbp1_dsgc 10e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 5e-10 --g_dbp1_dsgc 2.5e-10 --off_spot 2 --on_spot 2 --spot_delay 0.01 --plotlabel dend_dive_nmda_11 -v | vid
+
+# spot_delay 0.01, spotdia 80
+#  
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2c.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax 0 --Vmin -0.068 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 2e-10 --g_hbp1_dsgc 10e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 5e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 2.5e-10 --off_spot 2 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_11 -v | vid
+
+
+# - - - - - - 
+#  spikes, uses dens_dsgc_morph_ww2b.n
+#   Vmax -0.02
+#   with somatic initiation of spikes
+#
+#  2 g_hbp1_dsgc 15e-10
+#  2 g_dbp1_nmda 12e-10
+#  2 g_dbp1_dsgc  8e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 0e-10 --g_hbp1_dsgc 15e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 12e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 2 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_12 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_12
+
+#  2 g_hbp1_dsgc  0e-10
+#  2 g_dbp1_nmda 12e-10
+#  2 g_dbp1_dsgc 8e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 0e-10 --g_hbp1_dsgc 0e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 12e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 2 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_13 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_13
+
+#  2 g_hbp1_dsgc 15e-10
+#  1 g_dbp1_nmda 12e-10
+#  1 g_dbp1_dsgc 8e-10
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 0e-10 --g_hbp1_dsgc 15e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 12e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 2 --on_spot 1 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_14 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_14
+
+make_movie_mpg dend_dive_nmda_12
+make_movie_mpg dend_dive_nmda_13
+make_movie_mpg dend_dive_nmda_14
+
+# - - - -
+#  set spots (50,50),  (50, -50), (-50, 50), (-50, -50)
+#
+#  off_spot 1, on_spot 1
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 50 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 0e-10 --g_hbp1_dsgc 15e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 12e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 1 --on_spot 1 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_15
+
+#  off_spot 2, on_spot 2
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 50 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 0e-10 --g_hbp1_dsgc 15e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 12e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 2 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_16 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_16
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 50 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 0e-10 --g_hbp1_dsgc 15e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 12e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 3 --on_spot 3 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_17 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_17
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 50 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 0e-10 --g_hbp1_dsgc 15e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 12e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 4 --on_spot 4 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_18 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_18
+
+# - - - -
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 20e-10 --g_hbp1_dsgc 20e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 20e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 10e-10 --off_spot 3 --on_spot 3 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 15e-10 --g_hbp1_dsgc 20e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 15e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 1 --on_spot 3 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid &
+
+# dsgc_denddia 0.5
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 20e-10 --g_hbp1_dsgc 30e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 17e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 9e-10 --off_spot 3 --on_spot 3 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 40e-10 --g_hbp1_dsgc 40e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 30e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 40e-10 --off_spot 4 --on_spot 3 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid &
+
+# dsgc_denddia 0.3
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 20e-10 --g_hbp1_dsgc 30e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 25e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 12e-10 --off_spot 2 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid &
+
+# on resp only spikes during on spot
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 17e-10 --g_hbp1_dsgc 25e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 17e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 11e-10 --off_spot 2 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid &
+
+
+# - - - - - - - - - - - -
+#  try dendritic spike initiation 
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 17e-10 --g_hbp1_dsgc 25e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 17e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 11e-10 --off_spot 2 --on_spot 2 --spot_delay 0.02 --plot_cond 1 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid &
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 12e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 7e-10 --off_spot 4 --on_spot 2 --spot_delay 0.02 --plot_cond 1 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid &
+
+# g_hbp1_dsgc 12e-10 good response at spot 2
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 12e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 2 --on_spot 2 --plot_cond 1 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_16 &
+
+# g_hbp1_dsgc 12e-10 no response at spot 2
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 2e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 2 --on_spot 2 --plot_cond 1 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_17 &
+
+# off spot 1, no response at spot 2
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 12e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 1 --on_spot 2 --plot_cond 1 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_18 &
+
+# off spot 4, no response at spot 2
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 12e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 4 --on_spot 2 --plot_cond 1 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_19 &
+
+make_movie_mpg dend_dive_nmda_16
+make_movie_mpg dend_dive_nmda_17
+make_movie_mpg dend_dive_nmda_18
+make_movie_mpg dend_dive_nmda_19
+
+
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 12e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 1 --on_spot 1 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_19 &
+
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 12e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 4 --on_spot 4 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid -B 0 -c -P dend_dive_nmda_19 &
+
+# dsgc_denddia 0.5, try to get working with sensitization from Off layer
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 15e-10 --g_hbp1_dsgc 15e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 10e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 10e-10 --off_spot 4 --on_spot 4 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid &
+
+# works with Off 1 On 1
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 25e-10 --g_hbp1_dsgc 15e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 12e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 12e-10 --off_spot 4 --on_spot 1 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid &
+
+# - - - - - - - - -
+#
+# No dendritic spike initiation 
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 20e-10 --g_hbp1_dsgc 30e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 17e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 9e-10 --off_spot 1 --on_spot 1 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 20e-10 --g_hbp1_dsgc 30e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 17e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 9e-10 --off_spot 2 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 20e-10 --g_hbp1_dsgc 30e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 17e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 9e-10 --off_spot 3 --on_spot 3 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 -d 32 -v | vid
+
+# - - - - - - - -
+#  same as dend_dive_nmda_16-19, but plot_cond 0
+#
+# g_hbp1_dsgc 12e-10 good response at spot 2
+#
+# g_hbp1_dsgc 12e-10
+# g_hbp1_nmda 8e-10
+# g_dbp1_dsgc 8e-10
+# g_dbp1_nmda 8e-10
+# denddia 0.3
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.05 --Vmin -0.070 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 12e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 2 --on_spot 2 --plot_cond 0 --spot_delay 0.02 -r 3358713 --plotlabel crossover_dend_20 -d 32 -v | vid -B 0 -c -P crossover_dend_20 &
+
+# g_hbp1_dsgc 2e-10 no response at spot 2
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.05 --Vmin -0.070 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 2e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 2 --on_spot 2 --plot_cond 0 --spot_delay 0.02 -r 3358713 --plotlabel crossover_dend_21 -d 32 -v | vid -B 0 -c -P crossover_dend_21 &
+
+# off spot 1, no response at spot 2
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.05 --Vmin -0.070 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 12e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 1 --on_spot 2 --plot_cond 0 --spot_delay 0.02 -r 3358713 --plotlabel crossover_dend_22 -d 32 -v | vid -B 0 -c -P crossover_dend_22 &
+
+# off spot 4, no response at spot 2
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.05 --Vmin -0.070 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 12e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 8e-10 --off_spot 4 --on_spot 2 --plot_cond 0 --spot_delay 0.02 -r 3358713 --plotlabel crossover_dend_23 -d 32 -v | vid -B 0 -c -P crossover_dend_23 &
+
+make_movie_mpg crossover_dend_20
+make_movie_mpg crossover_dend_21
+make_movie_mpg crossover_dend_22
+make_movie_mpg crossover_dend_23
+
+# - - - - - - - - -
+#  no dendritic spike initiation
+#
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 17e-10 --g_hbp1_dsgc 30e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 17e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 30e-10 --off_spot 2 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 --plot_cond 1 -d 32 -v | vid
+
+retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.04 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 18e-10 --g_hbp1_dsgc 35e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 18e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 35e-10 --off_spot 1 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel dend_dive_nmda_15 --plot_cond 1 --dcplam 0.02 -d 32 -v | vid &
+
+# - - - - - - - - - -
+#
+# g_hbp1_dsgc 35e-10
+# g_hbp1_nmda 18e-10
+# g_dbp1_dsgc 28e-10
+# g_dbp1_nmda 18e-10
+# denddia 0.5
+
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.045 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 18e-10 --g_hbp1_dsgc 35e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 18e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 28e-10 --off_spot 2 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel crossover_nodspk_16 --plot_cond 0 --dcplam 0.02 -d 32 -v | vid -B 0 -c -P crossover_nodspk_16 &
+
+# g_hbp1_dsgc 5e-10
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.045 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 18e-10 --g_hbp1_dsgc 5e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 18e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 28e-10 --off_spot 1 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel crossover_nodspk_17 --plot_cond 0 --dcplam 0.02 -d 32 -v | vid -B 0 -c -P crossover_nodspk_17 &
+
+# off spot 1
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.045 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 18e-10 --g_hbp1_dsgc 35e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 18e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 28e-10 --off_spot 1 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel crossover_nodspk_18 --plot_cond 0 --dcplam 0.02 -d 32 -v | vid -B 0 -c -P crossover_nodspk_18 &
+
+# off spot 4
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2b.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 80 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.5 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.045 --Vmin -0.06 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 18e-10 --g_hbp1_dsgc 35e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 18e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 28e-10 --off_spot 4 --on_spot 2 --spot_delay 0.02 -r 3358713 --plotlabel crossover_nodspk_19 --plot_cond 0 --dcplam 0.02 -d 32 -v | vid -B 0 -c -P crossover_nodspk_19 &
+
+make_movie_mpg crossover_nodspk_16
+make_movie_mpg crossover_nodspk_17
+make_movie_mpg crossover_nodspk_18
+make_movie_mpg crossover_nodspk_19
+
+# - - - - - - - - - - - - - - -
+#
+# test movies with dcplam 0.02
+#  g_hbp1_dsgc 10e-10, good response at spot 2
+#
+# g_hbp1_dsgc 10e-10
+# g_hbp1_nmda 8e-10
+# g_dbp1_dsgc 7e-10
+# g_dbp1_nmda 8e-10
+# denddia 0.3
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.05 --Vmin -0.070 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 10e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 7e-10 --off_spot 2 --on_spot 2 --plot_cond 0 --spot_delay 0.02 -r 3358713 --plotlabel crossover_dend_20 --dcplam 0.02 -d 32 -v | vid -B 0 -c -P crossover_dend_20b &
+
+# g_hbp1_dsgc 2e-10 no response at spot 2
+#
+ mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.05 --Vmin -0.070 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 2e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 7e-10 --off_spot 2 --on_spot 2 --plot_cond 0 --spot_delay 0.02 -r 3358713 --plotlabel crossover_dend_21 --dcplam 0.02 -d 32 -v | vid -B 0 -c -P crossover_dend_21b &
+
+# off spot 1, no response at spot 2
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.05 --Vmin -0.070 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 10e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 7e-10 --off_spot 1 --on_spot 2 --plot_cond 0 --spot_delay 0.02 -r 3358713 --plotlabel crossover_dend_22 --dcplam 0.02 -d 32 -v | vid -B 0 -c -P crossover_dend_22b &
+
+# off spot 4, no response at spot 2
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww2.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.05 --Vmin -0.070 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 8e-10 --g_hbp1_dsgc 10e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 8e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 7e-10 --off_spot 4 --on_spot 2 --plot_cond 0 --spot_delay 0.02 -r 3358713 --plotlabel crossover_dend_23 --dcplam 0.02 -d 32 -v | vid -B 0 -c -P crossover_dend_23b &
+
+make_movie_mpg crossover_dend_20b
+make_movie_mpg crossover_dend_21b
+make_movie_mpg crossover_dend_22b
+make_movie_mpg crossover_dend_23b
+
+
+# - - - - - - - - - - - - - - -
+#  2022-01-12
+#  same as above (20b-23b), but use dsgc_densfile dens_dsgc_morph_ww3.n, with removed Na/K/Ca/KCa channels
+#                 g_hbp1_nmda 0, g_dbp1_nmda 0
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww3.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.05 --Vmin -0.070 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 0e-10 --g_hbp1_dsgc 10e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 0e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 7e-10 --off_spot 2 --on_spot 2 --plot_cond 0 --spot_delay 0.02 -r 3358713 --plotlabel crossover_dend_20 --dcplam 0.02 -d 32 -v | vid -B 0 -c -P crossover_dend_20c &
+
+# g_hbp1_dsgc 2e-10 no response at spot 2
+#
+ mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww3.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.05 --Vmin -0.070 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 0e-10 --g_hbp1_dsgc 2e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 0e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 7e-10 --off_spot 2 --on_spot 2 --plot_cond 0 --spot_delay 0.02 -r 3358713 --plotlabel crossover_dend_21 --dcplam 0.02 -d 32 -v | vid -B 0 -c -P crossover_dend_21c &
+
+# off spot 1, no response at spot 2
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww3.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.05 --Vmin -0.070 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 0e-10 --g_hbp1_dsgc 10e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 0e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 7e-10 --off_spot 1 --on_spot 2 --plot_cond 0 --spot_delay 0.02 -r 3358713 --plotlabel crossover_dend_22 --dcplam 0.02 -d 32 -v | vid -B 0 -c -P crossover_dend_22c &
+
+# off spot 4, no response at spot 2
+#
+mosrun -l -b retsim --expt dsgc_dend_dive --dsgc_file morph_ww_cell_crossover3 --dsgc_densfile dens_dsgc_morph_ww3.n --mxrot 0 --myrot 0 --mzrot 180 --dsgc_thetax -5 --dsgc_thetay 6 --dsgc_thetaz 90 --n_ams 0 --ninfo 2 --dsgc_nscale -3.03 --mxrot 0 --stimtime 0.005 --minten -0.055 --scontrast 0.016 --spotdia 100 --sdur 0.05 --sdur2 0.01 --dsgc_flip 1 --dsgc_denddia 0.3 --drm 20e3 --dri 50 --make_movie 1 --Vmax -0.05 --Vmin -0.070 --colormap 1 --backgnd 0 --frame_int 0.001 --sinc 0.01 --ddia 1 --setscene 5 --g_hbp1_nmda 0e-10 --g_hbp1_dsgc 10e-10 --n_hbp1_dsgc 1 --g_dbp1_nmda 0e-10 --n_dbp1_dsgc 1 --g_dbp1_dsgc 7e-10 --off_spot 4 --on_spot 2 --plot_cond 0 --spot_delay 0.02 -r 3358713 --plotlabel crossover_dend_23 --dcplam 0.02 -d 32 -v | vid -B 0 -c -P crossover_dend_23c &
+
+make_movie_mpg crossover_dend_20c
+make_movie_mpg crossover_dend_21c
+make_movie_mpg crossover_dend_22c
+make_movie_mpg crossover_dend_23c
+

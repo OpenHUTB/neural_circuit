@@ -1,0 +1,62 @@
+#! /home/rob/bin/nci -c
+#
+# rcbp_inh_v3
+#
+# usage:  (see rcbp_inh script)
+#
+
+mosrun = "mosrun -l";         /* for running jobs in parallel with Mosix system */
+//mosrun = "";
+filename = "";
+
+comnd_line_only = 0;
+
+x = setvar();                   /* get parameters from command line */
+
+// -  -  -  -  -
+
+if (notinit (stimtype))    stimtype = 1; 
+if (notinit (stimdur))      stimdur = 4; 
+if (notinit (scontrast))  scontrast = 1; 
+if (notinit (nsines))        nsines = 0; 
+if (notinit (fincr))          fincr = 0.00003; 
+if (notinit (minten))        minten = -0.041; 
+if (notinit (cmult))          cmult = -0.002; 
+
+dim fb_conds[] = {{0, 50, 100, 200, 500}};
+nfb_conds = sizeof(fb_conds);
+
+dim amscas[] = {{0, 0.1, 0.2, 0.3}};
+namscas = sizeof(amscas);
+
+dim pcas[] = {{0, 0.1, 0.2, 0.3}};
+npcas = sizeof(pcas);
+
+if (!notinit (fb_cond)) {fb_conds[0] = fb_cond; nfb_conds = 1;};
+if (!notinit (amsca)) {amscas[0] = amsca; namscas = 1;};
+if (!notinit (pca)) {pcas[0] = pca; npcas = 1;};
+
+for (f=0; f<nfb_conds; f++) {
+     g_am_dbp1 = fb_conds[f] * 1e-12;
+
+     for (a=0; a<namscas; a++) {
+          amsca = amscas[a] * 1e-3;
+
+          for (p=0; p<npcas; p++) {
+               dbp1pca4 = pcas[p];
+
+    if (stimtype==3)
+       sprintf (filename,"cbp_dyad_fbn-%g-%3.1f-%3.1f-%g.r", fb_conds[f], amscas[a], pcas[p],scontrast)
+    else
+       sprintf (filename,"cbp_dyad_fbc-%g-%3.1f-%3.1f.r", fb_conds[f], amscas[a], pcas[p]);
+
+    sprintf(str1,"retsim --expt cbp_dyad --g_dbp1_am 3e-10 --g_dbp1_gca 5e-10 --g_am_dbp1 %g --ninfo 2 --mxrot 0 --vnoise 0 --cnoise 0 --make_am_dbp1 1 --dampau 4e-12 --vcontrast 1 --stimtype %g --stimdur %g --scontrast %g --itransducer 1 --casoma 0e-3 --cadist 2.5e-3 --ksoma 0 --cbp_rm 10e3 --minten %g --cmult %g --mxrot 0 -d 0 --dbp1_morph 0 --amsca %g --dbp1pca4 %g --nsines %g --fincr %g --predur 2.0 -d 0 ", mosrun, g_am_dbp1, stimtype, stimdur, scontrast, minten, cmult, amsca, dbp1pca4, nsines, fincr);
+
+ 
+            sprintf(system_string,"%s %s >& %s & sleep 0.5",mosrun,str1,filename);
+            if (comnd_line_only) print "\n",system_string
+            else system(system_string);
+          };
+     };
+};
+

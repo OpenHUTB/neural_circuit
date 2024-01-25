@@ -1,0 +1,358 @@
+
+# display the cell
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_05-2 --soma_z -31 --minten -0.058 --econtrast 0.017 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 2000 --predur 0.02 --prestimdur 0.005 --poststimdur 0 --setendexp 0.01 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.06 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.73 --sb_rm 17.04e3 --sb_rmd 100e3 --dri 100 --elec_rs 22e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --nmda_cond 1.0177e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --sbac_synanpo 100 --sbac_synanpi 20 --n_hbp1 0 --n_amhs 0 --ninfo 2  --stimscale 0.3 --skipv 0 --n_dbp1 0 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel morph_R1MS151208_05-2 -d 1 -v | vid -c > morph_R1MS151208_05-2.ps
+
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.058 --econtrast 0.017 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 2000 --predur 0.02 --prestimdur 0.005 --poststimdur 0 --setendexp 0.01 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.06 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 17.04e3 --sb_rmd 100e3 --dri 100 --elec_rs 22e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --nmda_cond 1.0177e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --sbac_synanpo 100 --sbac_synanpi 20 --n_hbp1 0 --n_amhs 0 --ninfo 2  --stimscale 0.3 --skipv 0 --n_dbp1 0 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel morph_R1MS151208_06b -d 1 -v | vid -c > morph_R1MS151208_06b.ps
+
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_10 --soma_z -31 --minten -0.058 --econtrast 0.017 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 2000 --predur 0.02 --prestimdur 0.005 --poststimdur 0 --setendexp 0.01 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.06 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 17.04e3 --sb_rmd 100e3 --dri 100 --elec_rs 22e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --nmda_cond 1.0177e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --sbac_synanpo 100 --sbac_synanpi 20 --n_hbp1 0 --n_amhs 0 --ninfo 2  --stimscale 0.3 --skipv 0 --n_dbp1 0 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel morph_R1MS151208_10 -d 1 -v | vid -c > morph_R1MS151208_10.ps
+
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_sbac_168c4 --soma_z -50 --minten -0.058 --econtrast 0.017 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 2000 --predur 0.02 --prestimdur 0.005 --poststimdur 0 --setendexp 0.01 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.06 --sb_vr -0.07 --dsomadia 10 --sdia 0.3 --spdia 0.6 --sb_rm 17.04e3 --sb_rmd 100e3 --dri 100 --elec_rs 22e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --nmda_cond 1.0177e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --sbac_synanpo 100 --sbac_synanpi 20 --n_hbp1 0 --n_amhs 0 --ninfo 2  --stimscale 0.3 --skipv 0 --n_dbp1 0 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel morph_sbac_168c4 -d 1 -v | vid -c > morph_sbac_168c4.ps
+
+
+# From rsbac_chans:
+#
+# rfitccs_p is similar to rfitccs_n but has tonic input, longer predur, and larger initial istim
+# For 2 of the cells, fits are a little better, possibly because predur is set longer (0.1)
+
+# rfitccs_n:   fixed dsomadia, sdia, spdia;   free dri, drm, elec_rs, istim, filt_cfreq, dcm, tipcap
+
+cell 05-2
+
+from above, original fit with rfitccs_n
+
+rfitccs_n --data_filen 5 --morph_file morph_R1MS151208_05-2 --dsomadia 11 --dri 35 --drm 10000 --sdia 0.6 --spdia_ratio 0.73
+
+# dri          drm      elec_rs      istim       freq     dcm         tipcap
+  17.882      9703.49  3.19596e+07 -4.01763e-13 6583.71  9.17224e-07  7.89978e-13 => norm:  1.04118e-11
+
+
+cell 06
+
+rfitccs_n --data_filen 2 --morph_file morph_R1MS151208_06 --dsomadia 11 --dri 35 --drm 10000 --sdia 0.6 --spdia_ratio 0.9
+
+# dri          drm      elec_rs      istim       freq     dcm         tipcap
+  23.2166       9257.3  1.93264e+07  5.71643e-14 6639.33 8.64638e-07  2.66359e-12 => norm:  1.15035e-11
+
+
+cell 10
+
+rfitccs_n --data_filen 4 --morph_file morph_R1MS151208_10 --dsomadia 11 --dri 35 --drm 10000 --sdia 0.6  --spdia_ratio 0.9
+
+# dri          drm      elec_rs      istim       freq     dcm         tipcap
+  37.7604      23636.1  1.49566e+07  3.95493e-13 6787.22  8.53902e-07  3.31626e-13 => norm:   2.4372e-11
+
+
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.058 --econtrast 0.017 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 2000 --predur 0.05 --prestimdur 0.05 --poststimdur 0 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.06 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22  --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel morph_R1MS151208_06b -d 0 -v | vid
+
+
+# display model
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.017 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 2000 --predur 0.05 --prestimdur 0.005 --poststimdur 0 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.06 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel morph_R1MS151208_06b -d 1 -v | vid -c > sbac_noise.ps
+
+#
+# run model with tonic excitatory input 
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 2000 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel morph_R1MS151208_06b --exptrun 1 -d 0 -v | vid -c > sbac_noise_plot1.ps &
+
+# run model with cclamp
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 2000 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel morph_R1MS151208_06b --exptrun 2 -d 0 -v | vid -c > sbac_noise_plot2.ps &
+
+# run model with cclamp, noise stimulus
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.005 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 2000 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel morph_R1MS151208_06b --exptrun 3 --stimtype 6 -d 0 -v | vid -c > sbac_noise_plot3.ps &
+
+#
+# run model with vclamp of short pulse, rand voltages
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.040 --econtrast 0.005 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 5000 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel morph_R1MS151208_06b --exptrun 4 --stimdur 0.05 -d 0 -v | vid -c > sbac_noise_plot4.ps &
+
+
+# same but with sb_rmd 100e3
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.040 --econtrast 0.005 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 5000 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel morph_R1MS151208_06b --exptrun 4 --stimdur 0.05 --sb_rmd 100e3 -d 0 -v | vid -c > sbac_noise_plot5.ps &
+
+# - - - - - - - - - - - - - - - 
+#
+# same as plot1 but barwidth 110, velocity 440, dbp1_sgain 6, dbp1_vgain 8
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot1b --exptrun 1 -d 0 -v | vid -c > sbac_noise_plot1b.ps &
+
+# same as plot2
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot2b --exptrun 2 -d 0 -v | vid -c > sbac_noise_plot2b.ps &
+
+# same as plot3
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.005 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot3b --exptrun 3 --stimtype 6 -d 0 -v | vid -c > sbac_noise_plot3b.ps &
+
+# same as plot4 
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.040 --econtrast 0.005 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot4b --exptrun 4 --stimdur 0.05 -d 0 -v | vid -c > sbac_noise_plot4b.ps &
+
+# same as plot5
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.040 --econtrast 0.005 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 5000 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot5b --exptrun 4 --stimdur 0.05 --sb_rmd 100e3 -d 0 -v | vid -c > sbac_noise_plot5b.ps &
+
+# - - - - - - - - - - - - - - - - - -
+
+# bar + noise
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot6 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 -d 0 >& sbac_noise_plot6.r &
+
+# sb_rmd 50e3
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot7 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 50e3 -d 0 >& sbac_noise_plot7.r &
+
+# sb_rmd 10e3 cadist 1e-3
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot8 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 10e3 --cadist 1e-3 -d 0 >& sbac_noise_plot8.r &
+
+# sb_rmd 20e3 cadist 1e-3
+#  Ca chans cause regeneration
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot9 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 1e-3 -d 0 >& sbac_noise_plot9.r &
+
+# sb_rmd 20e3 cadist 1e-3, kprox kmid 2e-3
+#   include K chans (offset in chanarams_sbac_chans), still regeneration
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot10 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 1.0e-3 --ksoma 0e-3 --kprox 2e-3 --kmid 2e-3 -d 0 >& sbac_noise_plot10.r &
+
+# sb_rmd 20e3 cadist 1e-3, kprox kmid 4e-3
+#  still regeneration
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot11 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 1.0e-3 --ksoma 0e-3 --kprox 4e-3 --kmid 4e-3 -d 0 >& sbac_noise_plot11.r &
+
+# sb_rmd 20e3 cadist 1e-3, ksoma kprox kmid 4e-3
+#  still regeneration
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot12 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 1.0e-3 --ksoma 4e-3 --kprox 4e-3 --kmid 4e-3 --kdist 4e-3 -d 0 >& sbac_noise_plot12.r &
+
+# sb_rmd 20e3 cadist 1e-3, ksoma, kprox, kmid 10e-3, kdist 20e-3
+#  higher K chan density prevents regeneration
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot13 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 1.0e-3 --ksoma 10e-3 --kprox 10e-3 --kmid 10e-3 --kdist 20e-3 -d 0 >& sbac_noise_plot13.r &
+
+plotmod -p 1-8 -p 9-10 -p 13 -t sbac_noise_plot13.r > sbac_noise_plot13b.r 
+plotmod sbac_noise_plot13b.r | vidpdf > sbac_noise_plot13b.pdf
+
+# - - - - - - - - -
+#
+# sb_rmd 20e3 cadist 1e-3, ksoma, kprox, kmid 10e-3, kdist 20e-3
+#  higher K chan density prevents regeneration
+#   same as plot13 but dri 40
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot13 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 1.0e-3 --ksoma 10e-3 --kprox 10e-3 --kmid 10e-3 --kdist 20e-3 -d 0 >& sbac_noise_plot13c.r &
+
+#   same as plot13c but lower cadist 0.5e-3 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot13 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.5e-3 --ksoma 10e-3 --kprox 10e-3 --kmid 10e-3 --kdist 20e-3 -d 0 >& sbac_noise_plot13d.r &
+
+# plotmod -p 1-13 -p 20-22 sbac_noise_plot13d.r | vidpdf > sbac_noise_plot13d.pdf 
+
+# display the sbac nodes
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot13 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.5e-3 --ksoma 10e-3 --kprox 10e-3 --kmid 10e-3 --kdist 20e-3 -d 9 -v | vidpdf > sbac_noise_plot13d.disp.pdf
+
+# sb_rmd 20e3 cadist 0.5e-3, ksoma, kprox, kmid 4e-3, kdist 8e-3
+#  higher K chan density prevents regeneration
+#   set K6 offset 0.015 in chanparams_dsgc_chans
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot14 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.5e-3 --ksoma 4e-3 --kprox 4e-3 --kmid 4e-3 --kdist 8e-3 -d 0 >& sbac_noise_plot14.r &
+
+# sb_rmd 20e3 cadist 0.8e-3, ksoma, kprox, kmid, kdist 2e-3
+#  lower K chan density is OK with cadist < 1.0e-3
+#   set K6 offset 0.015 in chanparams_dsgc_chans
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot15 --exptrun 2 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 -d 0 >& sbac_noise_plot15.r &
+
+
+# - - - - - - - - - - - - - - - -
+#
+# make datfile for exptrun 5
+#
+# plotmod -p 10 -t sbac_noise_plot8b.r > sbac_noise_plot.r
+# plotmod -p 10 -t sbac_noise_plot13.r > sbac_noise_plot13_p10.r
+#
+ plotmod -p 10 -t sbac_noise_plot15.r > sbac_noise_plot15_p10.r
+
+# exptrun 5, play back recording of soma Vm
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot20 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 1e-3 --datfile sbac_noise_plot15_p10.r -d 0 >& sbac_noise_plot20.r &
+
+# exptrun 5, play back recording of soma Vm, sb_vr, nbase = -0.069 
+#  use raw file KO_cell_1_raw.txt, nscale = 1 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot21 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_raw.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --nscale 1 -d 0 >& sbac_noise_plot21.r &
+
+# exptrun 5, play back recording of soma Vm, sb_vr, nbase = -0.069 
+#  use raw file KO_cell_1_raw.txt, nscale = 4 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot22 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_raw.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --nscale 4 -d 0 >& sbac_noise_plot22.r &
+
+# exptrun 5, play back recording of soma Vm, sb_vr, nbase = -0.069 
+#  use scaled file KO_cell_1_scaled.txt, nscale = 1 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot23 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --nscale 1 -d 0 >& sbac_noise_plot23.r &
+
+# exptrun 5, play back recording of soma Vm, sb_vr, nbase = -0.069 
+#  use scaled file KO_cell_2_scaled.txt, nscale = 1 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 23.22 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot24 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_2_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --nscale 1 -d 0 >& sbac_noise_plot24.r &
+
+# - - - - - - - -
+# try higher dri
+
+# exptrun 5, play back recording of soma Vm, sb_vr, nbase = -0.069 
+#  use raw file KO_cell_1_raw.txt, nscale = 1, dri 30 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 30 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot25 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_raw.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --nscale 1 -d 0 >& sbac_noise_plot25.r &
+
+# exptrun 5, play back recording of soma Vm, sb_vr, nbase = -0.069 
+#  use raw file KO_cell_1_raw.txt, nscale = 4, dri 30 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 30 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot26 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_raw.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --nscale 4 -d 0 >& sbac_noise_plot26.r &
+
+# exptrun 5, play back recording of soma Vm, sb_vr, nbase = -0.069 
+#  use scaled file KO_cell_1_scaled.txt, nscale = 1, dri 30 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 30 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot27 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --nscale 1 -d 0 >& sbac_noise_plot27.r &
+
+# dri 40
+
+# exptrun 5, play back recording of soma Vm, sb_vr, nbase = -0.069 
+#  use raw file KO_cell_1_raw.txt, nscale = 1, dri 40 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot28 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_raw.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --nscale 1 -d 0 >& sbac_noise_plot28.r &
+
+# exptrun 5, play back recording of soma Vm, sb_vr, nbase = -0.069 
+#  use raw file KO_cell_1_raw.txt, nscale = 4, dri 40 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot29 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_raw.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --nscale 4 -d 0 >& sbac_noise_plot29.r &
+
+# exptrun 5, play back recording of soma Vm, sb_vr, nbase = -0.069 
+#  use scaled file KO_cell_1_scaled.txt, nscale = 1, dri 40 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.05 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel plot30 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --nscale 1 -d 0 >& sbac_noise_plot30.r &
+
+plotmod -p 10 -p 13 sbac_noise_plot30.r | vidpdf > sbac_noise_plot30b.pdf
+
+-------------------------------------------------------
+
+# display sbac and dsgc
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2  --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --nscale 1 -d 1 -v | vid
+
+
+#
+# 
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --nscale 1 --mxrot 0 --predur 0.01 -d 0 -v | vid
+
+# offset minten -0.038
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_38 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --nscale 1 --mxrot 0 -d 0 >& sbac_noise_38.r &
+
+
+#
+# set capump from 3e-6 to 3e-7
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_38_r20 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --nscale 1 --mxrot 0 -d 0 >& sbac_noise_38_r20.r &
+
+# run with sbac->dsgc maxrate 20
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_38_r20 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 -d 0 >& sbac_noise_38_r20.r &
+
+#
+# set sbac->dsgc maxrate 50 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_38_r50 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 50 --nscale 1 --mxrot 0 -d 0 >& sbac_noise_38_r50.r &
+
+#
+# set sbac->dsgc maxrate 100 
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_38_r100 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 100 --nscale 1 --mxrot 0 -d 0 >& sbac_noise_38_r100.r &
+
+
+#
+# maxrate 20, offset to -0.0375
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.0375 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_37_r20 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 -d 0 >& sbac_noise_37_r20.r &
+
+#
+# maxrate 20, offset to -0.0375
+#  try T-type Ca channel, slowly inactivating, catdist 0.4e-3
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.0375 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_37_r20t4 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 0.4e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 -d 0 >& sbac_noise_37_r20t4.r &
+
+# run with sbac->dsgc maxrate 20, catdist 0.4e-3
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_38_r20t4 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 0.4e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 -d 0 >& sbac_noise_38_r20t4.r &
+
+# run with sbac->dsgc maxrate 20, cadist 0.4e-3
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_38_r20_4 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.4e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 -d 0 >& sbac_noise_38_r20_4.r &
+
+# run with sbac->dsgc maxrate 20, cadist 0.6e-3
+#
+mosrun -l retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.005 --vhold -0.07 --vstart -0.070 --vstop -0.07 --sb_vs -0.065 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_38_r20_6 --exptrun 5 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --cadist 0.6e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 -d 0 >& sbac_noise_38_r20_6.r &
+
+# - - - - - - - -
+#
+# run with sbac->dsgc maxrate 20, catdist 0.4e-3
+#
+# try paired-pulse depression, pulsedur = 0.02
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.05 --vhold -0.05 --vstart -0.070 --vstop -0.07 --sb_vs -0.045 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_38_r20t4 --exptrun 6 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 0.4e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 --predur 0.01 -d 0 -v | vid
+
+
+# run with sbac->dsgc maxrate 20, catdist 0.6e-3
+#
+# try paired-pulse depression, pulsedur = 0.02
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.0375 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.05 --vhold -0.05 --vstart -0.070 --vstop -0.07 --sb_vs -0.045 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_37_r20t6 --exptrun 6 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 0.6e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 --predur 0.01 --ppdelay 0.05 -d 0 -v | vid
+
+
+# higher catdist 2.0e-3, predur 0.2, shows pp depression with ppdelay 0.05, mostly gone at ppdelay 0.2
+#  note ampa_cond, gaba_cond 4e-9
+#  ca6 tauc = 10, taud = 2
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.0375 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.05 --vhold -0.05 --vstart -0.070 --vstop -0.07 --sb_vs -0.045 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_375_r20t2 --exptrun 6 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 --predur 0.2 --ppdelay 0.05 -d 0 -v | vid
+
+# minten -0.037
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.037 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.05 --vhold -0.05 --vstart -0.070 --vstop -0.07 --sb_vs -0.045 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_37_r20t2 --exptrun 6 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 --predur 0.2 --ppdelay 0.05 -d 0 -v | vid
+
+# minten -0.038
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06b --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.05 --vhold -0.05 --vstart -0.070 --vstop -0.07 --sb_vs -0.045 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_38_r20t2 --exptrun 6 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 0.8e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 --predur 0.2 --ppdelay 0.05 -d 0 -v | vid
+
+# fix morphology so 2215 branch doesn't give so much larger a response to somatic vclamp
+#   use morph_R1MS151208_06c, testing use predur 0.02
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06c --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.05 --vhold -0.05 --vstart -0.070 --vstop -0.07 --sb_vs -0.045 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_37_r20t8 --exptrun 6 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 2e-3 --ksoma 2e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 --predur 0.02 --ppdelay 0.05 --sb_cn 1 -d 0 -v | vid &
+
+# more fixes in morphology, branches are more same
+#   with morph_R1MS151208_06c, testing use predur 0.02
+#   catdist 1.2e-3, any higher (e.g. 2e-3) gives distal regeneration
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06c --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.05 --vhold -0.05 --vstart -0.070 --vstop -0.07 --sb_vs -0.045 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_37_r20t8 --exptrun 6 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 1.2e-3 --ksoma 2.5e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 --predur 0.02 --ppdelay 0.05 --sb_cn 1 -d 0 -v | vid &
+
+# to check checkcellout dbp1, sbac
+#
+retsim --expt sbac_noise --n_sbac 1 --sbac_file morph_R1MS151208_06c --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.05 --vhold -0.05 --vstart -0.070 --vstop -0.07 --sb_vs -0.045 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --_COL 1000 --plotlabel sbac_noise_37_r20t8 --exptrun 6 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 1.2e-3 --ksoma 2.5e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 --predur 0.02 --ppdelay 0.05 --sb_cn 1 --arrsiz 500 -d 0 -v | vid &
+
+# set sbac_dens 100, arrsiz 500
+#
+retsim --expt sbac_noise --sbac_file morph_R1MS151208_06c --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.05 --vhold -0.05 --vstart -0.070 --vstop -0.07 --sb_vs -0.045 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --plotlabel sbac_noise_37_r20t8 --exptrun 6 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 1.2e-3 --ksoma 2.5e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 --predur 0.02 --ppdelay 0.05 --sb_cn 1  --sbac_isynrngi -1300 --sbac_dens 100 --arrsiz 500 -d 1 -v | vid &
+
+# leave only sbacs that connect directly to dsgc
+#
+retsim --expt sbac_noise --sbac_file morph_R1MS151208_06c --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.05 --vhold -0.05 --vstart -0.070 --vstop -0.07 --sb_vs -0.045 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --plotlabel sbac_noise_37_r20t8 --exptrun 6 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 1.2e-3 --ksoma 2.5e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 --predur 0.02 --ppdelay 0.05 --sb_cn 1 --sbac_isynrngi -1300 --sbac_dens 500 --make_sbac_sbac 0 -d 1 -v | vid &
+
+# arrsiz 800, synang2 180 in nval_dsgc_sbac_noise.n
+#
+retsim --expt sbac_noise --sbac_file morph_R1MS151208_06c --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.05 --vhold -0.05 --vstart -0.070 --vstop -0.07 --sb_vs -0.045 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --plotlabel sbac_noise_800_180 --exptrun 6 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 1.2e-3 --ksoma 2.5e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 --predur 0.02 --ppdelay 0.05 --sb_cn 1 --sbac_isynrngi -1300 --sbac_dens 500 --make_sbac_sbac 0 --sbsynang 180 --arrsiz 800 -d 1 -v | vid -c > sbac_noise_800_180.ps
+
+mosrun -l retsim --expt sbac_noise --sbac_file morph_R1MS151208_06c --soma_z -31 --minten -0.038 --econtrast 0.004 --eincr 0 --icontrast 0.017 --iincr 0.00417 --velocity 440 --predur 0.1 --prestimdur 0.05 --poststimdur 0.05 --vhold -0.05 --vstart -0.070 --vstop -0.07 --sb_vs -0.045 --sb_vr -0.07 --dsomadia 10 --sdia 0.6 --spdia_ratio 0.9 --sb_rm 9.257e3 --dri 40 --drm 9.257e3 --dcm 0.86e-6 --elec_rs 19.3e6 --elnode 5000 --light_inhib 1 --ampa_cond 4e-09 --gaba_cond 4.60799e-09 --movein -1 --set_vclamp 1 --ttxbath 1 --tea 0.995 --kdr_voff 0.027 --kexp 3.6 --fourap 1 --ioffset 0 --use_ghki 1 --dbp1_anpo 100 --dbp1_anpi 10 --ninfo 2 --stimscale 0.3 --n_ams 0 --n_dbp2 0 --plotlabel sbac_noise_800_180 --exptrun 6 --stimtype 7 --dbp1_sgain 6 --dbp1_vgain 8 --sb_rmd 20e3 --catdist 1.2e-3 --ksoma 2.5e-3 --kprox 2e-3 --kmid 2e-3 --kdist 2e-3 --datfile KO_cell_1_scaled.txt --vscale 1e-3 --sb_vr -0.069 --nbase -0.069 --n_dsgc 1 --sbmaxrate 20 --nscale 1 --mxrot 0 --predur 0.02 --ppdelay 0.05 --sb_cn 1 --sbac_isynrngi -1300 --sbac_dens 500 --make_sbac_sbac 1 --sbsynang 180 --arrsiz 800 --syn_savefile sbac_noise_800_180.s -d 1 -v | vid -c > sbac_noise_800_180b.ps
+

@@ -1,0 +1,28 @@
+# Densities of currents for cone bipolar (S/cm2).
+#
+#  This is an abbreviated file; see full length file dens_dbp1_full.n
+#
+#     dend  dend_prox dend_dist soma   hillock  ax_thin axon  axon_dist ax_node varicos
+#
+# Name 
+# 0    DENDD   DEND    DENDP   SOMA      HCK     AXONT    AXON    AXOND    VARIC  R10
+#
+0      R1      R2      R3        R4      R5       R6      R7       R8      R9     R10 
+#
+_NA    0e-3    0e-3      0e-3    0e-3     0e-3      0e-3       0e-3      0e-3      0e-3     0e-3   # Na 
+_KDR   0e-3    0e-3      0e-3    0e-3     0e-3      0e-3       0e-3      0e-3      0e-3     0e-3   # Kdr
+_KA    0e-3    0e-3      0e-3    0e-3     0e-3      0e-3       0e-3      0e-3      0e-3     0e-3   # KA
+_KH    0e-3    0e-3      0e-3    0e-3     0e-3      0e-3       0e-3      0e-3      0e-3     0e-3   # KH
+_KIR   0e-3    0e-3      0e-3    0e-3     0e-3      0e-3       0e-3      0e-3      0e-3     0e-3   # KHz
+_CA6   0e-3    0e-3      0e-3    0e-3     0e-3      0e-3       0e-3      0e-3      db1_ca6ax 0e-3 # Ca-T, markov
+_CAP   0e-2    0e-3      0e-5    0e-3     0e-5      0e-3       0e-3      0e-3      db1_cap  0e-3  # Capump
+_VST   db_vs   db_vs     db_vs   db_vs    db_vs     db_vs      db_vs     db_vs     db_vs    db_vs   # Vstart
+_VRV   dvrev   dvrev     dvrev   dvrev    dvrev     dvrev      dvrev     dvrev     dvrev    dvrev  # Vrev
+_RM    drm     drm       drm     drm      drm       drm        drm       drm       drm      drm    # Rm
+_RI    dri     dri       dri     dri      dri       dri        dri       dri       dri      dri    # Ri
+_CM    dcm     dcm       dcm     dcm      dcm       dcm        dcm       dcm       dcm      dcm    # Cm
+_DIA   1       1         1       1        db2_axdia db2_axdia  db2_axdia db2_axdia db2_axdia  1 # Dia
+_CPL   0.5     0.5       0.5     0.5      db2_lam   db2_lam    db2_lam   db2_lam   db2_lax  db2_lax # cplam
+_CPL   db1_lam db1_lam   db1_lam db1_lam  db1_lam   db1_lam    db1_lam   db1_lax   db1_lax  db1_lax # cplam
+_COL   green   blue      blue    red      cyan      magenta    brown     yellow    brown    ltred  # color
+#

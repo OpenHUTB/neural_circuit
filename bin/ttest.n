@@ -1,0 +1,75 @@
+#! /home/rob/bin/nci -c 
+//
+// #! ../../../bin/nci -c
+//
+// run a t-test on a 2d array of data
+//   calculate a one-tailed cumulative probability
+//   default is to run a paired ttest
+//
+//  usage:  ttest.n --fname filename --test 2              --> "y.yy"  (do paired t-test )
+//     or:  ttest.n --fname filename                       --> "y.yy"  (default is "--test 2" )
+//     or:  ttest.n --fname filename --f 1                 --> "filename y.yy"
+//     or:  ttest.n --fname filename --flabel fil          --> "fil y.yy"
+//     or:  ttest.n --fname filename --h 1                 --> "paired tscore x.xx df n pvalue y.yy"
+//     or:  ttest.n --fname filename --h 1 --f 1           --> "filename paired tscore x.xx pvalue y.yy"
+//     or:  ttest.n --set_tscore z.zz --set_nrows r --h 1  --> "paired tscore z.zz df n pvalue y.yy"
+//     or:  cat filename | ttest.n --test 2                --> "y.yy" 
+//     or:  cat filename | ttest.n --test 1 --h 1          --> "indep  tscore x.xx df n pvalue y.yy"
+//     or:  cat filename | ttest.n --test 2 --h 1          --> "paired tscore x.xx df n pvalue y.yy"
+//     or:  cat filename | ttest.n --h 1 --flabel fil      --> "fil paired tscore x.xx df n pvalue y.yy"
+//     or:  cat filename | ttest.n --test 2 --flabel fil   --> "fil y.yy"
+//     ...
+//     switches:
+//     --f 1         print filename 
+//     --h 1         print 'indep' or 'paired' followed by "tscore x.xx pvalue y.yy'
+//     --fname ddd   use "ddd" as input file
+//     --flabel zzz  print flabel (i.e. instead of filename)
+//     --ttest 1     do independent t-test (i.e. two-sample test)
+//     --ttest 2     do paired t-test (i.e. one-sample test on the differences) (default)
+//     --set_tscore  set a tscore instead of performing the t-test on the input list
+//     --set_nrows   set the number of observations instead of using the input list
+//     This pvalue calculation gives a "one-tailed" value. For a "two-tailed" value, multiply the 
+//       pvalue by 2.
+//
+f = 0;
+h = 0;
+test = 2;
+fname = "stdin";
+flabel = "";
+set_tscore = 0;
+set_nrows = 0;
+
+nparm = setvar();
+
+p = 0;
+tscore = 0;
+
+if (set_tscore==0 && set_nrows==0) {
+   fread (fname,data,nrows,ncols);
+   if (ncols > 2) {
+       fprintf (stderr,"ttest.n: data in '%s' has ncols != 2\n",fname);
+       exit;
+   };
+   if      (test==1) tscore = ttest  (data)
+   else if (test==2) tscore = ttest2 (data);
+
+} else {
+   tscore = set_tscore;
+   nrows = set_nrows;
+};
+
+if (flabel!="") printf ("%s ",flabel);
+if (f>0 && fname != "stdin")  printf ("%s ",fname);
+
+if (h>0) {
+   if      (test==1) printf ("indep  ")
+   else if (test==2) printf ("paired ");
+   printf ("tscore %g ", tscore);
+   printf ("df %g ",nrows-1);
+};
+
+p = pvalue (tscore ,nrows-1);
+
+if (h==0) print p
+else      print "pvalue", p;
+

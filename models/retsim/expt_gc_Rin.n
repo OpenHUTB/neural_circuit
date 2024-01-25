@@ -1,0 +1,92 @@
+/* Experiment gc_Rin */
+
+proc setparams()
+
+{
+  make_rod  = 0;        /* make ganglion cells only */
+  make_cone = 0;
+  make_ha   = 0;
+  make_hb   = 0;
+  make_hbat = 0;
+  make_cbp  = 0;
+  make_hbp  = 0;
+  make_rbp  = 0;
+  make_gc   = 0;
+  make_gcoff= 0;
+  make_dsgc = 1;
+
+  if (notinit(n_dsgc)) n_dsgc = 1;
+};
+
+/*-------------------------------------------------*/
+
+proc runexpt()
+
+{
+     local cn,ct;
+
+   if (vidmode)
+     filout=stderr
+   else
+     filout=stdout;
+
+   dst = 0.0001;
+   dt  = 0.025;
+   dv = 0.002;
+
+   stimdur = dt;
+   endexp = 2 * stimdur;
+
+   vstart = -0.09;
+   vstop  = -0.03;
+   vstep  = 0.005;
+
+   if (info >= 0) {
+     nruns = (vstop-vstart)/vstep + 1;
+     timeperrun = .55;
+     MHz = 1800;
+     cpuspeed = system_speed();
+     fprintf (filout,"# Calculating Rin from Vm = %.3g to %.3g\n",vstart,vstop);
+     fprintf (filout,"#  Estimated run time: %.3g minutes\n",
+                                nruns*timeperrun*MHz/cpuspeed);
+     fprintf (filout,"#  V      Rin(ohms)\n");
+     fprintf (filout,"#\n");
+   };
+
+   if         (n_gc > 0) ct = gc
+   else if (n_gcoff > 0) ct = gcoff
+   else if  (n_dsgc > 0) ct = dsgc;
+
+   cn = 1;		/* cell number */
+   eqtime = .001;
+   stim node [ct][cn][soma]  vclamp vstart start time dur eqtime;
+   step eqtime;
+   time = 0;
+
+   if (ninfo >= 2) {
+         local vmin, vmax;
+       vmax = -0.02;
+       vmin = -0.07;
+       //plot_v_nod(ct,cn,782,vmin,vmax,blue,"", -1, -1);
+       //plot_v_nod(ct,cn,1514,vmin,vmax,green,"", -1, -1);
+       plot_v_nod(ct,cn,soma,vmin,vmax,red,"", -1, -1);
+       plot I[ct][cn][soma] max 5e-9 min -5e-9 plnum 1 plname "Isoma";
+   };
+
+   for (v1=vstart; v1<=vstop+dv; v1+=vstep) {
+
+     time = 0;
+     v2 = v1 + dv;
+
+     stim node [ct][cn][soma]  vclamp v1 start time dur stimdur;
+     step stimdur-dst;
+     i1 = I[ct][cn][soma];
+     step dst;
+     stim node [ct][cn][soma]  vclamp v2 start time dur stimdur;
+     step stimdur-dst;
+     i2 = I[ct][cn][soma];
+     step dst;
+     Rin = (v1-v2) / (i1-i2);
+     fprintf (filout,"%-6.3g  %-9.3g\n",v1,Rin);
+   };
+};

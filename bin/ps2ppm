@@ -1,0 +1,10 @@
+#! /bin/bash
+#
+# script to make .ppm files from .ps or .eps
+#
+for i in $@ 
+do
+    echo "converting $i to ${i%.*}.ppm"
+    cat $i | gs -q -dNOPAUSE -r150 -sDEVICE=ppmraw -sOutputFile=- - > ${i%.*}.ppm
+done
+

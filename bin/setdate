@@ -1,0 +1,8 @@
+#
+# set date with correct format
+#
+#   usage: from daz, setdate daz2
+#
+ set d = `date +%m%d%H%M%Y.%S`
+ $argv date $d 
+
