@@ -1,108 +1,73 @@
-<html>
-<title>NeuronC User's Manual Part I</title>
+<?xml version="1.0" encoding="utf-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>NeuronC User's Manual Part I</title>
+</head>
 <body bgcolor="#eae0aa">
+<h2><a name="A">如果使用该手册</a></h2>
+
+<h4>1) 如何使用手册</h4>
+
+   讲述如何使用手册对神经元进行建模，以及如果您没有太多计算机专业知识该从哪里开始。<h4>2) <a href="ncman1.html#B">硬件、软件和编译（阅读如何安装 NeuronC）</a></h4>
+
+   描述运行 NeuronC 所需的计算机设备和软件支持类型。这些信息将使您能够在多种类型的个人计算机和工作站上运行 NeuronC。
 
 
-<h2><a name = "A">How to use this manual</a></h2>
+<h4>3)  <a href="ncman1.html#C">NeuronC 基础知识（初学者请阅读）</a></h4>
 
-<h4>1)  How to use Manual (you're here: continue!) </h4>
-
-   Tells how to use the manual to model neurons, and 
-where to start if you don't have much expertise with 
-computer.
-
-
-<h4>2)  <a href="ncman1.html#B">Hardware, software, and compiling (Read to install NeuronC)</a></h4>
-
-   Describes type of computer equipment and software 
-support is necessary to run NeuronC.  This information 
-will allow you to get NeuronC running on many types of 
-personal computers and workstations.
-
-
-<h4>3)  <a href="ncman1.html#C">NeuronC basis in analogy (Read if you're a beginner)</a></h4>
-
-   Explains what kind of neural behavior NeuronC 
-models, and how it simulates the voltages and currents 
-in neural circuits.  This is important if you're 
-starting out in modeling and need a basic understanding 
-of numerical simulation.
+   解释 NeuronC 模拟什么样的神经行为，以及它如何模拟神经回路中的电压和电流。如果您刚开始建模并需要对数值模拟有基本的了解，这一点很重要。
 <p>
-   For a more complete summary of how NeuronC works, 
-refer to the modeling paper: Smith, R.G. (1990) "NeuronC: A 
+   有关 NeuronC 工作原理的更完整总结，请参阅建模论文：Smith, R.G. (1990) "NeuronC: A 
 language based on C for dynamically simulating neural networks of 
 the visual system."  
 
 
-<h4>4)  <a href="ncman2.html#D">NeuronC statements and syntax (Carefully read; refer to later)</a></h4>
+</p>
+<h4>4)  <a href="ncman2.html#D">NeuronC 声明和语法（仔细阅读；参考后面）</a></h4>
 
-   This section describes every NeuronC language 
-statement, its meaning and function in a typical 
-NeuronC modeling program.
+   本节描述每个 NeuronC 语言语句、其在典型 NeuronC 建模程序中的含义和功能。
 
-<h4>5) <a href="ncman3.html#E">How to construct a neural circuit.</a></h4>
+<h4>5) <a href="ncman3.html#E">如何构建神经回路</a></h4>
 
-   This section describes how to go about designing a neural circuit.
+   本节介绍如何设计神经回路。
 
-<h4>6) <a href="ncman3.html#F">How to add new channel types. (Skim, refer to later)</a></h4>
+<h4>6) <a href="ncman3.html#F">如何添加新的通道类型。（略读，后面参考）</a></h4>
 
-   This section describes how to modify existing Hodgkin-Huxley channels 
-   and also new sequential-state types.  If you need to modify the rate
-   constant function you can look up "channels" in Section 4.
+   本节介绍如何修改现有的霍奇金–赫胥黎通道以及新的顺序状态类型。如果需要修改速率常数函数，可以在第 4 节中查找“channels”。
 
-   <h4>7) <a href="ncman4.html#G">How to run nc (Refer when running models)</a></h4>
+   <h4>7) <a href="ncman4.html#G">如何运行 nc（运行模型时参考）</a></h4>
 
-   This section describes how to use the "nc", "stim", 
-"plotmod", and "vid" commands. It explains the command 
-line switches which allow you to run nc remotely on a 
-workstation and allow you to display the data on a 
-video screen.
+   本节介绍如何使用“nc”、“stim”、“plotmod”和“vid”命令。它解释了命令行开关，这些开关允许您在工作站上远程运行 nc 并允许您在视频屏幕上显示数据。
 
 
-<h4>8)  <a href="ncman4.html#H">Predefined variables (Read before making working model)</a></h4>
+<h4>8) <a href="ncman4.html#H">预定义变量（在制作工作模型之前阅读）</a></h4>
 
-   A list of all predefined variables that have special 
-meanings for NeuronC.  You can use these variables to 
-control things like the type and resolution of the 
-graphics display, and time increment for the 
-numerical simulation.
+   对 NeuronC 具有特殊含义的所有预定义变量的列表。您可以使用这些变量来控制图形显示的类型和分辨率以及数值模拟的时间增量等内容。
 
-<h4>9)  <a href="ncman4.html#H2">List of source code files</a></h4>
+<h4>9) <a href="ncman4.html#H2">源代码文件列表</a></h4>
 
-<h4>10) <a href="ncman4.html#I">References</a></h4>
+<h4>10) <a href="ncman4.html#I">参考</a></h4>
 
-   References for background information about modeling neural circuits.
+   有关神经回路建模的背景信息的参考。
 
 
-<h4>11) <a href="ncman4.html#J">Programming examples (Use as a recipe book!)</a></h4>
+<h4>11) <a href="ncman4.html#J">编程示例（用作菜谱书！）</a></h4>
 
-   Some examples of use of NeuronC language statements 
-in simple models.  You can use these examples practice 
-your modeling skill by copying and then modifying them.  
-You can use "modules" of NeuronC statements like a 
-cookbook recipe to make larger programs.
+   在简单模型中使用 NeuronC 语言语句的一些示例。您可以使用这些示例通过复制然后修改它们来练习您的建模技能。您可以像菜谱一样使用 NeuronC 语句的“modules”来制作更大的程序。
 
-<h4>12) <a href="ncman5.html">Curve Fitting with NeuronC </a></h4>
+<h4>12) <a href="ncman5.html">用 NeuronC 进行曲线拟合</a></h4>
 
-You can curve fit an arbitrary nc model using the "Stochastic
-Search" or "Simulated Annealing" algorithms.
+您可以使用“随机搜索(Stochastic Search)”或“模拟退火(Simulated Annealing)”算法对任意数控模型进行曲线拟合。
 
 <h4>13) <a href="ncman6.html">Retsim: a retinal simulator </a></h4>
 
-A set of high level scripts for both interpreted and compiled
-versions of the NeuronC simulator.
+一组用于 NeuronC 模拟器的解释和编译版本的高级脚本。
 
-<h4>14) <a href="ncman4.html#K">NeuronC syntax (Use if you want to check nc syntax)</a></h4>
+<h4>14) <a href="ncman4.html#K">NeuronC 语法（如果你想检查nc语法则使用）</a></h4>
 
-   This gives the syntax file for the NeuronC language, and 
-explains how to read syntax files written for YACC (UNIX tool for 
-creating languages.
-<p>
-<a href="ncmanindex.html#table">Click here</a> to return to Table of Contents
-
-
-<hr>
-<h2><a name ="B">Hardware needed for NeuronC</a></h2>
+   这给出了 NeuronC 语言的语法文件，并解释了如何读取为 YACC（用于创建语言的 UNIX 工具）编写的语法文件。
+<p><a href="ncmanindex.html#table">点击此处</a> 返回目录</p>
+<hr/>
+<h2><a name="B">Hardware needed for NeuronC</a></h2>
 
 NeuronC requires a fast CPU because its simulation of neural
 circuits uses lots of floating point calculations.  If a large
@@ -114,13 +79,15 @@ bytes of storage.<p>
 Another requirement of NeuronC is a video card with enough resolution
 to display high-res graphics on the screen.  NeuronC can be run
 without graphics to produce a list of recordings but it is useful
-to display this information in graphical form.<p>
+to display this information in graphical form.</p>
+<p>
    
    Some excellent computer choices for running NeuronC include:
-   <p>
+   </p>
+<p>
 
-<pre>
-   1) Notebook computer with Pentium 3000 MHz and:
+</p>
+<pre>   1) Notebook computer with Pentium 3000 MHz and:
         1 - 4GB RAM Memory
 	100-1000 GB disk
 	1280x900 LCD display 
@@ -164,7 +131,7 @@ to display this information in graphical form.<p>
         Local area network (LAN), GB network interfaces.
 
 </pre>
-<hr>
+<hr/>
 <h2>Software required to compile and run NeuronC</h2>
 
    NeuronC is currently being developed with the Linux operating
@@ -187,9 +154,12 @@ video screen and plotter, respectively.  The "plot" directory
 contains the Ampex plot package which is the source code for the
 graphics language that "vid" and "hpflt" use.  Normally the plot
 subroutines are compiled into a library called "libP.a" which is
-used when linking nc and plotmod.  <p> 
+used when linking nc and plotmod.  </p>
+<p> 
 
+</p>
 <p>
+</p>
 <h3> Compiling nc under Linux</h3>
 
 <p>
@@ -197,14 +167,13 @@ used when linking nc and plotmod.  <p>
 This will make a directory called "nc" and several
 subdirectories:
 
-<pre>
-    tar xvozf nc.tgz
+</p>
+<pre>    tar xvozf nc.tgz
 </pre>
 
 2) Go to the "nc" directory and type "make":
 
-<pre>
-    cd nc
+<pre>    cd nc
     make
 </pre>
 
@@ -221,8 +190,7 @@ If you are using BASH (standard on many Linux and Mac systems):
 You can also do the same thing by creating a text file ~/.bashrc or ~/.profile (i.e. in
 your home folder) and adding
 
-<pre>
-PATH="~/nc/bin:$PATH"
+<pre>PATH="~/nc/bin:$PATH"
 </pre>
 
 You can check this by entering "vid" again -- it should pop up immediately. 
@@ -231,21 +199,22 @@ You can check this by entering "vid" again -- it should pop up immediately.
 If you are using the "tcsh" shell (recommended on Linux and Mac systems),
 you can add this to your ~/.cshrc file:
 
-<pre>
-setenv PATH "~/nc/bin $PATH"
+</p>
+<pre>setenv PATH "~/nc/bin $PATH"
 </pre>
 
 <p>
 Alternately, on a Mac, you can add to your path by going to /etc/paths.d and adding a file that contains
 /Users/xxx/nc/bin (where xxx is your login name or name of your home folder).
 
+</p>
 <p>
 Another way to allow these programs to be run from any other folder is to link
 these programs to a folder that is already in your path. For example, to install "vid",
 the graphics driver for "nc", you can go to the "pl" directory and:
 
-<pre>
-    mkdir ~/bin
+</p>
+<pre>    mkdir ~/bin
     cd ../pl
     ln vid ~/bin         // to use a ~/bin sub-folder in your home folder
   or
@@ -254,8 +223,7 @@ the graphics driver for "nc", you can go to the "pl" directory and:
 
 4) Go to the "nc/src" subdirectory and install "stim","nc", and "plotmod":
 
-<pre>
-    cd ../src
+<pre>    cd ../src
     ln nc stim plotmod ~/bin	// to use a ~/bin sub-folder in your home folder	
   or
     ln nc stim plotmod /usr/bin
@@ -271,16 +239,16 @@ to have XCode (the C compiler) installed.
 For some of the old Mac compilers, the -O and -O3 optimizations caused retsim
 to crash.  You may need to remove the optimizations defined by CFLAGS at the
 top of nc/src/makefile: 
+</p>
 <p>
 Change this (lines 1-2, nc/src/makefile):
-<pre>
-CFLAGS = -O3
+</p>
+<pre>CFLAGS = -O3
 # CFLAGS =      # for Mac OSX 
 </pre>
 
 to this:
-<pre>
-# CFLAGS = -O3
+<pre># CFLAGS = -O3
 CFLAGS =      # for Mac OSX 
 </pre>
 
@@ -293,36 +261,31 @@ line (i.e. remove the "#"):
 <p>
 
 Change this (line 1, nc/src/retsim/makefile):
-<pre>
-CFLAGS = -Ofast
+</p>
+<pre>CFLAGS = -Ofast
 </pre>
 
 to this:
-<pre>
-# CFLAGS = -Ofast
+<pre># CFLAGS = -Ofast
 </pre>
 
 Change this (line 6, nc/src/retsim/makefile):
-<pre>
-# CFLAGS =               # for Mac OSX  
+<pre># CFLAGS =               # for Mac OSX  
 </pre>
 
 to this:
-<pre>
-CFLAGS =               # for Mac OSX  
+<pre>CFLAGS =               # for Mac OSX  
 </pre>
 
 Change this (line 47, nc/src/retsim/makefile)
-<pre>
-# OSFLAGS = -DMACOSX
+<pre># OSFLAGS = -DMACOSX
 </pre>
 
 to this:
-<pre>
-OSFLAGS = -DMACOSX
+<pre>OSFLAGS = -DMACOSX
 </pre>
 
-<h3> Compiling under Windows/Cygwin </h3>
+<h3>Windows/Cygwin 下编译</h3>
 
 To compile "nc" under Windows (Win98,Win2000,WinXP) you must first install
 "Cygwin" (www.cygwin.com), which is a "Linux-like" environment for Windows.
@@ -341,23 +304,25 @@ because they do not recognize the "\n" (line feed) as the
 "end-of-line" character. To fix this, you can compile "cradd.c"
 to make cradd, then access it using "crad":
 
-<pre>
-For example, to edit "makefile":
+<pre>For example, to edit "makefile":
 
      cd nc/doc
      make cradd
-     cradd.exe < makefile > m  && mv m makefile
+     cradd.exe &lt; makefile &gt; m  &amp;&amp; mv m makefile
      notepad makefile
 </pre>
 <p>
 
+</p>
 <h3> Compiling under DOS </h3>
 <p>
 If you would like to run NeuronC under DOS you can 
 compile it with the Delorie gcc compiler (www.delorie.com).
 A version of NeuronC that runs under DOS is available (with
-limited graphics).<p>
+limited graphics).</p>
+<p>
 
+</p>
 <h3>Running under VirtualBox</h3>
 
 VirtualBox is a virtual machine that runs at near native speed under most Windows, Mac
@@ -392,53 +357,78 @@ To monitor the progress of the jobs, a monitor command ("mosmon") is included
 that shows the status of the CPUs, their job load, CPU speed, and memory
 available.  When jobs finish on a CPU, other jobs are migrated from other CPUs
 to it automatically.  This makes the most efficient use of CPUs to run the most
-jobs as fast as possible.  <p>
+jobs as fast as possible.  </p>
+<p>
 
 MOSIX is helpful to run multiple jobs in parallel on multiple computers.
 However, MOSIX is not necessary when you have just one computer with multiple
 CPU cores, as Linux runing the Symmetric MultiProcessing (SMP) kernel can run
 your jobs in parallel.  As long as the number of jobs is not much more than 2
 per CPU core, and the machine has enough RAM to hold all the jobs in RAM without
-swapping, your Neuron-C/retsim jobs will run fast.  <p>
+swapping, your Neuron-C/retsim jobs will run fast.  </p>
+<p>
 
 
 <a href="ncmanindex.html#table">Click here</a> to return to Table of Contents
 
 
-<hr>
-<h2><a name ="C">NeuronC basis in analogy</a></h2>
-<ul><li><a href ="#1">Biological modeling</a>
-<li><a href ="#2">Numerical modeling</a>
-<li><a href ="#3">Compartments</a>
-<li><a href ="#3a">Cable equation in time</a>
-<li><a href ="#4">Synapses</a>
-<li><a href ="#4a">Reversal potentials, Nernst and GHK equation</a>
-<li><a href ="#4b">GHK current equation</a>
-<li><a href ="#5">Photoreceptor responses</a>
-<li><a href ="#6">Space constant, compartment size, and spacial accuracy</a>
-<li><a href ="#7">Time steps and numerical integration</a>
-<li><a href ="#8">Stability</a>
-<li><a href ="#9">Three methods of numeric integration</a>
-<ul><li><a href ="#10">Euler method</a>
-<li><a href ="#11">Implicit method</a>
-<li><a href ="#12">Crank-Nicolson method</a> 
+</p>
+<hr/>
+<h2><a name="C">NeuronC basis in analogy</a></h2>
+<ul><li><a href="#1">Biological modeling</a>
+</li>
+<li><a href="#2">Numerical modeling</a>
+</li>
+<li><a href="#3">Compartments</a>
+</li>
+<li><a href="#3a">Cable equation in time</a>
+</li>
+<li><a href="#4">Synapses</a>
+</li>
+<li><a href="#4a">Reversal potentials, Nernst and GHK equation</a>
+</li>
+<li><a href="#4b">GHK current equation</a>
+</li>
+<li><a href="#5">Photoreceptor responses</a>
+</li>
+<li><a href="#6">Space constant, compartment size, and spacial accuracy</a>
+</li>
+<li><a href="#7">Time steps and numerical integration</a>
+</li>
+<li><a href="#8">Stability</a>
+</li>
+<li><a href="#9">Three methods of numeric integration</a>
+<ul><li><a href="#10">Euler method</a>
+</li>
+<li><a href="#11">Implicit method</a>
+</li>
+<li><a href="#12">Crank-Nicolson method</a> 
+</li>
 </ul>
-<li><a href ="#13">Difference equations for implicit method</a>
-<li><a href ="#13a">Solution methods: Gauss-Seidel iteration with successive over-relaxation</a>
-<li><a href ="#14">Derivation of first and second-order implicit calculation of 
+</li>
+<li><a href="#13">Difference equations for implicit method</a>
+</li>
+<li><a href="#13a">Solution methods: Gauss-Seidel iteration with successive over-relaxation</a>
+</li>
+<li><a href="#14">Derivation of first and second-order implicit calculation of 
 alpha and beta rate constants for Hodgkin-Huxley channels</a>
-<li><a href ="#14a"> Derivation of second-order implicit
+</li>
+<li><a href="#14a"> Derivation of second-order implicit
 calculation of calcium diffusion in shells and to calcium buffer.</a>
-<li><a href ="#15">Time constant, time steps, and accuracy</a>
-<li><a href ="#16">Drawbacks of compartmental modeling</a>
-<li><a href ="#17">Parallel computation for compartmental modeling</a>
+</li>
+<li><a href="#15">Time constant, time steps, and accuracy</a>
+</li>
+<li><a href="#16">Drawbacks of compartmental modeling</a>
+</li>
+<li><a href="#17">Parallel computation for compartmental modeling</a>
+</li>
 </ul>
 
 
 <a href="ncmanindex.html#table">Click here</a> to return to Table of Contents
 
-<hr>
-<h3><a name = "1">Biological modeling</a></h3>
+<hr/>
+<h3><a name="1">Biological modeling</a></h3>
    To model a biological system is to make an analogy 
 between that system and some other process.  The model 
 may be simply a conceptual one, in which case it is an 
@@ -454,7 +444,8 @@ should be in a novel experiment.<p>
 to neuroscience is merely an addition to conceptual 
 modeling.  The value of the computational approach is 
 to add a quantitative dimension to our intuition about 
-the function of a neural circuit.<p>
+the function of a neural circuit.</p>
+<p>
 
    The relation between a biological system and the 
 computational model of it depends on analogy in exactly 
@@ -468,12 +459,15 @@ concise description of a neural circuit's biological
 form/function for us, but a set of difference 
 equations for a computer.
 
+</p>
 <p>
-<a href = "#C">Click here</a> to return to section index
+<a href="#C">Click here</a> to return to section index
 
-<hr>
-<h3><a name ="2">Numerical modeling</a></h3>
+</p>
+<hr/>
+<h3><a name="2">Numerical modeling</a></h3>
 <p>
+</p>
 <h4>Cables and electrotonic decay over space</h4>
 <p>
    Several numerical method conventions for modeling 
@@ -487,17 +481,19 @@ still typically requires linear membrane conductances.
 Ideally we would like a way to model any neural element 
 (cable, synapse, voltage-sensitive channel) in this 
 type of continuous model.
+</p>
 <p>
    The main idea of cable modeling is that a neural 
 dendrite acts like an electric cable with an inside 
 conductor (cytoplasm of neuron) covered by an insulator 
 (membrane).  Two ideas form the basis for this analogy:
+</p>
 <p>
    1) Current flow through a patch of passive membrane 
 is proportional to the voltage difference between the 
 inside and outside of the membrane.
-<pre>
-          im = (Vout-Vin) / rm              (1)
+</p>
+<pre>          im = (Vout-Vin) / rm              (1)
           
           where:
 
@@ -507,8 +503,7 @@ inside and outside of the membrane.
    2) Voltage along the inside of the dendrite (the 
 conductor) is reduced by axial current flow through the 
 dendritic cytoplasm.
-<pre>
-          d(Vin)/dx   =  ri * I              (2)
+<pre>          d(Vin)/dx   =  ri * I              (2)
 
           where:
 
@@ -517,18 +512,16 @@ dendritic cytoplasm.
           x  = axial distance along dendrite
      </pre>
 differentiating with respect to x:
-<pre>
-          d2(Vin)/dx2 =  ri * dI/dx          (3)
+<pre>          d2(Vin)/dx2 =  ri * dI/dx          (3)
 </pre>
 but the change in axial current within one small patch 
 of dendrite is precisely equal to the membrane current:
-<pre>
-          dI/dx = im                         (4)
+<pre>          dI/dx = im                         (4)
 </pre>
 combining (1) (3) and (4):
-<pre>
-          d2Vin/dx2 = (Vin-Vout) * ri/rm     (5)
-</pre>       
+<pre>          d2Vin/dx2 = (Vin-Vout) * ri/rm     (5)
+</pre>
+       
     The solution of this differential equation defines 
 an electric circuit with exponential decay of voltage 
 along the length of a neural dendrite.  Voltage and 
@@ -537,8 +530,8 @@ calculated easily using exponential functions (Rall,
 1959).   
 <p>
 For an infinite cable:
-<pre>
-          V = I * ri * lambda * e^-x/lambda   (6)
+</p>
+<pre>          V = I * ri * lambda * e^-x/lambda   (6)
 
           where:
 
@@ -549,10 +542,11 @@ For an infinite cable:
                rm = membrane resistance of cable, ohm*cm
 </pre>
 <p>
-<a href = "#C">Click here</a> to return to section index
+<a href="#C">Click here</a> to return to section index
 
-<hr>
-<h3><a name = "3">Compartments</a></h3>
+</p>
+<hr/>
+<h3><a name="3">Compartments</a></h3>
    Compartmental modeling, developed especially for 
 neural simulation (Cooley and Dodge, 1966; Rall, 1967; 
 Joyner et al., 1978) has allowed many different kinds 
@@ -582,12 +576,12 @@ membrane, each compartment may have other properties
 such as multiple connections to neighboring compartments
 and membrane channels with special properties. 
 
-<pre>
-     <--------------dx------------> <------------dx------------->
+</p>
+<pre>     &lt;--------------dx------------&gt; &lt;------------dx-------------&gt;
 
  compartment 1 -----ri------ compartment 2 ------ri------- compartment 3
 
-    V1 < ---------- I1 --------->  V2  <-------- I2 ---------->  V3 
+    V1 &lt; ---------- I1 ---------&gt;  V2  &lt;-------- I2 ----------&gt;  V3 
                                     |
                                    Im
 			            |
@@ -596,16 +590,15 @@ and membrane channels with special properties.
 
 <p>
 Derivation of cable equation for compartments:
-<pre>
-     dV3/dx = V3 - V2 = I2 * ri         (7)
+</p>
+<pre>     dV3/dx = V3 - V2 = I2 * ri         (7)
      dV2/dx = V2 - V1 = I1 * ri         (8)
 
      d2V/dx2 = (V3 - V2) - (V2 - V1)    (9)
 </pre>
 By Ohm's Law, the voltage across a resistor is equal to 
 the electric current multiplied by the resistance:
-<pre>
-     d2V/dx2 = I2 * ri - I1 * ri        (10)
+<pre>     d2V/dx2 = I2 * ri - I1 * ri        (10)
              = ri * (I2 - I1)           (11)
 </pre>
 
@@ -615,46 +608,41 @@ the electric current multiplied by the resistance:
 
 by Kirchoff's Law, the current flow into a node equals 
 the current flow out of the node:
-<pre>
-     I2 - I1 = Im                       (12)
+<pre>     I2 - I1 = Im                       (12)
 </pre>
 But the membrane current equals the compartment voltage 
 divided by the membrane resistance:
-<pre>
-     Im = V2 / rm                       (13) 
+<pre>     Im = V2 / rm                       (13) 
 </pre>
 Combining (11), (12), and (13),
-<pre>
-     d2V/dx2 = V * ri/rm                (14)
+<pre>     d2V/dx2 = V * ri/rm                (14)
 </pre>
 Note that (14) is identical to (5).
 <p>
-<a href = "#C">Click here</a> to return to section index
+<a href="#C">Click here</a> to return to section index
 
-<hr>
-<h3><a name ="3a">Cable equation in time</a></h3>
+</p>
+<hr/>
+<h3><a name="3a">Cable equation in time</a></h3>
    1) Current flow through a patch of passive membrane 
 is also proportional to the voltage change between the 
 inside and outside of the membrane over time.  Adding 
 this effect to the static current flow (equation 1):
-<pre>
-          im = (Vout-Vin) / rm +  dVin/dt * cm              (15)
-</pre>          
+<pre>          im = (Vout-Vin) / rm +  dVin/dt * cm              (15)
+</pre>
+          
           where:
-<pre>
-          im = current through membrane
+<pre>          im = current through membrane
           rm = resistance of membrane
           cm = capacitance of membrane
           t  = time
 </pre>
 
 Including axial voltage drop (as in equation 3):
-<pre>
-          d2Vin/dx2 = (Vin-Vout) * ri/rm + dVin/dt * cm     (16)
+<pre>          d2Vin/dx2 = (Vin-Vout) * ri/rm + dVin/dt * cm     (16)
 </pre>
           where:
-<pre>
-          ri  = axial resistance
+<pre>          ri  = axial resistance
           rm  = membrane resistance
           cm  = membrane capacitance
           t   = time
@@ -663,9 +651,10 @@ Including axial voltage drop (as in equation 3):
 This is the standard equation that neurophysiologists use to 
 describe voltage in a cable in space and time.
 <p>
-<a href = "#C">Click here</a> to return to section index
-<hr>
-<h3><a name ="4">Synapses</a></h3>
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
+<h3><a name="4">Synapses</a></h3>
 
    Biological synaptic connections are quite complex.  They 
 consist of a mechanism that releases a chemical 
@@ -682,6 +671,7 @@ modified by a time function which delays and low-pass filter
 the neurotransmitter action.  The time-filtered 
 neurotransmitter level defines the conductance of the 
 postsynaptic channel. 
+</p>
 <p>
 This synaptic model is very simplified because it leaves out 
 details such as:  presynaptic calcium channel activity, 
@@ -695,11 +685,13 @@ simulate a wide variety of synaptic types.  Each parameter is
 synaptic function parameters.  In addition, synaptic parameters 
 can be modified during a runtime to allow a wide variety of neural 
 plasticity functions to be simulated. 
+</p>
 <p>
-<a href = "#C">Click here</a> to return to section index
-<hr>
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
 
-<h3><a name ="4a">Reversal potentials, Nernst and GHK equation</a></h3>
+<h3><a name="4a">Reversal potentials, Nernst and GHK equation</a></h3>
 
 One way to find the conductance of a channel during a
 physiology experiment is to find its reversal potential, the
@@ -709,8 +701,8 @@ the channel's current is the product of the voltage times
 the conductance, where the voltage is the reversal potential
 minus the membrane voltage. <p>
 
-<pre>
-    G = I / V
+</p>
+<pre>    G = I / V
 
   where:
          I = current
@@ -725,8 +717,8 @@ ion's Nernst potential and is very similar to the definition
 of "reversal potential". It is a function of the internal
 and external ion concentrations and temperature: <p>
 
-<pre>
-          V = RT / zF * ln (co / ci)
+</p>
+<pre>          V = RT / zF * ln (co / ci)
  where:
           V = Nernst potential
           T = temperature (^To^TK)
@@ -753,10 +745,11 @@ from 0.0005 for K through a Ca channel to 0.2 for Ca
 through an NMDA channel.  The effect of having several ions
 pass through a channel is that its reversal potential is a
 function of all the ion concentrations and their respective
-permeabilities. That function is the GHK voltage equation: <p>
+permeabilities. That function is the GHK voltage equation: </p>
+<p>
 
-<pre>
-                             ( Nao * pna + Ko * pk )
+</p>
+<pre>                             ( Nao * pna + Ko * pk )
            V = RT / zF *  ln  --------------------
                              ( Nai * pna + Ki * pk )
  where:
@@ -780,14 +773,16 @@ permeabilities.<p>
 In NeuronC, each channel type has a data structure that contains
 the channel's conductance (and its temperature dependency) and
 the channel's permeability to several different ions so that an
-accurate reversal potential can be computed.<p>
+accurate reversal potential can be computed.</p>
+<p>
 
  A more detailed version of the GHK voltage equation is required
 when both monovalent and divalent ions are permeable through a
-channel:<p>
+channel:</p>
+<p>
 
-<pre>
-                        ( Nao * pNa + Ko * pK + 4 * p'Ca * Cao )
+</p>
+<pre>                        ( Nao * pNa + Ko * pK + 4 * p'Ca * Cao )
         V = RT / F *  ln -----------------------------------------   + Vs
                         ( Nai * pNa + Ki * pK + 4 * p'Ca * Cai * ef) 
 
@@ -826,7 +821,8 @@ concentrations to completely specify ion flux. ] <p>
 To solve this equation, a starting value for V is given and "ef"
 computed, and the equation solved for a new estimate of V.  The
 process continues for 2-5 iterations until the difference between
-the new and old estimates for V is small ( 0.1 mV ). <p>
+the new and old estimates for V is small ( 0.1 mV ). </p>
+<p>
 
 The surface potential Vs is a function of the concentration of
 divalent ions on the external surface of the membrane (for our
@@ -838,20 +834,21 @@ membrane voltage more negative (for gating channels) and causes
 Na channels to be less activated.  The effect on the reversal
 potential is positive but less, and is set by the "dcaspvrev"
 variable (default = 0.18), which multiplies dcavoff (.018) for a
-value of 3.2 mV positive shift / factor of 10 increase in cao.<p>
+value of 3.2 mV positive shift / factor of 10 increase in cao.</p>
+<p>
 
-<a href = "#C">Click here</a> to return to section index
-<hr>
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
 
-<h3><a name ="4b">GHK current equation</a></h3>
+<h3><a name="4b">GHK current equation</a></h3>
 
 The flow (or flux) of ions through a selective channel is nonlinear,
 especially when the inside and outside concentrations are very
 different. The current through a channel is calculated with the
 use of the GHK current equation:
 
-<pre>
-   df = exp (-z * v * F*F/R/T); 
+<pre>   df = exp (-z * v * F*F/R/T); 
    i = p / [iono] * z * z * ([ioni] - io * df) / (1 - df);
 
 where: i = current due to ion flux through selective channel
@@ -882,8 +879,8 @@ linear "slope conductance" and a "slope reversal potential",
 which are utilized just like the ordinary channel conductance and
 the channel reversal potential:
 
-<pre>
-    vf = exp(-z * v * F/R/T);
+</p>
+<pre>    vf = exp(-z * v * F/R/T);
    vfi = 1 / (1 - vf);
  cvfi += p * z*z/zm/zm * (ioni-iono*vf)/(1-vf)/ionm;
 gfrac += p * F/R/T * v *z*z*z/zm/zm * (ioni-iono)*vf*vfi*vfi/ionm;
@@ -910,8 +907,7 @@ For each ion, we compute the "cvfi" and "gfrac" variables and sum
 them over all the ions.  Then we then compute the "slope cond"
 and "slope vrev" from them:
 
-<pre>
-   scond = cvfi - gslope;
+<pre>   scond = cvfi - gslope;
    svrev = v - v*cvfi/(cvfi-gslope);
 </pre>
 
@@ -921,13 +917,16 @@ tables indexed by voltage. At run time, the values are looked up
 and linearly interpolated.  
 <p>
 
-For more on the derivation of this equation, see DeSchutter & Smolen (1998), Methods in Neuronal Modeling, p 218.
+For more on the derivation of this equation, see DeSchutter &amp; Smolen (1998), Methods in Neuronal Modeling, p 218.
+</p>
 <p>
 
-<a href = "#C">Click here</a> to return to section index
-<hr>
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
 
-<h3><a name ="5">Photoreceptor responses</a></h3> 
+<h3><a name="5">Photoreceptor responses</a></h3>
+ 
 
    The response of photoreceptors to light is simulated in 
 NeuronC by a special set of difference equations bundled 
@@ -939,7 +938,9 @@ light response, such as flash response waveshape, response
 linearity over a narrow range, response saturation with 
 bright flashes, and adaptation with background light.  
 <p>
-<h4>Two-stage dynamic model</h4> 
+</p>
+<h4>Two-stage dynamic model</h4>
+ 
  
    Dynamic compartmental modeling depends on 2 levels of 
 abstraction for its analogy with a neural circuit.  At the 
@@ -948,14 +949,15 @@ which are modeled as electronic circuits.  At the second
 level, a computer simulates the operation of the electronic 
 circuits in time using difference equations evaluated with 
 standard mathematics functions.  Either of these steps 
-(neural -> electronic,  electronic -> difference eqn.) can 
+(neural -&gt; electronic,  electronic -&gt; difference eqn.) can 
 be accomplished in other ways, such as by simulation on an 
 analog computer, but it is convenient to run the complete 
 simulation on a digital computer.
 <p>
-<a href = "#C">Click here</a> to return to section index
-<hr>
-<h3><a name ="6">Space constant, compartment size, and spatial 
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
+<h3><a name="6">Space constant, compartment size, and spatial 
 accuracy</a></h3>
 
    Compartmental modeling is limited in the accuracy of its 
@@ -980,10 +982,12 @@ calculates the compartment size as a fraction of the space
 constant (normally 1/10th).  This causes the size of the 
 compartments to be varied according to the properties of the 
 cable that defines them.
+</p>
 <p>
-<a href = "#C">Click here</a> to return to section index
-<hr>
-<h3><a name ="7">Time steps and numerical integration</a></h3>
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
+<h3><a name="7">Time steps and numerical integration</a></h3>
 
    The time properties of the neural circuit can be 
 effectively simulated by breaking the passage of time into 
@@ -1009,10 +1013,12 @@ course of one time step.  Small jumps in channel properties,
 for example, are allowable over a sequence of time steps 
 because if they're small enough, they faithfully represent 
 the effect of continuous change. 
+</p>
 <p>
-<a href = "#C">Click here</a> to return to section index
-<hr>
-<h3><a name = "8">Stability</a></h3>
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
+<h3><a name="8">Stability</a></h3>
 
    Numerical simulation of compartments sometimes gives 
 incorrect answers (even using time steps small enough to 
@@ -1032,10 +1038,11 @@ connecting them.  This causes the compartments to be less
 closely coupled to each other.  Third, a better way is to 
 use an "implicit" mode of integration as described below.
 <p>
-<a href = "#C">Click here</a> to return to section index
-<hr>
-<h3><a name ="9">Three methods of numeric integration</a></h3>
-<h4><a name ="10">Euler method</a></h4>
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
+<h3><a name="9">Three methods of numeric integration</a></h3>
+<h4><a name="10">Euler method</a></h4>
 
    The simplest method of numerically integrating a 
 compartmental model, the Euler method (or "forward Euler"), 
@@ -1054,7 +1061,7 @@ because the calculation of voltage for the end of a time
 step in a compartment depends only on information available 
 at the start of the time step.
         
-<h4><a name ="11">Implicit method</a></h4>
+<h4><a name="11">Implicit method</a></h4>
  
 As described above, one way to increase speed is to use a numeric simulation
 that is unconditionally stable for any size time step.  Stability allows larger
@@ -1076,7 +1083,8 @@ complete.  However this type of computation is equivalent to solving a system
 of N simultaneous equations in N unknowns (N=number of compartments), which is
 solvable by matrix techniques.
 
-<h4><a name = "12">Crank-Nicolson method</a></h4>
+</p>
+<h4><a name="12">Crank-Nicolson method</a></h4>
 
    The assumption that voltage change is constant during a 
 time step simplifies numerical integration, but the 
@@ -1109,19 +1117,19 @@ a consequence of its better accuracy (see Moore and Ramon, 1974).
 However, fourth-order (in time) methods are often slower than second-
 order methods for simulations of neural circuits with commonly used 
 timesteps (between 10 and 100 usec). 
+</p>
 <p>
-<a href = "#C">Click here</a> to return to section index
-<hr>
-<h3><a name ="13">Difference equations for implicit methods</a></h3>
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
+<h3><a name="13">Difference equations for implicit methods</a></h3>
 
 Derivation of the difference equation for one compartment, using the
 Crank-Nicolson implicit method of numerical integration (refer to figure).
 This derivation shows only 2 neighbor compartments for clarity, but the
 derivation is similar when a compartment has many connections to other
 compartments.  The calculation is repeated for all compartments several times
-for each time step until the value of "v2n" converges.  <pre>
-
-Crank-Nicolson method:
+for each time step until the value of "v2n" converges.  <pre>Crank-Nicolson method:
 
 Voltage change in a compartment =  dt/c * average of new and old currents
 
@@ -1143,8 +1151,7 @@ v2n = (v2 + k/2 * ( v1*s1 + v3*s2 - v2 * (s1+s2+sm) + v1n*s1 +
                     v3n*s2 + 2*vm*sm)) * implicit factor
 </pre>
 where:
-<pre>
-     v2 = voltage in this compartment at start of time step
+<pre>     v2 = voltage in this compartment at start of time step
     v2n = voltage in this compartment at end of time step
      vm = membrane leakage reversal potential
      s1 = conductance to neighbor compartment 1
@@ -1156,9 +1163,7 @@ where:
      implicit factor = 1 / ( 1 + k/2 * (s1+s2+sm))
 </pre>
 
-<pre>
-
-Fully implicit (Backwards Euler) method:
+<pre>Fully implicit (Backwards Euler) method:
 
 v2n-v2 = k * ( (i1n + i3n) -  i2n)
 
@@ -1174,8 +1179,7 @@ v2n = (v2 + k * (v1n*s1 + v3n*s2 + vm*sm - v2 * s1+s2+sm)) * implicit factor
 
 </pre>
 where:
-<pre>
-     v2 = voltage in this compartment at start of time step
+<pre>     v2 = voltage in this compartment at start of time step
     v2n = voltage in this compartment at end of time step
      vm = membrane leakage reversal potential
      s1 = conductance to neighbor compartment 1
@@ -1187,7 +1191,7 @@ where:
      implicit factor = 1 / (1 + k * (s1+s2+sm))
 </pre>
 
-<h3><a name ="13a">Solution methods: Gauss-Seidel iteration with successive over-relaxation </a></h3>
+<h3><a name="13a">Solution methods: Gauss-Seidel iteration with successive over-relaxation </a></h3>
 
 The math solver for neurons in implicit mode must solve a system of N equations
 in N unknowns. As explained above, each compartment receives currents from the
@@ -1204,12 +1208,14 @@ example, when one or more gap junctions connect between neurons, Gaussian
 elimination fails and another solution method must be used.  Often
 forwards-Euler integration is a backup method. However, the "Gauss-Seidel"
 method works for non-symmetrical matrices and is the method used by Neuron-C.
+</p>
 <p>
 Synapses are slow enough that propagation of a voltage through them is not
 necessary to take into account in the implicit mode. In Neuron-C the synaptic conductance is
 simply added onto the other compartmental conductances. The synaptic conductance
 is then computed on a slower time scale than the compartments so that it doesn't
-take much computation time.<p>
+take much computation time.</p>
+<p>
 
 The "Gauss-Seidel" method for solving N equations in N unknowns is an iterative
 method. For implicit methods, because the new voltages v1n and v3n are not
@@ -1228,7 +1234,8 @@ changes to propagate in both directions.  Typical numbers of iteration for
 compartments are between 10 and 1000 iterations, depending on how fast the
 compartment voltage is changing, on the compartment size and the resistive
 coupling between compartments, and on the value of "crit" which is the accuracy
-limit.  <p>
+limit.  </p>
+<p>
 
 In addition, the calculation can be accelerated by simply multiplying the
 change from the previous iteration by an "over-relaxation" factor greater than
@@ -1243,7 +1250,8 @@ asymtote slowly towards zero.  This takes many iterations and wastes
 computation time.  The simulator finds the value for the over-relaxation factor
 that makes the compartment voltage change (difference present and previous
 estimates) have just one sign change. Each compartment has its own
-over-relaxation factor.  <p>
+over-relaxation factor.  </p>
+<p>
 
 Moreover, the compartments that change their voltage from one iteration to the
 next less than a criterion value ("crit") don't need to be recalculated, so
@@ -1251,23 +1259,24 @@ they are dropped from the calculation.  This generates a small error in the
 neighboring compartments that may increase with iterations, so every 20
 iterations all of the compartments are recomputed. This saves computation time
 because often most of the compartments in a large neuron don't need more than
-10 iterations.  <p>
+10 iterations.  </p>
+<p>
 
-<pre>
-References: Joyner et al, 1978
+</p>
+<pre>References: Joyner et al, 1978
             Crank and Nicolson, 1947
             Hines, 1984; 1989
-	    Atkinson KE (1989), "An introduction to Numerical Analysis", Wiley & Sons.
+	    Atkinson KE (1989), "An introduction to Numerical Analysis", Wiley &amp; Sons.
 </pre>
 <p>
-<a href = "#C">Click here</a> to return to section index
-<hr>
-<h3><a name ="14"> Derivation of first and second-order implicit
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
+<h3><a name="14"> Derivation of first and second-order implicit
 calculation of alpha and beta rate constants for Hodgkin-Huxley
-channels.</a></h3> 
+channels.</a></h3>
 
-<pre>
-  dm    = alpham - (alpham+betam) * m          (original HH rate equation) 
+<pre>  dm    = alpham - (alpham+betam) * m          (original HH rate equation) 
   dmest = alpham - (alpham+betam) * mest       (implicit version)
   mest = m + (dm+dmest) / 2                    (second-order C-N version)
 
@@ -1286,8 +1295,7 @@ channels.</a></h3>
 
 Fully implicit version:
 
-<pre>
-  mest = m + alpham-(alpham+betam)*mest        (implicit version)
+<pre>  mest = m + alpham-(alpham+betam)*mest        (implicit version)
 
   mest (1+alpham+betam) = m + alpham
 
@@ -1307,19 +1315,19 @@ need not be re-computed for each iteration for a compartment's
 voltage.  Instead, the implicit estimated value is used and this 
 allows the calculation to run substantially faster. <p>
 
-<a href = "#C">Click here</a> to return to section index
+<a href="#C">Click here</a> to return to section index
 
-<hr>
-<h3><a name ="14a"> Derivation of second-order implicit
+</p>
+<hr/>
+<h3><a name="14a"> Derivation of second-order implicit
 calculation of calcium diffusion in shells and to calcium buffer.</a></h3>
 
 
-<pre>
-   B + Ca.B = Bt              ( free buffer + Ca-bound buffer = total buffer )
+<pre>   B + Ca.B = Bt              ( free buffer + Ca-bound buffer = total buffer )
 
-               f >
-   B + Ca  <--------> Ca.B    ( defines forward and reverse rates )
-             < r
+               f &gt;
+   B + Ca  &lt;--------&gt; Ca.B    ( defines forward and reverse rates )
+             &lt; r
 
 Where:
         Ca   = free [Ca] in shell
@@ -1355,7 +1363,7 @@ Where:
        Cakest  = new estimate of right neighbor Ca
        S = shell diffusion multiplier
 
-</pre> 
+</pre>
 <h4>Fully implicit solutions</h4>
 
 The "difference equation" solution of the above equations for
@@ -1364,6 +1372,7 @@ solving for Ca and B at the end of the time step.  This solution
 is more stable but less accurate than the second-order
 Crank-Nicolson method.<p>
 
+</p>
 <pre> 
   Caest = Ca + dCaest
 
@@ -1391,9 +1400,7 @@ step by averaging the values from the beginning and the end of
 the time step.  This is more accurate but less stable than
 the "fully implicit" solution above:
 
-<pre>
-
-For Calcium:
+<pre>For Calcium:
 
    Caest = Ca + (dca + dcaest) / 2
 
@@ -1440,7 +1447,7 @@ Switch f*Best with f*B:              (allowed by Taylor series expansion after Y
    Where:
           implf = (1 + f*B/2 + S)
 
-<hr>
+<hr/>
 
 For Buffer:
 
@@ -1457,15 +1464,16 @@ Solving for Best:
   Best = (B + r*(Bt-B/2) - f*Ca*B/2) / (1 + (r+f*Caest)/2)            (4)
 
 </pre>
-<hr>
+<hr/>
 
 <h4>Calcium current and driving force </h4>
 
 <p>Derivation of driving force for calcium current, when both internal
 and external calcium may change:
+</p>
 <p>
-<pre>
-GHK current equation (for Ca):    I = P * z2 * Vm * F^2 / RT * (Cai - Cao * exp (-vs))
+</p>
+<pre>GHK current equation (for Ca):    I = P * z2 * Vm * F^2 / RT * (Cai - Cao * exp (-vs))
                                                                ------------------------ 
                                                                 1 - exp(-vs) 
 
@@ -1512,9 +1520,11 @@ capture this effect, we define the driving force as a function of Vm and Cai and
 Then the driving force changes the current depending on changes in the calcium.
 In order to keep the driving force a voltage, we normalize by Cao / dcao, which 
 then maintains the driving force correct for the default Cai and Cao.
+</p>
 <p>
 
-<hr>
+</p>
+<hr/>
 Strategy for solving Ca diffusion equations:<p>
 
 The idea here is to write an "implicit" equation that can be solved 
@@ -1522,19 +1532,23 @@ for the Ca concentration at the end of the time step.  This number
 is dependent on the neighboring Ca concentrations at the end of the 
 time step. These are unknown, but are gradually updated by iterating 
 over all the compartments.  Calculate Caest and Best alternately
-so that buffer gets updated along with Ca.<p>
+so that buffer gets updated along with Ca.</p>
+<p>
 
 Iterate equations 1 and 2 (or 3,4) over all the compartments.
-When change in Caest from one iteration to next is small ( <
-1e-10) stop.<p>
+When change in Caest from one iteration to next is small ( &lt;
+1e-10) stop.</p>
+<p>
 
 Typical number of iterations is 2-5 so computation is relatively
-fast.<p>
+fast.</p>
+<p>
 
 
-<a href = "#C">Click here</a> to return to section index
-<hr>
-<h3><a name ="15">Time constant, time steps, and accuracy</a></h3>
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
+<h3><a name="15">Time constant, time steps, and accuracy</a></h3>
 
    The time constant of a neuron (or a compartment) 
 describes how fast the membrane voltage can change.  
@@ -1559,10 +1573,12 @@ of the model does not change from a previous run more
 than a criterion of say, 0.1 percent.  This assures an 
 absolute accuracy of 0.1 percent in the voltage 
 calculated.
+</p>
 <p>
-<a href = "#C">Click here</a> to return to section index
-<hr>
-<h3><a name ="16">Drawbacks of compartmental modeling</a></h3>
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
+<h3><a name="16">Drawbacks of compartmental modeling</a></h3>
 
    While dynamic (time-varying) compartmental modeling 
 has many advantages it has several drawbacks as well.  
@@ -1584,6 +1600,7 @@ runs slowly.  If just a few larger compartments are
 used to describe the same cable segment, the model runs 
 faster, but waveshapes and amplitudes of the voltage 
 response are noticeably wrong.
+</p>
 <p>
    The overall problem with compartmental modeling, 
 then, is the generally slow computational speed.  Both 
@@ -1593,10 +1610,12 @@ making the model run more calculations, therefore
 slower.  Thus most ambitious compartmental modelers 
 usually end up eyeing large main-frame computers as a 
 "way out" of their modeling problems.
+</p>
 <p>
-<a href = "#C">Click here</a> to return to section index
-<hr>
-<h3><a name ="17">Parallel computation for compartmental modeling</a></h3>
+<a href="#C">Click here</a> to return to section index
+</p>
+<hr/>
+<h3><a name="17">Parallel computation for compartmental modeling</a></h3>
 <p>
 Using a parallel library such as "PVM" or "MPI" and a parallel
 implementation of a simulator running on multiple CPUs, it is
@@ -1619,8 +1638,12 @@ implentation of the simulator.  This is the rationale for using a
 parallel dynamic balancing job system such as MOSIX or the Linux
 SMP kernel.
 
+</p>
 <p>
-<a href = "#C">Click here</a> to return to section index
+<a href="#C">Click here</a> to return to section index
 
+
+
+</p>
 </body>
 </html>
