@@ -132,7 +132,7 @@ to display this information in graphical form.</p>
 
 </pre>
 <hr/>
-<h2>Software required to compile and run NeuronC</h2>
+<h2>编译和运行 NeuronC 所需的软件</h2>
 
    NeuronC is currently being developed with the Linux operating
 system using the "g++" C/C++ compiler and X Windows graphics
@@ -160,36 +160,19 @@ used when linking nc and plotmod.  </p>
 </p>
 <p>
 </p>
-<h3> Compiling nc under Linux</h3>
+<h3><span style="font-family: &quot;Microsoft YaHei&quot;;">Linux下编译nc</span></h3>
 
 <p>
-1) Uncompress and "un-tar" the distribution.
-This will make a directory called "nc" and several
-subdirectories:
-
-</p>
+1) 解压 "un-tar" 发行版。这将创建一个名为 "nc" 的目录和几个子目录：</p>
 <pre>    tar xvozf nc.tgz
 </pre>
 
-2) Go to the "nc" directory and type "make":
-
-<pre>    cd nc
+2) 进入 "nc" 目录并输入 "make"：<pre>    cd nc
     make
 </pre>
-
-This makes the programs "nc", "stim", "plotmod" and "vid".
-
-3) After these programs are compiled by "make", they are linked (given a
-shortcut to) the nc/bin folder. To allow them to run from any other folder, you
-can include this nc/bin folder in your path.  Then you must edit your .profile
-(bash) or .cshrc (tcsh) shell startup files to include ~/nc/bin in your program
-execution path. 
-
-If you are using BASH (standard on many Linux and Mac systems):
-
-You can also do the same thing by creating a text file ~/.bashrc or ~/.profile (i.e. in
-your home folder) and adding
-
+这将编译 "nc", "stim", "plotmod" 和 "vid" 程序。<p>3) 使用 "make" 编译这些程序后，它们将会链接到（给出快捷方式）nc/bin 目录。 要允许从任何其他文件夹中运行他们，您可以在 PATH 路径中包含 nc/bin 文件夹。然后，您必须编辑 .profile
+(bash) 或 .cshrc (tcsh) 脚本启动文件，以将 ~/nc/bin 包含在程序执行路径中。如果您使用的是 BASH（许多 Linux 和 Mac 系统上的标准）：您还可以通过（比如在您的主目录下）创建文本文件~/.bashrc 或 ~/.profile 并添加</p>
+<p></p>
 <pre>PATH="~/nc/bin:$PATH"
 </pre>
 
@@ -1645,5 +1628,6 @@ SMP kernel.
 
 
 </p>
+<p></p>
 </body>
 </html>
